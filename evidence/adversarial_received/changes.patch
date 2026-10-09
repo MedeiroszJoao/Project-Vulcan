@@ -1,0 +1,462 @@
+diff --git a/BUILD_RECORD.json b/BUILD_RECORD.json
+index de57100..7ff273e 100644
+--- a/BUILD_RECORD.json
++++ b/BUILD_RECORD.json
+@@ -7,5 +7,10 @@
+   "checksums_scope": "All regular project files excluding SHA256SUMS, .git, __pycache__, .venv; SHA256SUMS itself is tracked by Git",
+   "authorship": "Build automation metadata only; publication authors and license not yet supplied",
+   "integration": "Prospective candidate plus independent audit corrections",
+-  "tests_passed": 37
++  "tests_passed": 37,
++  "current_audit_test_count": 42,
++  "current_audit_passed_without_pgmpy": 41,
++  "current_audit_blocked_by_missing_pgmpy": 1,
++  "current_revision_publicly_registered": false,
++  "revision_note": "Independently checked numeric PMFs; scoring chronology and VOID protocol fixed without changing reference forecasts."
+ }
+diff --git a/README.md b/README.md
+index 4b19795..56cba55 100644
+--- a/README.md
++++ b/README.md
+@@ -46,3 +46,7 @@ Comece por `docs/EXECUTIVE_BRIEF.md`, depois `docs/TECHNICAL_NOTE.md` e `SPEC.md
+ `docs/FORECAST_PROTOCOL.md` fixa a validade e o corte do episódio ainda não publicado.
+ O arquivo LICENSE é uma proposta pendente, não declaração de concessão confirmada.
+ A CI está configurada; nenhum sucesso de CI remota é alegado sem execução observada.
++
++## Adendo de integridade temporal da rodada atual
++
++Consulte `docs/ADVERSARIAL_ADDENDUM_2026-10-09.md`: correções em `VOID_CONFIGURATION`, `NOT_LAUNCHED` e evidência pós-liftoff. A previsão numérica primária não foi alterada. A CI pública, o DOI, a licença e a autoria ainda aguardam validação.
+diff --git a/SHA256SUMS b/SHA256SUMS
+index e7f2ff6..ba9f69c 100644
+--- a/SHA256SUMS
++++ b/SHA256SUMS
+@@ -1,10 +1,10 @@
+ bd3b20617cee0f5242591964b082b258086263f82acfacf52ef7566747bf2327  .github/workflows/ci.yml
+ 5975c8be29f044a9cb5030c879090a4e43356877b764638c54f0b8858f569798  .gitignore
+-5b7804c81b1bdf4a33eee032b16942a682b4e8941ab2ab557e9a9eff0252c77d  BUILD_RECORD.json
++c368f32270e0114b8620dabc44bbcf449c8336f27ccc5f350a9226f5bc4486c1  BUILD_RECORD.json
+ ecee30ba1cf9e0cbee1dc38655e5315e8b7629e79e48f5b7f47857d3a16f5afb  CITATION.cff
+ 3059a5a07335271c414748fa65c317c4f93228510e7eb6584c8a58a8af3ce5b4  CONTRIBUTING.md
+ 63c4633eca4899c2edee4f85e2b7889726029fd1fbf01724a7a49525ced6e66f  LICENSE
+-8d9852f28b93963677c8555926876e4a668a37b517cdad818c13c66f2ea129c7  README.md
++753639fbb7ca0b483622cdb51d68fd0ee6bfb9c58ed8e9e537a21952c38d2e62  README.md
+ efc588c8b3dc22fb8e33fb0db034f41a82c4d0f0912e9fe07dd75eb36435f249  SPEC.md
+ 5ec4bc09746b1bbe1bfe142b8a52a0d342aa846f4ef237d52ff28bca97f54350  archive_sources.py
+ 63ece2c6f2d414b26fc3724c972db7386e9855fbf66dc03daaa6768096d252ee  build_forecast.py
+@@ -15,22 +15,24 @@ d048778b6f337e84372ec0c52e59881611bb1d38d25399603d48e9a6169b12fb  data/atlas_202
+ d36e35a6228f81726caf464c46891eb6ad5570208227183bcea2d697da8e3a51  data/reference_scenario.json
+ ec2680b1b1e27b5721d4703d0470c2438cbe96ed7a0670d65bb201e45427103d  data/vega_timeline.csv
+ d61267b7015d5ffb24746ad75ad7092438126b8df2616b2ce63ac137ee4aef1d  data/vulcan_flights.csv
++fb762b56895e9753b8612af5e3d6840b94685d79b5ee771ebde4f53ea358e91b  docs/ADVERSARIAL_ADDENDUM_2026-10-09.md
+ 354a87801bbe63690e79ba0e88affe5b02bd9ac6464278a0fa6174d5613775e8  docs/AUDIT_RESPONSE.md
+ f520aa585cd19d091872ff1f047bbfd689decdac64710612c9e5c4f8224915fd  docs/CREDIBILITY_MATRIX.md
+ 8839900fbba0c486f4df4b73fea1de0bb97cbf3d28ee465edd0367ace16ebf83  docs/EXECUTIVE_BRIEF.md
+ 848dd04ab027710b9829764d2c8d8555e85f27309d1a5f37a2667d9d4700eece  docs/EXTERNAL_REVIEW_REQUESTS.md
+-888ca6b3d2a8162cf36947a063ddff6759ae8990d6c53f8b2e07017eca785f17  docs/FORECAST_PROTOCOL.md
++9c92db91bec215c7fac96347f4e5c9b5ff7c2c2240e6b78b4b9b01bcafe811ce  docs/FORECAST_PROTOCOL.md
+ 046f47c98ee6db2d4d728af6875b95e177cb74de76376b9cd144d698f8ecf0ad  docs/FREEZE_CHECKLIST.md
+ caa0da05d50dad3499775869c2eb79394e8a8d4b3859d44dda10ff96bbfb997c  docs/INTEGRATION_REVIEW.md
+ 5c3e8d2ff701960b3db096c1a46fe5e100918ade62f24a8d762780af22f772e6  docs/PUBLICATION_RUNBOOK.md
+-90b722b031767a68e5534add4786a1d95be440a0a89e431c7149c231715a5828  docs/RED_TEAM_LOG.md
++cc76ba60b05d5756000f14389fa4b6d8c5dcf9dba52d00b7dc5ca5cdc07043d2  docs/RED_TEAM_LOG.md
+ 656f4f7372a9deecb7db62af6053252950411465e538641ea8e78e784f1d4d89  docs/REVIEW.md
+-514694a13b5cf4145074d05be9617af35e8902828aba68d192e017e8939247e4  docs/SOURCE_REGISTER.md
++8192ff0af785a96c37d1ce5cb62e6a47e359efda3cb55f56db5335e23b9128c4  docs/SOURCE_REGISTER.md
+ b0b521238a129342adfd5a090b4be083946534209f9457a06b8d9cc517ecda8f  docs/STAGE2_ROADMAP.md
+ b1d04e097e7b071ff235547769f88b750bf9305faf589e2724d3a0e8afb296dc  docs/TECHNICAL_NOTE.md
+-bc021967a2ff6576da0394e16adf83b8f8b96cf698b14fad47a877ad676cf7cb  docs/TEST_STATUS.md
++27dd0bad325795b02ebcbbfee7ef1e278f1353b957eefbe14e3e02f08182b88f  docs/TEST_STATUS.md
+ c313cdd4f2547e3006fb63523c1c40515df937a99ac95abdbecb734090b2bdf6  docs/influence_diagram.mmd
+ d9bfaf1e73c5f3710ea9e4104f71c7dde63680d5bd1aa3e8db2c8e8b6f224c4b  environment.txt
++324a91f02d1e44ccf9f50859d140c78b4d776af577b972b807d8626656d62033  evidence/adversarial_local_suite_log.txt
+ 1952179bf30341bc572148349ff275796c50c8d3ce151740986fbd1c05e8cd14  evidence/archive_status.json
+ 18510673b6c2f53e7cbd3342e5b5429449ee90fd92540b6e301fc7c49695a05f  evidence/atlas_extension/Amazon_Leo_4.html
+ 0c5485471f4ff0b61aa8b9fb98dee76792c62cb333f7f24b61a32ab5039212f1  evidence/atlas_extension/Amazon_Leo_5.html
+@@ -83,6 +85,7 @@ d00ab0f133a198538691be657e1bc67eccf90293cc999343b6b59e10eb39ff04  evidence/raw/v
+ e91346f65a42fe1cfb8ab04a896be1ed09d06c5a2c4f1c994f6ccd4ad7cb3de9  evidence/source_manifest.json
+ 093718f0a6278123336faba3574334d06e6e371949b228fb55aad07fd30d7d21  evidence/wolfram-decision-check.json
+ c6fb071bfcb90859f5fa7d1287e1034c253b8632f243a6c6cb13dba9c5194a18  evidence/wolfram-verification.json
++3e13ca9415caad9d83badb21efbd09914f49b3579b47f2794057970cad3cdeb0  evidence/wolfram_oct09_independent_check.json
+ ab84b1e4f60657779413a315b2dca98cff4bfc20604daaa70001db5568fd7cd3  forecast/historical_all.json
+ 97cd41ab8efe77fa7b17b7b6b3f20ab353523a66a06533e0e215ffab2e43c19e  forecast/jeffreys_reference.json
+ fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f  forecast/reference.json
+@@ -125,8 +128,8 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  src/__init__.p
+ 09813dd9c60f2a67f76928414d4f9edb7f2cc1171f2c07fc060a3c9a8e2fbf72  src/model.py
+ 8bb6034190f589294121d98f143f687a1d5b24c0a798f3d37e0dbebdbcfcb6c4  src/operations.py
+ cb62389c7242f0fc9d97be4060944986f873f9ae32deec5cfbfc202605f403c0  src/prospective.py
+-1af38c368994355553e98eaa7534fa8b88185e948fa7a6025f70fce309dd3f75  src/scoring.py
++22d893328a0aab1bcf450c231327cced6c52a14613653607080f7c6c78404966  src/scoring.py
+ 1ee5257d0b75563b1b33cd813e434d0c26faa2d17be5a6092e4891a3f8018854  tests/test_model.py
+ cdecde964414791840cac0a791d963a44c02cfa884406d39192b298de5d354ca  tests/test_operations.py
+ b9c56d3bfa43d170d43adca5e7d4e7fdf50d84dfd8f2ed32db71d7ded5e601f1  tests/test_prospective.py
+-c30dc6a758f436f404d7bc8d85ccb72b10b94ac3a1794b7741f42fef8df4e23d  tests/test_scoring.py
++11e3c32cdc1a716b2b3f7bba5c5607a2a6310faa3ea486aa7328fc28582d5f79  tests/test_scoring.py
+diff --git a/docs/ADVERSARIAL_ADDENDUM_2026-10-09.md b/docs/ADVERSARIAL_ADDENDUM_2026-10-09.md
+new file mode 100644
+index 0000000..63a2a8a
+--- /dev/null
++++ b/docs/ADVERSARIAL_ADDENDUM_2026-10-09.md
+@@ -0,0 +1,28 @@
++# Aditivo de auditoria prospectiva independente — 2026-10-09
++
++Status: **candidato revisado, NÃO PUBLICAMENTE REGISTRADO**. O conjunto de previsões e a metodologia original de Y **não foram modificados** nesta revisão. Nenhuma previsão deve ser ajustada com conhecimento posterior ao lançamento.
++
++## Verificações
++
++- Reproduzida a distribuição física K=0..6 e o vetor Y de quatro resultados por integração simbólica independente no Wolfram.
++- A referência de credibilidade oficial é NASA-STD-7009B (05/03/2024), acompanhada de NASA-HDBK-7009B (03/02/2026). O projeto não é certificado.
++- O agendamento NET 29/10/2026 continua provisório segundo fontes não operadoras; freeze deve preceder o lançamento efetivo.
++- Modelo de referência: P(Y)=[0.5973632855,0.2072166864,0.0954200281,0.1]. Não é estimativa fisicamente calibrada.
++
++## Quatro vulnerabilidades fechadas nesta versão
++
++1. `VOID_CONFIGURATION` previsto em texto mas sem suporte no scorer: agora aceito explicitamente, sem score, com descrição da diferença física e evidência pós-liftoff.
++2. `NOT_LAUNCHED` não pode ser provado apenas por documento publicado semanas antes do fim de validade: exige checagem documental publicada após 2027-01-01 UTC.
++3. A evidência que sustenta um resultado de voo deve possuir ao menos uma publicação posterior ao lançamento, não somente uma agenda anterior.
++4. Referência ao arquivo Atlas corrigida de docs/ para data/.
++
++## Condicionantes ainda abertas
++
++- `pgmpy` não estava disponível no ambiente da revisão independente; a alegação de sucesso em outro ambiente é registro do pacote, não reprodução nova. A suíte foi executada novamente; status separado no log.
++- A verificação temporal de URLs e snapshots exige validação pública independente; `score_episode.py` confere bytes locais, **não** prova que eram públicos no horário alegado.
++- Eventos VOID são particularmente vulneráveis a escolhas oportunistas; congelar a regra objetiva e auditar todos os VOID com terceiro independente.
++- Um registro condicional ao voo sem probabilidades de atraso não pode ser tratado como previsão sobre a data do lançamento, nem estimador de calibração por um único episódio. Registrar também todos os NOT_LAUNCHED, não apagá-los.
++- Contrato da alternativa, revisões reais de GEM63XL, fatos de certificação e CPTs físico-monetárias não estão calibrados por evidência interna.
++- Autoria, licença, DOI e release ainda pendentes.
++
++Fontes: https://standards.nasa.gov/standard/NASA/NASA-STD-7009 ; https://standards.nasa.gov/standard/NASA/NASA-HDBK-7009 ; https://help.zenodo.org/docs/github/archive-software/github-upload/ ; https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf .
+diff --git a/docs/FORECAST_PROTOCOL.md b/docs/FORECAST_PROTOCOL.md
+index 71e705c..a1b9587 100644
+--- a/docs/FORECAST_PROTOCOL.md
++++ b/docs/FORECAST_PROTOCOL.md
+@@ -6,7 +6,7 @@
+ 
+ Alvo: primeiro voo identificado publicamente como Amazon Leo LV-01 em Vulcan VC6L com seis boosters, após registro público verificável e antes de **01/01/2027 00:00:00 UTC**, limite exclusivo. A validade até o fim de 2026 é escolha administrativa prévia, não previsão de lançamento. Alteração material da configuração nominal invalida o episódio; registrar VOID_CONFIGURATION sem pontuar e sem reaproveitar silenciosamente a previsão. A revisão interna MM continua hipótese não verificada; divulgação posterior sobre a revisão não permite trocar a previsão primária já publicada.
+ 
+-Adiamento dentro dessa validade **não** expira a previsão e **não** exige nova previsão primária. Registrar atualizações separadas se úteis, sempre preservando e pontuando a primária. Se não houver voo até o fim da validade, registrar NOT_LAUNCHED sem score; um voo posterior exige outro episódio prospectivo. A previsão é condicionada a haver voo, não estima a data dele.
++Adiamento dentro dessa validade **não** expira a previsão e **não** exige nova previsão primária. Registrar atualizações separadas se úteis, sempre preservando e pontuando a primária. Se não houver voo até o fim da validade, registrar NOT_LAUNCHED sem score, sustentado por uma checagem documental publicada depois do vencimento; um voo posterior exige outro episódio prospectivo. A previsão é condicionada a haver voo, não estima a data dele.
+ 
+ ## Corte temporal sem ambiguidade
+ 
+@@ -64,7 +64,7 @@ Os campos acima são placeholders deliberadamente inválidos, não resultado ou
+ python score_episode.py --forecast forecast/reference.json --record scoring/evidence_record.json --output scoring/episode_01_T14.json
+ ```
+ 
+-O programa valida hashes dos snapshots, hash da previsão, ordem de categorias, datas, validade, corte, sintaxe dos identificadores e recusa sobrescrever a saída. Para NOT_LAUNCHED, omitir flight_at_utc e codificar após expiração, anexando registro documental da ausência de lançamento.
++O programa valida hashes dos snapshots, hash da previsão, ordem de categorias, datas, validade, corte, sintaxe dos identificadores e recusa sobrescrever a saída. Para observações pontuadas e VOID_CONFIGURATION, exige ao menos uma evidência de publicação posterior ao lançamento mas anterior ao corte de T+14; um arquivo de agenda pré-voo não prova o resultado. Para NOT_LAUNCHED, omitir flight_at_utc, codificar após expiração, e incluir ao menos um registro documental de não lançamento publicado *a partir do vencimento* e até a data de codificação. O estado de não lançamento NÃO recebe score. A regra especial de evidência posterior à validade não reabre a janela de observação da previsão: serve apenas para verificar retrospectivamente que nenhum voo ocorreu antes dela. Para VOID_CONFIGURATION, informar `outcome=VOID_CONFIGURATION`, `configuration_matches=false`, `flight_at_utc` e `configuration_change_description`; anexar prova pública de divergência física no voo, sem score. Mudar para outro lançador ou outra configuração não autoriza reclassificar seletivamente depois de observar se houve falha: a divergência deve ser definida pelo critério objetivo de seis boosters e VC6L e apoiada por documentação verificável.
+ 
+ **Limite de verificação:** o programa é offline. Ele não autentica que URL, SHA, timestamp ou declaração fornecidos são verdadeiros/publicados. Isso exige abrir a release/registro externo e comparar os bytes. Sua saída declara essa limitação. Um JSON preenchido com dados inventados jamais constitui registro prospectivo.
+ 
+diff --git a/docs/RED_TEAM_LOG.md b/docs/RED_TEAM_LOG.md
+index 0df8095..30077b7 100644
+--- a/docs/RED_TEAM_LOG.md
++++ b/docs/RED_TEAM_LOG.md
+@@ -24,3 +24,8 @@ Keep failures visible. New factual findings after flight belong in new dated ent
+ | RT-16 | Incoming candidate omitted operational extensions | Integration | Merged without replacing corrected core; separate grids explicitly labeled |
+ | RT-17 | Atlas extension had two local dates labeled UTC | Factual error | Corrected ViaSat-3 F2 and Leo 6; attachments preserved |
+ | RT-18 | CFF asserted MIT although license was only proposed | Metadata | Removed license assertion pending author's choice |
++
++| RT-19 | VOID_CONFIGURATION previsto no protocolo, não implementado como disposição explícita no score | Protocolo/código | CORRIGIDO no candidato revisado; requisito de descrição e evidência pós-lançamento; revisão humana exigida |
++| RT-20 | NOT_LAUNCHED aceitava evidência publicada antes da expiração para provar ausência no futuro | Verificabilidade | CORRIGIDO; exige um registro de status pós-expiração, sem pontuação |
++| RT-21 | O scorer admitia um documento pré-voo como única evidência de resultado T+14 | Proveniência | CORRIGIDO; exige ao menos evidência publicada depois do liftoff e antes do corte |
++| RT-22 | Fonte Atlas V 2025/26 apontava pasta errada (`docs/`) | Documentação | CORRIGIDO para `data/` |
+diff --git a/docs/SOURCE_REGISTER.md b/docs/SOURCE_REGISTER.md
+index eaf0dbf..f782d66 100644
+--- a/docs/SOURCE_REGISTER.md
++++ b/docs/SOURCE_REGISTER.md
+@@ -16,4 +16,4 @@ Independent study. All external links below have marketing tracking parameters r
+ | Zenodo release | https://help.zenodo.org/docs/github/archive-software/github-upload/ | DOI/version/archive status | processing can be delayed |
+ | Vega-C analog | https://www.esa.int/Newsroom/Press_Releases/Double_win_for_Europe_Sentinel-1C_and_Vega-C_take_to_the_skies | schedule stress scenario | 715-day historical difference not predictive likelihood |
+ 
+-Primary numerical evidence remains the CSVs and snapshots in `data/` and `evidence/`. The four Vulcan flight-count rows and Atlas-2024 historical subset are unchanged; the 2025–26 Atlas extension is in `docs/atlas_2025_2026_extension.csv` and **not** used in the prior due to distinct GEM 63 versus GEM 63XL and uncertain observation.
++Primary numerical evidence remains the CSVs and snapshots in `data/` and `evidence/`. The four Vulcan flight-count rows and Atlas-2024 historical subset are unchanged; the 2025–26 Atlas extension is in `data/atlas_2025_2026_extension.csv` and **not** used in the prior due to distinct GEM 63 versus GEM 63XL and uncertain observation.
+diff --git a/docs/TEST_STATUS.md b/docs/TEST_STATUS.md
+index bfa2b4c..bcb86ad 100644
+--- a/docs/TEST_STATUS.md
++++ b/docs/TEST_STATUS.md
+@@ -1,13 +1,9 @@
+-# Estado dos testes — integração de 09/10/2026
++# Estado dos testes — candidato prospectivo com guardas adversariais de 09/10/2026
+ 
+-37 testes locais: 14 do núcleo, 7 operacionais, 9 de previsão e 7 de protocolo/pontuação.
+-O primeiro ensaio neste ambiente falhou apenas por pgmpy ausente. Após instalar as
+-versões diretas declaradas em requirements.txt, a suíte completa passou, incluindo
+-VariableElimination. O log atual fica em results/tests.txt; a reprodução integrada
+-em results/reproduction_log.txt. Não alegamos CI externa executada.
++- **Pacote recebido**: 37 testes relatados como aprovados após instalação de `pgmpy` no ambiente da integração anterior; registro preservado em `results/tests.txt`.
++- **Revisão independente atual**: 42 testes descobertos; 41 passam neste ambiente Python 3.13; teste `test_pgmpy_variable_elimination` bloqueado porque `pgmpy` não está instalado. Tentativa de instalação falhou por DNS/sem acesso ao índice de pacotes. **Não chamar de 42/42 reproduzido neste ambiente.**
++- O teste de `pgmpy` permanece inalterado e poderá ser executado pela CI com `requirements.txt`; nenhuma CI pública foi observada ainda.
++- Cinco testes foram adicionados para a disposição `VOID_CONFIGURATION`, prova temporal `NOT_LAUNCHED`, exclusão de evidências pré-liftoff isoladas, impossibilidade de registros após expiração e exclusão de evidência futura.
++- A referência `forecast/reference.json` e as quatro PMFs alternativas não foram modificadas nesta revisão. Comparação de hashes com o pacote original é realizada no manifesto do auditor.
+ 
+-As dependências diretas são fixadas. environment.txt registra o ambiente efetivamente
+-usado. Não é um lock portátil com hashes de todas as dependências transitivas.
+-A configuração GitHub Actions executa a mesma reprodução; sua execução pública ainda
+-não ocorreu. Os logs antigos permanecem no arquivo recebido de evidência e não devem
+-ser confundidos com o estado desta integração.
++Nenhum resultado prova autorização de lançamento ou confiança física na CPT hipotética.
+diff --git a/evidence/adversarial_local_suite_log.txt b/evidence/adversarial_local_suite_log.txt
+new file mode 100644
+index 0000000..e8248e6
+--- /dev/null
++++ b/evidence/adversarial_local_suite_log.txt
+@@ -0,0 +1,55 @@
++test_beta_posteriors_and_predictive (test_model.TestModel.test_beta_posteriors_and_predictive) ... ok
++test_config_separation (test_model.TestModel.test_config_separation) ... ok
++test_correlation_keeps_marginal (test_model.TestModel.test_correlation_keeps_marginal) ... ok
++test_cost_monotonicity (test_model.TestModel.test_cost_monotonicity) ... ok
++test_cpts_and_quadrature (test_model.TestModel.test_cpts_and_quadrature) ... ok
++test_evidence_table_consistency (test_model.TestModel.test_evidence_table_consistency) ... ok
++test_evsi_nonnegative_and_evpi_bound (test_model.TestModel.test_evsi_nonnegative_and_evpi_bound) ... ok
++test_invalid_inputs (test_model.TestModel.test_invalid_inputs) ... ok
++test_no_authorization (test_model.TestModel.test_no_authorization) ... ok
++test_no_transfer (test_model.TestModel.test_no_transfer) ... ok
++test_pgmpy_variable_elimination (test_model.TestModel.test_pgmpy_variable_elimination) ... ERROR
++test_plate_against_binary_enumeration (test_model.TestModel.test_plate_against_binary_enumeration) ... ok
++test_toy (test_model.TestModel.test_toy) ... ok
++test_uninformative_disclosure (test_model.TestModel.test_uninformative_disclosure) ... ok
++test_baseline_recovery (test_operations.OperationsTests.test_baseline_recovery) ... ok
++test_heterogeneous_history_quadrature (test_operations.OperationsTests.test_heterogeneous_history_quadrature) ... ok
++test_private_gate_reweights_risk (test_operations.OperationsTests.test_private_gate_reweights_risk) ... ok
++test_private_information_without_lv_transfer (test_operations.OperationsTests.test_private_information_without_lv_transfer) ... ok
++test_reservation_fee_and_slot (test_operations.OperationsTests.test_reservation_fee_and_slot) ... ok
++test_severity_and_mnar (test_operations.OperationsTests.test_severity_and_mnar) ... ok
++test_unavailable_launchers_defer (test_operations.OperationsTests.test_unavailable_launchers_defer) ... ok
++test_analytic_beta_binomial_hh (test_prospective.TestProspective.test_analytic_beta_binomial_hh) ... ok
++test_invalid_probabilities (test_prospective.TestProspective.test_invalid_probabilities) ... ok
++test_log_zero_is_explicit (test_prospective.TestProspective.test_log_zero_is_explicit) ... ok
++test_no_transfer_effect_on_unconditional_lv (test_prospective.TestProspective.test_no_transfer_effect_on_unconditional_lv) ... ok
++test_probabilities_sum_to_one (test_prospective.TestProspective.test_probabilities_sum_to_one) ... ok
++test_proper_scoring_simple (test_prospective.TestProspective.test_proper_scoring_simple) ... ok
++test_public_y_marginal_invariant_to_target_revision (test_prospective.TestProspective.test_public_y_marginal_invariant_to_target_revision) ... ok
++test_report_count_zero_detection (test_prospective.TestProspective.test_report_count_zero_detection) ... ok
++test_unreported_mass (test_prospective.TestProspective.test_unreported_mass) ... ok
++test_avoid_retrospective_registration_after_expiry (test_scoring.ExtraProspectiveGuards.test_avoid_retrospective_registration_after_expiry) ... ok
++test_future_evidence_rejected (test_scoring.ExtraProspectiveGuards.test_future_evidence_rejected) ... ok
++test_no_prelaunch_document_as_outcome_evidence (test_scoring.ExtraProspectiveGuards.test_no_prelaunch_document_as_outcome_evidence) ... ok
++test_unlaunched_requires_post_expiry_evidence (test_scoring.ExtraProspectiveGuards.test_unlaunched_requires_post_expiry_evidence) ... ok
++test_void_configuration_written_as_unscored_disposition (test_scoring.ExtraProspectiveGuards.test_void_configuration_written_as_unscored_disposition) ... ok
++test_late_coding_with_frozen_cutoff (test_scoring.ScoringTests.test_late_coding_with_frozen_cutoff) ... ok
++test_mnar_count_mass (test_scoring.ScoringTests.test_mnar_count_mass) ... ok
++test_no_early_scoring_or_changed_configuration (test_scoring.ScoringTests.test_no_early_scoring_or_changed_configuration) ... ok
++test_no_hindsight_in_evidence (test_scoring.ScoringTests.test_no_hindsight_in_evidence) ... ok
++test_no_registration_after_flight (test_scoring.ScoringTests.test_no_registration_after_flight) ... ok
++test_reject_hash_mismatch (test_scoring.ScoringTests.test_reject_hash_mismatch) ... ok
++test_unlaunched_only_after_expiry (test_scoring.ScoringTests.test_unlaunched_only_after_expiry) ... ok
++
++======================================================================
++ERROR: test_pgmpy_variable_elimination (test_model.TestModel.test_pgmpy_variable_elimination)
++----------------------------------------------------------------------
++Traceback (most recent call last):
++  File "/mnt/data/vulcan_review/vulcan-decision/tests/test_model.py", line 93, in test_pgmpy_variable_elimination
++    from pgmpy.models import DiscreteBayesianNetwork
++ModuleNotFoundError: No module named 'pgmpy'
++
++----------------------------------------------------------------------
++Ran 42 tests in 0.842s
++
++FAILED (errors=1)
+diff --git a/evidence/wolfram_oct09_independent_check.json b/evidence/wolfram_oct09_independent_check.json
+new file mode 100644
+index 0000000..f64f475
+--- /dev/null
++++ b/evidence/wolfram_oct09_independent_check.json
+@@ -0,0 +1,31 @@
++{
++  "method": "Wolfram Language exact rational integration over Beta(3,11) mixture, n=6",
++  "weights_multiplier": [
++    [
++      0.4,
++      1.0
++    ],
++    [
++      0.6,
++      0.1
++    ]
++  ],
++  "P_K": [
++    0.6458511544596786,
++    0.20029508584697037,
++    0.09307805218929677,
++    0.04235670072239422,
++    0.01460055218929677,
++    0.003405657275541796,
++    0.0004127973168214654
++  ],
++  "P_Y": [
++    0.5973632855118781,
++    0.20721668638542395,
++    0.09542002810269792,
++    0.1
++  ],
++  "interpretation": "Independent mathematical agreement on scenario assumptions; NOT physical calibration",
++  "reference_forecast_sha256": "fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f",
++  "external_publication": false
++}
+diff --git a/src/scoring.py b/src/scoring.py
+index fc5e020..c5da580 100644
+--- a/src/scoring.py
++++ b/src/scoring.py
+@@ -14,33 +14,78 @@ def https(url):
+     p=urlparse(url)
+     if p.scheme!='https' or not p.netloc or 'utm_' in url: raise ValueError('clean HTTPS URL required')
+ 
+-def score_record(raw,record):
+-    f=json.loads(raw)
+-    h=hashlib.sha256(raw).hexdigest()
+-    if record['registered_forecast_sha256']!=h: raise ValueError('registered forecast hash mismatch')
+-    if f['report_signal_categories']!=Y_NAMES: raise ValueError('category ordering changed')
++def score_record(raw, record):
++    """Validate internal consistency and score a public observation.
++
++    VOID_CONFIGURATION and NOT_LAUNCHED are *dispositions*, not extra Y
++    categories, and they are retained without a numerical proper score.
++    External publication/provenance authenticity must be checked independently.
++    """
++    f = json.loads(raw)
++    h = hashlib.sha256(raw).hexdigest()
++    if record['registered_forecast_sha256'] != h:
++        raise ValueError('registered forecast hash mismatch')
++    if f['report_signal_categories'] != Y_NAMES:
++        raise ValueError('category ordering changed')
+     https(record['freeze_url'])
+-    if not re.fullmatch('[0-9a-fA-F]{40}',record['commit_sha']): raise ValueError('commit SHA')
+-    freeze=utc(record['registered_at_utc']);coded=utc(record['coded_at_utc'])
+-    expiry=utc(f['valid_until_utc_exclusive'])
+-    if not freeze<coded: raise ValueError('coding predates registration')
+-    outcome=record['outcome']
+-    cutoff=expiry;score=None
+-    if outcome=='NOT_LAUNCHED':
+-        if record.get('flight_at_utc') or coded<expiry: raise ValueError('NOT_LAUNCHED only at expiry without liftoff')
++    if not re.fullmatch('[0-9a-fA-F]{40}', record['commit_sha']):
++        raise ValueError('commit SHA')
++    freeze = utc(record['registered_at_utc'])
++    coded = utc(record['coded_at_utc'])
++    expiry = utc(f['valid_until_utc_exclusive'])
++    if not freeze < expiry:
++        raise ValueError('forecast must be registered before episode expiration')
++    if not freeze < coded:
++        raise ValueError('coding predates registration')
++
++    outcome = record['outcome']
++    cutoff = expiry
++    score = None
++    flight = None
++    if outcome == 'NOT_LAUNCHED':
++        if record.get('flight_at_utc') or coded < expiry:
++            raise ValueError('NOT_LAUNCHED only after episode expiry without a liftoff')
++    elif outcome in Y_NAMES or outcome == 'VOID_CONFIGURATION':
++        flight = utc(record['flight_at_utc'])
++        if not freeze < flight < expiry:
++            raise ValueError('flight outside prospective validity')
++        cutoff = flight.replace(hour=0,minute=0,second=0,microsecond=0) + timedelta(days=15)
++        if coded < cutoff:
++            raise ValueError('T14 evidence window still open')
++        if outcome == 'VOID_CONFIGURATION':
++            if record.get('configuration_matches') is not False:
++                raise ValueError('void requires a documented physical configuration mismatch')
++            if len(record.get('configuration_change_description','').strip()) < 12:
++                raise ValueError('void requires a concrete configuration change description')
++        else:
++            if record.get('configuration_matches') is not True:
++                raise ValueError('configuration changed; void episode instead of scoring')
++            score = categorical_score(f['public_report_signal_pmf'],Y_NAMES.index(outcome))
+     else:
+-        if outcome not in Y_NAMES: raise ValueError('outcome')
+-        flight=utc(record['flight_at_utc'])
+-        if not freeze<flight<expiry: raise ValueError('flight outside prospective validity')
+-        if not record.get('configuration_matches'): raise ValueError('configuration changed; void episode')
+-        cutoff=flight.replace(hour=0,minute=0,second=0,microsecond=0)+timedelta(days=15)
+-        if coded<cutoff: raise ValueError('T14 evidence window still open')
+-        score=categorical_score(f['public_report_signal_pmf'],Y_NAMES.index(outcome))
+-    if not record.get('evidence'): raise ValueError('documentary evidence/search log required')
++        raise ValueError('unknown outcome/disposition')
++
++    if not record.get('evidence'):
++        raise ValueError('documentary evidence/search log required')
++    timestamps = []
+     for e in record['evidence']:
+         https(e['url'])
+-        if utc(e['first_public_at_utc'])>=cutoff: raise ValueError('post-cutoff evidence')
+-        if not re.fullmatch('[0-9a-f]{64}',e['snapshot_sha256']): raise ValueError('snapshot SHA256')
++        posted = utc(e['first_public_at_utc'])
++        if posted > coded:
++            raise ValueError('future evidence cannot exist at scoring time')
++        if outcome != 'NOT_LAUNCHED' and posted >= cutoff:
++            raise ValueError('post-cutoff evidence')
++        if not re.fullmatch('[0-9a-f]{64}',e['snapshot_sha256']):
++            raise ValueError('snapshot SHA256')
++        timestamps.append(posted)
++    if outcome == 'NOT_LAUNCHED':
++        # An archive or dated statement of non-launch after expiry can verify
++        # the full observation window; a months-earlier schedule alone cannot.
++        if not any(posted >= expiry for posted in timestamps):
++            raise ValueError('no post-expiry documentary check of non-launch')
++    elif not any(posted >= flight for posted in timestamps):
++        # An old schedule page is not evidence of a later launch outcome.
++        raise ValueError('no post-liftoff published evidence for outcome')
++
+     return dict(episode_id=f['episode_id'],forecast_sha256=h,outcome=outcome,
+         evidence_cutoff_exclusive_utc=cutoff.isoformat(),record=record,score=score,
+         registration_verification='LOCAL_CONSISTENCY_ONLY; external timestamp and public hash require independent verification')
+diff --git a/tests/test_scoring.py b/tests/test_scoring.py
+index 1910022..e8135e7 100644
+--- a/tests/test_scoring.py
++++ b/tests/test_scoring.py
+@@ -27,7 +27,8 @@ class ScoringTests(unittest.TestCase):
+     def test_unlaunched_only_after_expiry(self):
+         self.r['outcome']='NOT_LAUNCHED';self.r.pop('flight_at_utc')
+         with self.assertRaises(ValueError):score_record(self.raw,self.r)
+-        self.r['coded_at_utc']='2027-01-01T00:00:00Z'
++        self.r['coded_at_utc']='2027-01-02T00:00:00Z'
++        self.r['evidence'][0]['first_public_at_utc']='2027-01-01T12:00:00Z'
+         self.assertIsNone(score_record(self.raw,self.r)['score'])
+     def test_no_early_scoring_or_changed_configuration(self):
+         self.r['coded_at_utc']='2026-11-12T20:00:00Z'
+@@ -38,3 +39,46 @@ class ScoringTests(unittest.TestCase):
+         a=reported_count_forecast(Scenario(mnar=True,anomaly_disclosure=.3))
+         self.assertAlmostEqual(sum(a),1,12)
+         self.assertGreater(a[-1],.1)
++
++class ExtraProspectiveGuards(unittest.TestCase):
++    def setUp(self):
++        self.raw=json.dumps(build_forecast()).encode()
++        self.record=dict(
++            registered_forecast_sha256=hashlib.sha256(self.raw).hexdigest(),
++            freeze_url='https://example.org/registration', commit_sha='a'*40,
++            registered_at_utc='2026-10-17T12:00:00Z',
++            coded_at_utc='2026-11-20T12:00:00Z',
++            flight_at_utc='2026-10-29T14:30:00Z',
++            configuration_matches=True, outcome='clean_report',
++            evidence=[dict(url='https://example.org/report',first_public_at_utc='2026-11-12T10:00:00Z',snapshot_sha256='b'*64)])
++
++    def test_avoid_retrospective_registration_after_expiry(self):
++        self.record['registered_at_utc']='2027-01-01T01:00:00Z'
++        self.record['coded_at_utc']='2027-01-02T01:00:00Z'
++        with self.assertRaises(ValueError):score_record(self.raw,self.record)
++
++    def test_no_prelaunch_document_as_outcome_evidence(self):
++        self.record['evidence'][0]['first_public_at_utc']='2026-10-27T10:00:00Z'
++        with self.assertRaises(ValueError):score_record(self.raw,self.record)
++
++    def test_void_configuration_written_as_unscored_disposition(self):
++        self.record['outcome']='VOID_CONFIGURATION'
++        self.record['configuration_matches']=False
++        self.record['configuration_change_description']='Actual flight with only four boosters, not the predeclared six'
++        result=score_record(self.raw,self.record)
++        self.assertIsNone(result['score'])
++        self.assertEqual(result['outcome'],'VOID_CONFIGURATION')
++        self.record['configuration_matches']=True
++        with self.assertRaises(ValueError):score_record(self.raw,self.record)
++
++    def test_unlaunched_requires_post_expiry_evidence(self):
++        self.record['outcome']='NOT_LAUNCHED'
++        self.record.pop('flight_at_utc')
++        self.record['coded_at_utc']='2027-01-02T00:00:00Z'
++        with self.assertRaises(ValueError):score_record(self.raw,self.record)
++        self.record['evidence'][0]['first_public_at_utc']='2027-01-01T12:00:00Z'
++        self.assertIsNone(score_record(self.raw,self.record)['score'])
++
++    def test_future_evidence_rejected(self):
++        self.record['evidence'][0]['first_public_at_utc']='2026-11-21T12:00:00Z'
++        with self.assertRaises(ValueError):score_record(self.raw,self.record)

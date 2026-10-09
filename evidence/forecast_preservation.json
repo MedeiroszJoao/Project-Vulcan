@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-09",
+  "compared_to": "previous local commit and supplied adversarial ZIP",
+  "all_five_unchanged": true,
+  "sha256": {
+    "forecast/historical_all.json": "ab84b1e4f60657779413a315b2dca98cff4bfc20604daaa70001db5568fd7cd3",
+    "forecast/jeffreys_reference.json": "97cd41ab8efe77fa7b17b7b6b3f20ab353523a66a06533e0e215ffab2e43c19e",
+    "forecast/reference.json": "fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f",
+    "forecast/shared_shock.json": "1abb6b5d4eef66e1e03efe41b276222245571d4707527ed622979dc0051a029c",
+    "forecast/unknown_revisions.json": "11888bbdd0e2dc7e4d570f05bb60e8f31bdd8abc6126d35ac91c1c0b1e25ec74"
+  }
+}

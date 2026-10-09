@@ -1,0 +1,38 @@
+{
+  "prior": "uniform",
+  "heritage_weight": 0.0,
+  "theta": [
+    0.2,
+    0.6,
+    0.2
+  ],
+  "revision_pair": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "relevance": 1.0,
+  "rho": 0.0,
+  "history_detection": 1.0,
+  "detection": 0.9,
+  "disclosure": 0.9,
+  "false_positive": 0.0,
+  "effective_multiplier": 0.1,
+  "ineffective_increment": 0.0,
+  "lv_severe": 0.2,
+  "target_severe": 0.25,
+  "history_detection_by_flight": [],
+  "history_risk_multipliers": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "anomaly_disclosure": 0.9,
+  "mnar": false,
+  "target_multi_loss": 0.55,
+  "n_lv": 6,
+  "n_target": 4,
+  "order": 24
+}

@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "Please cite the frozen version DOI when one exists; this candidate has no DOI."
+title: "Vulcan: A Public-Data Probabilistic Aerospace Risk & Economic Decision Laboratory"
+authors:
+  - name: "AUTHOR IDENTITY PENDING PUBLIC CONFIRMATION"
+version: "0.1.0-rc1"
+type: software
+abstract: "Illustrative public-data Bayesian risk-and-decision model with a prospective LV-01 forecast; NOT a validated safety estimate. Unpublished candidate, no independent timestamp."
+keywords:
+  - Bayesian decision analysis
+  - expected value of information
+  - aerospace risk
+  - prospective forecast candidate
+  - reliability

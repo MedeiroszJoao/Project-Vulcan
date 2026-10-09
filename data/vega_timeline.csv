@@ -1,0 +1,10 @@
+event,date_or_period,time_utc,precision,source
+VV22_launch_failure,2022-12-21,01:47,minute_launch_not_failure,https://www.esa.int/Newsroom/Press_Releases/Flight_VV22_failure_Arianespace_and_ESA_appoint_an_independent_inquiry_commission
+inquiry_release,2023-03-03,,published_date_no_time,https://www.esa.int/Newsroom/Press_Releases/Loss_of_flight_VV22_Independent_Enquiry_Commission_announces_conclusions
+initial_return_target,end_2023,,forecast_not_observation,https://newsroom.arianespace.com/loss-of-flight-vv22-independent-enquiry-commission-announces-conclusions/
+modified_motor_static_test_failure,2023-06-28,,reported_date_no_time,https://www.esa.int/Newsroom/Press_Releases/Vega-C_Zefiro40_Test_Independent_Enquiry_Commission_announces_conclusions
+second_inquiry_release,2023-10-02,,published_date_no_time,https://www.esa.int/Newsroom/Press_Releases/Vega-C_Zefiro40_Test_Independent_Enquiry_Commission_announces_conclusions
+revised_return_target,2024Q4,,forecast_not_observation,https://www.esa.int/Newsroom/Press_Releases/Vega-C_Zefiro40_Test_Independent_Enquiry_Commission_announces_conclusions
+static_test_success,2024-05-28,,reported_date_no_time,https://www.esa.int/Enabling_Support/Space_Transportation/Successful_engine_test_boosts_Vega-C_towards_return-to-flight
+second_static_test_success,2024-10-03,,reported_date_no_time,https://www.esa.int/ESA_Multimedia/Videos/2024/11/Avio_s_Zefiro-40_firing
+VV25_return,2024-12-05,21:20,minute,https://newsroom.arianespace.com/arianespace-successfully-launches-sentinel-1c-earth-observation-satellite-for-european-unions-copernicus-program/

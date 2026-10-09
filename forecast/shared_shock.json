@@ -1,0 +1,129 @@
+{
+  "T_plus_14_days": "one and only primary Y coding; incomplete reporting => inconclusive",
+  "T_plus_72_hours": "publish preliminary evidence collection without revising the primary forecast",
+  "asof_nominal_date": "2026-10-09",
+  "configuration_change_rule": "six boosters and nominal VC6L unchanged; otherwise episode void, not rescored",
+  "count_report_categories": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "count_not_ascertainable"
+  ],
+  "episode_id": "VULCAN_LV01_2026_01",
+  "evaluation_cutoff_rule": "00:00:00 UTC at start of liftoff_date + 15 days; evidence timestamps strictly earlier",
+  "event": "Amazon Leo LV-01, Vulcan VC6L; outcome conditional on flight occurring",
+  "event_disposition": "Delay within validity preserves primary forecast; no liftoff by expiry => NOT_LAUNCHED and no score. Later flight requires a new prospective episode.",
+  "forecast_series_name": "shared_shock",
+  "forecast_valid_from_rule": "independently verified public registration before liftoff",
+  "full_scenario_parameters": {
+    "anomaly_disclosure": 0.9,
+    "detection": 0.9,
+    "disclosure": 0.9,
+    "effective_multiplier": 0.1,
+    "false_positive": 0.0,
+    "heritage_weight": 0.0,
+    "history_detection": 1.0,
+    "history_detection_by_flight": [],
+    "history_risk_multipliers": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "ineffective_increment": 0.0,
+    "lv_severe": 0.2,
+    "mnar": false,
+    "n_lv": 6,
+    "n_target": 4,
+    "order": 24,
+    "prior": "uniform",
+    "relevance": 1.0,
+    "revision_pair": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "rho": 0.25,
+    "target_multi_loss": 0.55,
+    "target_severe": 0.25,
+    "theta": [
+      0.2,
+      0.6,
+      0.2
+    ]
+  },
+  "hypothetical_disclosed_count_pmf": [
+    0.6305745322558806,
+    0.13525258036105844,
+    0.06407158796498529,
+    0.030729015455921174,
+    0.01357885750834375,
+    0.01182947459440534,
+    0.013963951859405504,
+    0.09999999999999999
+  ],
+  "latent_physical_anomaly_count_pmf": [
+    0.6847746870225729,
+    0.15072302559516046,
+    0.07503988906255059,
+    0.039279527237102166,
+    0.01624556586753303,
+    0.004742150784003629,
+    0.029195154431077227
+  ],
+  "physical_anomaly_count_categories": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "primary_score": "multiclass Brier SUM and negative natural log probability on Y at T+14d",
+  "public_report_signal_pmf": [
+    0.6280735583572186,
+    0.17345226719150686,
+    0.09847417445127457,
+    0.09999999999999998
+  ],
+  "reference_configuration": "Scenario() model defaults; MM revision is HYPOTHESIS, not verified hardware",
+  "report_signal_categories": [
+    "clean_report",
+    "anomaly_report",
+    "loss_or_degraded_report",
+    "inconclusive"
+  ],
+  "scenario_parameters": {
+    "correction_multiplier": 0.1,
+    "detection": 0.9,
+    "disclosure": 0.9,
+    "false_positive": 0.0,
+    "history_detection": 1.0,
+    "ineffective_increment": 0.0,
+    "n_lv": 6,
+    "prior": "uniform",
+    "revision_pair_HH_HM_MH_MM": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "rho": 0.25,
+    "theta": [
+      0.2,
+      0.6,
+      0.2
+    ]
+  },
+  "scope": "ILLUSTRATIVE MODEL-IMPLIED SCENARIO FORECAST; not calibrated actual launch probability",
+  "secondary_count_score": "DO NOT SCORE unless a separately predeclared count ascertainment protocol is met",
+  "status": "freeze_candidate_UNPUBLISHED",
+  "target": "four-category public reporting signal at end of the 14th UTC calendar day after liftoff",
+  "valid_until_utc_exclusive": "2027-01-01T00:00:00Z"
+}

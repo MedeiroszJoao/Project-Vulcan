@@ -1,0 +1,41 @@
+{
+  "reference": {
+    "evsi": 3.9898511748802363,
+    "wait_cost": 44.470999157804336,
+    "realocate_now_cost": 35.75,
+    "net_wait_gain": -8.720999157804336,
+    "counterfactual_launch_cost": 71.14909059873948,
+    "counterfactual_constraint_cost": 0.0,
+    "y_probability": [
+      0.5973632855118782,
+      0.2072166863854239,
+      0.09542002810269795,
+      0.09999999999999995
+    ],
+    "target_outcome": [
+      0.9055388576470589,
+      0.031082735672268907,
+      0.06337840668067225
+    ],
+    "conditional_target_loss": [
+      29.070896560522044,
+      132.81349565115326,
+      200.66146658426595,
+      71.1490905987395
+    ],
+    "policy_if_approved": [
+      "vulcan",
+      "alternative",
+      "alternative",
+      "alternative"
+    ],
+    "policy_if_denied": [
+      "alternative",
+      "alternative",
+      "alternative",
+      "alternative"
+    ],
+    "preferred": "realocate_now"
+  },
+  "structural_scenarios": 360
+}

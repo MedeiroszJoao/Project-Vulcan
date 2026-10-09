@@ -1,0 +1,31 @@
+{
+  "method": "Wolfram Language exact rational integration over Beta(3,11) mixture, n=6",
+  "weights_multiplier": [
+    [
+      0.4,
+      1.0
+    ],
+    [
+      0.6,
+      0.1
+    ]
+  ],
+  "P_K": [
+    0.6458511544596786,
+    0.20029508584697037,
+    0.09307805218929677,
+    0.04235670072239422,
+    0.01460055218929677,
+    0.003405657275541796,
+    0.0004127973168214654
+  ],
+  "P_Y": [
+    0.5973632855118781,
+    0.20721668638542395,
+    0.09542002810269792,
+    0.1
+  ],
+  "interpretation": "Independent mathematical agreement on scenario assumptions; NOT physical calibration",
+  "reference_forecast_sha256": "fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f",
+  "external_publication": false
+}

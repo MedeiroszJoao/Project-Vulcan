@@ -1,0 +1,153 @@
+test_beta_posteriors_and_predictive (test_model.TestModel.test_beta_posteriors_and_predictive) ... ok
+test_config_separation (test_model.TestModel.test_config_separation) ... ok
+test_correlation_keeps_marginal (test_model.TestModel.test_correlation_keeps_marginal) ... ok
+test_cost_monotonicity (test_model.TestModel.test_cost_monotonicity) ... ok
+test_cpts_and_quadrature (test_model.TestModel.test_cpts_and_quadrature) ... ok
+test_evidence_table_consistency (test_model.TestModel.test_evidence_table_consistency) ... ok
+test_evsi_nonnegative_and_evpi_bound (test_model.TestModel.test_evsi_nonnegative_and_evpi_bound) ... ok
+test_invalid_inputs (test_model.TestModel.test_invalid_inputs) ... ok
+test_no_authorization (test_model.TestModel.test_no_authorization) ... ok
+test_no_transfer (test_model.TestModel.test_no_transfer) ... ok
+test_pgmpy_variable_elimination (test_model.TestModel.test_pgmpy_variable_elimination) ... /root/.local/lib/python3.12/site-packages/pgmpy/estimators/__init__.py:4: FutureWarning: `pgmpy.estimators.StructureScore` is deprecated and will be removed in v1.3.0. Use `pgmpy.structure_score` instead.
+  from .StructureScore import (
+ok
+test_plate_against_binary_enumeration (test_model.TestModel.test_plate_against_binary_enumeration) ... ok
+test_toy (test_model.TestModel.test_toy) ... ok
+test_uninformative_disclosure (test_model.TestModel.test_uninformative_disclosure) ... ok
+test_baseline_recovery (test_operations.OperationsTests.test_baseline_recovery) ... ok
+test_heterogeneous_history_quadrature (test_operations.OperationsTests.test_heterogeneous_history_quadrature) ... ok
+test_private_gate_reweights_risk (test_operations.OperationsTests.test_private_gate_reweights_risk) ... ok
+test_private_information_without_lv_transfer (test_operations.OperationsTests.test_private_information_without_lv_transfer) ... ok
+test_reservation_fee_and_slot (test_operations.OperationsTests.test_reservation_fee_and_slot) ... ok
+test_severity_and_mnar (test_operations.OperationsTests.test_severity_and_mnar) ... ok
+test_unavailable_launchers_defer (test_operations.OperationsTests.test_unavailable_launchers_defer) ... ok
+test_analytic_beta_binomial_hh (test_prospective.TestProspective.test_analytic_beta_binomial_hh) ... ok
+test_invalid_probabilities (test_prospective.TestProspective.test_invalid_probabilities) ... ok
+test_log_zero_is_explicit (test_prospective.TestProspective.test_log_zero_is_explicit) ... ok
+test_no_transfer_effect_on_unconditional_lv (test_prospective.TestProspective.test_no_transfer_effect_on_unconditional_lv) ... ok
+test_probabilities_sum_to_one (test_prospective.TestProspective.test_probabilities_sum_to_one) ... ok
+test_proper_scoring_simple (test_prospective.TestProspective.test_proper_scoring_simple) ... ok
+test_public_y_marginal_invariant_to_target_revision (test_prospective.TestProspective.test_public_y_marginal_invariant_to_target_revision) ... ok
+test_report_count_zero_detection (test_prospective.TestProspective.test_report_count_zero_detection) ... ok
+test_unreported_mass (test_prospective.TestProspective.test_unreported_mass) ... ok
+test_avoid_retrospective_registration_after_expiry (test_scoring.ExtraProspectiveGuards.test_avoid_retrospective_registration_after_expiry) ... ok
+test_future_evidence_rejected (test_scoring.ExtraProspectiveGuards.test_future_evidence_rejected) ... ok
+test_no_prelaunch_document_as_outcome_evidence (test_scoring.ExtraProspectiveGuards.test_no_prelaunch_document_as_outcome_evidence) ... ok
+test_unlaunched_requires_post_expiry_evidence (test_scoring.ExtraProspectiveGuards.test_unlaunched_requires_post_expiry_evidence) ... ok
+test_void_configuration_written_as_unscored_disposition (test_scoring.ExtraProspectiveGuards.test_void_configuration_written_as_unscored_disposition) ... ok
+test_late_coding_with_frozen_cutoff (test_scoring.ScoringTests.test_late_coding_with_frozen_cutoff) ... ok
+test_mnar_count_mass (test_scoring.ScoringTests.test_mnar_count_mass) ... ok
+test_no_early_scoring_or_changed_configuration (test_scoring.ScoringTests.test_no_early_scoring_or_changed_configuration) ... ok
+test_no_hindsight_in_evidence (test_scoring.ScoringTests.test_no_hindsight_in_evidence) ... ok
+test_no_registration_after_flight (test_scoring.ScoringTests.test_no_registration_after_flight) ... ok
+test_reject_hash_mismatch (test_scoring.ScoringTests.test_reject_hash_mismatch) ... ok
+test_unlaunched_only_after_expiry (test_scoring.ScoringTests.test_unlaunched_only_after_expiry) ... ok
+
+----------------------------------------------------------------------
+Ran 42 tests in 1.853s
+
+OK
+{
+  "reference": {
+    "evsi": 3.9898511748802363,
+    "wait_cost": 44.470999157804336,
+    "realocate_now_cost": 35.75,
+    "net_wait_gain": -8.720999157804336,
+    "counterfactual_launch_cost": 71.14909059873948,
+    "counterfactual_constraint_cost": 0.0,
+    "y_probability": [
+      0.5973632855118782,
+      0.2072166863854239,
+      0.09542002810269795,
+      0.09999999999999995
+    ],
+    "target_outcome": [
+      0.9055388576470589,
+      0.031082735672268907,
+      0.06337840668067225
+    ],
+    "conditional_target_loss": [
+      29.070896560522044,
+      132.81349565115326,
+      200.66146658426595,
+      71.1490905987395
+    ],
+    "policy_if_approved": [
+      "vulcan",
+      "alternative",
+      "alternative",
+      "alternative"
+    ],
+    "policy_if_denied": [
+      "alternative",
+      "alternative",
+      "alternative",
+      "alternative"
+    ],
+    "preferred": "realocate_now"
+  },
+  "structural_scenarios": 360
+}
+{
+  "original_360_envelope": {
+    "reallocate_all": 2775,
+    "wait_all": 0,
+    "model_disagreement": 336,
+    "boundary": 0
+  },
+  "agreement_with_attached_envelope": true,
+  "operational_scenarios": 432,
+  "physics_controls": 12
+}
+
+INDEPENDENT_REFERENCE_JOINT_MAX_ABS_DIFF 4.163336342344337e-17
+INDEPENDENT_EVSI 3.98985117488024 PROJECT_EVSI 3.9898511748802363
+INDEPENDENT_WAIT_COST 44.470999157804336 PROJECT_WAIT_COST 44.470999157804336
+INDEPENDENT_NET_WAIT_GAIN -8.720999157804336
+MAX_NUMERIC_ERROR 3.552713678800501e-15
+{
+  "reference_delay_cost_threshold_MUSD": 1.2790008421956642,
+  "reference_policy_at_D10": "realocate_now",
+  "top_three_one_at_a_time_threshold_drivers": [
+    {
+      "parameter": "alternative_cost",
+      "range_threshold_MUSD": 45.49692420549441,
+      "minimum_threshold_MUSD": -5.0,
+      "maximum_threshold_MUSD": 40.49692420549441,
+      "values": "10: -5.0000; 30: 1.2790; 100: 40.4969"
+    },
+    {
+      "parameter": "alternative_loss",
+      "range_threshold_MUSD": 10.214912182253116,
+      "minimum_threshold_MUSD": -0.8715069856470947,
+      "maximum_threshold_MUSD": 9.343405196606021,
+      "values": "0.001: -0.8715; 0.005: 1.2790; 0.02: 9.3434"
+    },
+    {
+      "parameter": "later_alternative_cost",
+      "range_threshold_MUSD": 9.247460860786191,
+      "minimum_threshold_MUSD": -5.656594803393979,
+      "maximum_threshold_MUSD": 3.590866057392212,
+      "values": "0: 3.5909; 5: 1.2790; 20: -5.6566"
+    }
+  ],
+  "360_grid_threshold_min_MUSD": -5.000000000000043,
+  "360_grid_threshold_max_MUSD": 10.744481284541848,
+  "360_grid_wait_at_D10": 1,
+  "360_grid_reallocate_at_D10": 359,
+  "worst_case_regret_of_reallocate_at_D10_MUSD": 0.7444812845418483,
+  "worst_case_regret_of_wait_at_D10_MUSD": 15.000000000000043,
+  "disclaimer": "Unweighted scenario grid; not an empirical uncertainty distribution or decision recommendation"
+}
+CHECK OK forecast/reference.json
+CHECK OK forecast/unknown_revisions.json
+CHECK OK forecast/historical_all.json
+CHECK OK forecast/jeffreys_reference.json
+CHECK OK forecast/shared_shock.json
+WROTE score lookup for 4 hypothetical outcomes (NOT flight result)
+PASS forecast reference PMFs match recomputation within 1e-12
+PASS reference decision and 360 structural scenario rows
+SHA256(forecast/reference.json): fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f
+NOTE: no repository, released tag, DOI or public timestamp established by this command.
+
+SUCCESS: complete reproduction. Candidate NOT automatically publicly registered.

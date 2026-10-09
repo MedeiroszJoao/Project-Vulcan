@@ -1,0 +1,12 @@
+{
+  "original_360_envelope": {
+    "reallocate_all": 2775,
+    "wait_all": 0,
+    "model_disagreement": 336,
+    "boundary": 0
+  },
+  "agreement_with_attached_envelope": true,
+  "operational_scenarios": 432,
+  "physics_controls": 12
+}
+

@@ -1,0 +1,5 @@
+hypothetical_observation_ONLY_NOT_ACTUAL,probability_preflight,brier_multiclass_sum,negative_log_likelihood_nats,zero_probability_observed
+clean_report,0.5973632855118782,0.22416006073346406,0.5152298322164508,False
+anomaly_report,0.2072166863854239,1.0044532589863726,1.573990239091212,False
+loss_or_degraded_report,0.09542002810269795,1.2280465755518246,2.349466784378416,False
+inconclusive,0.09999999999999995,1.2188866317572207,2.3025850929940463,False

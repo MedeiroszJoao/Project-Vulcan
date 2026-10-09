@@ -1,0 +1,34 @@
+{
+  "reference_delay_cost_threshold_MUSD": 1.2790008421956642,
+  "reference_policy_at_D10": "realocate_now",
+  "top_three_one_at_a_time_threshold_drivers": [
+    {
+      "parameter": "alternative_cost",
+      "range_threshold_MUSD": 45.49692420549441,
+      "minimum_threshold_MUSD": -5.0,
+      "maximum_threshold_MUSD": 40.49692420549441,
+      "values": "10: -5.0000; 30: 1.2790; 100: 40.4969"
+    },
+    {
+      "parameter": "alternative_loss",
+      "range_threshold_MUSD": 10.214912182253116,
+      "minimum_threshold_MUSD": -0.8715069856470947,
+      "maximum_threshold_MUSD": 9.343405196606021,
+      "values": "0.001: -0.8715; 0.005: 1.2790; 0.02: 9.3434"
+    },
+    {
+      "parameter": "later_alternative_cost",
+      "range_threshold_MUSD": 9.247460860786191,
+      "minimum_threshold_MUSD": -5.656594803393979,
+      "maximum_threshold_MUSD": 3.590866057392212,
+      "values": "0: 3.5909; 5: 1.2790; 20: -5.6566"
+    }
+  ],
+  "360_grid_threshold_min_MUSD": -5.000000000000043,
+  "360_grid_threshold_max_MUSD": 10.744481284541848,
+  "360_grid_wait_at_D10": 1,
+  "360_grid_reallocate_at_D10": 359,
+  "worst_case_regret_of_reallocate_at_D10_MUSD": 0.7444812845418483,
+  "worst_case_regret_of_wait_at_D10_MUSD": 15.000000000000043,
+  "disclaimer": "Unweighted scenario grid; not an empirical uncertainty distribution or decision recommendation"
+}

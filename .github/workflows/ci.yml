@@ -1,0 +1,34 @@
+name: Reproducibility and prospectivity
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  full-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install pinned environment
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: All tests (includes independent pgmpy check)
+        run: python -m unittest discover -s tests -v
+      - name: Numerical reproduction and candidate forecast check
+        run: |
+          python run_analysis.py
+          python run_audit_response.py
+          python independent_numeric_check.py
+          python make_decision_brief.py
+          python build_forecast.py --check
+          python build_scores.py
+          python check_candidate.py
+      - name: Archive run logs/plots for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: numerical-output
+          path: results/

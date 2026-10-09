@@ -1,0 +1,19 @@
+{
+  "built_date_UTC": "2026-10-09",
+  "base_commit": "e6735ff5957d0f2fd0976390c3f4b9dd1ccb150e",
+  "public_registration": false,
+  "doi": null,
+  "delivery_commit": "Obtain from git rev-parse HEAD; not embedded to avoid self-reference",
+  "checksums_scope": "All regular project files excluding SHA256SUMS, .git, __pycache__, .venv; SHA256SUMS itself is tracked by Git",
+  "authorship": "Build automation metadata only; publication authors and license not yet supplied",
+  "integration": "Prospective candidate plus independent audit corrections",
+  "tests_passed": 42,
+  "current_audit_test_count": 42,
+  "current_audit_passed_without_pgmpy": 41,
+  "current_audit_blocked_by_missing_pgmpy": 1,
+  "current_revision_publicly_registered": false,
+  "revision_note": "Independently checked numeric PMFs; scoring chronology and VOID protocol fixed without changing reference forecasts.",
+  "current_local_tests_passed": 42,
+  "public_ci_verified": false,
+  "forecast_bytes_preserved": true
+}

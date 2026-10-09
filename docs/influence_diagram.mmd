@@ -1,0 +1,21 @@
+flowchart TD
+    H["Histórico público"] --> P["Taxa p e hipótese técnica"]
+    R["Revisões LV e M*"] --> X["Vínculo de transferência"]
+    P --> X
+    X --> AL["Anomalias LV"]
+    X --> AM["Anomalias M*"]
+    CL["Configuração LV"] --> ZL["Consequência LV"]
+    AL --> ZL
+    AL --> Y["Observação pública Y"]
+    ZL --> Y
+    O["Detecção e divulgação"] --> Y
+    Y --> G["Autorização G"]
+    Y --> D1{"Escolha após espera"}
+    G --> D1
+    D0{"Aguardar ou realocar"} --> D1
+    AM --> ZM["Consequência M*"]
+    CM["Configuração M*"] --> ZM
+    D1 --> U["Custo esperado"]
+    ZM --> U
+    D0 --> U
+    C["Custos e atraso"] --> U

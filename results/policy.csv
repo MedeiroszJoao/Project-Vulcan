@@ -1,0 +1,9 @@
+prior,observation,probability,conditional_target_expected_loss_MUSD,action_if_approved,action_if_denied
+uniform,clean_report,0.5973632855118782,29.070896560522044,vulcan,alternative
+uniform,anomaly_report,0.2072166863854239,132.81349565115326,alternative,alternative
+uniform,loss_or_degraded_report,0.09542002810269795,200.66146658426595,alternative,alternative
+uniform,inconclusive,0.09999999999999995,71.1490905987395,alternative,alternative
+jeffreys,clean_report,0.6202405171457909,26.873546865520527,vulcan,alternative
+jeffreys,anomaly_report,0.19521340270106302,122.21545605307918,alternative,alternative
+jeffreys,loss_or_degraded_report,0.08454608015314603,187.53318578638834,alternative,alternative
+jeffreys,inconclusive,0.09999999999999996,62.64594822340745,alternative,alternative

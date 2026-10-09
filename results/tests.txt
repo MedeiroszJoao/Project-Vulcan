@@ -1,0 +1,49 @@
+test_beta_posteriors_and_predictive (test_model.TestModel.test_beta_posteriors_and_predictive) ... ok
+test_config_separation (test_model.TestModel.test_config_separation) ... ok
+test_correlation_keeps_marginal (test_model.TestModel.test_correlation_keeps_marginal) ... ok
+test_cost_monotonicity (test_model.TestModel.test_cost_monotonicity) ... ok
+test_cpts_and_quadrature (test_model.TestModel.test_cpts_and_quadrature) ... ok
+test_evidence_table_consistency (test_model.TestModel.test_evidence_table_consistency) ... ok
+test_evsi_nonnegative_and_evpi_bound (test_model.TestModel.test_evsi_nonnegative_and_evpi_bound) ... ok
+test_invalid_inputs (test_model.TestModel.test_invalid_inputs) ... ok
+test_no_authorization (test_model.TestModel.test_no_authorization) ... ok
+test_no_transfer (test_model.TestModel.test_no_transfer) ... ok
+test_pgmpy_variable_elimination (test_model.TestModel.test_pgmpy_variable_elimination) ... /root/.local/lib/python3.12/site-packages/pgmpy/estimators/__init__.py:4: FutureWarning: `pgmpy.estimators.StructureScore` is deprecated and will be removed in v1.3.0. Use `pgmpy.structure_score` instead.
+  from .StructureScore import (
+ok
+test_plate_against_binary_enumeration (test_model.TestModel.test_plate_against_binary_enumeration) ... ok
+test_toy (test_model.TestModel.test_toy) ... ok
+test_uninformative_disclosure (test_model.TestModel.test_uninformative_disclosure) ... ok
+test_baseline_recovery (test_operations.OperationsTests.test_baseline_recovery) ... ok
+test_heterogeneous_history_quadrature (test_operations.OperationsTests.test_heterogeneous_history_quadrature) ... ok
+test_private_gate_reweights_risk (test_operations.OperationsTests.test_private_gate_reweights_risk) ... ok
+test_private_information_without_lv_transfer (test_operations.OperationsTests.test_private_information_without_lv_transfer) ... ok
+test_reservation_fee_and_slot (test_operations.OperationsTests.test_reservation_fee_and_slot) ... ok
+test_severity_and_mnar (test_operations.OperationsTests.test_severity_and_mnar) ... ok
+test_unavailable_launchers_defer (test_operations.OperationsTests.test_unavailable_launchers_defer) ... ok
+test_analytic_beta_binomial_hh (test_prospective.TestProspective.test_analytic_beta_binomial_hh) ... ok
+test_invalid_probabilities (test_prospective.TestProspective.test_invalid_probabilities) ... ok
+test_log_zero_is_explicit (test_prospective.TestProspective.test_log_zero_is_explicit) ... ok
+test_no_transfer_effect_on_unconditional_lv (test_prospective.TestProspective.test_no_transfer_effect_on_unconditional_lv) ... ok
+test_probabilities_sum_to_one (test_prospective.TestProspective.test_probabilities_sum_to_one) ... ok
+test_proper_scoring_simple (test_prospective.TestProspective.test_proper_scoring_simple) ... ok
+test_public_y_marginal_invariant_to_target_revision (test_prospective.TestProspective.test_public_y_marginal_invariant_to_target_revision) ... ok
+test_report_count_zero_detection (test_prospective.TestProspective.test_report_count_zero_detection) ... ok
+test_unreported_mass (test_prospective.TestProspective.test_unreported_mass) ... ok
+test_avoid_retrospective_registration_after_expiry (test_scoring.ExtraProspectiveGuards.test_avoid_retrospective_registration_after_expiry) ... ok
+test_future_evidence_rejected (test_scoring.ExtraProspectiveGuards.test_future_evidence_rejected) ... ok
+test_no_prelaunch_document_as_outcome_evidence (test_scoring.ExtraProspectiveGuards.test_no_prelaunch_document_as_outcome_evidence) ... ok
+test_unlaunched_requires_post_expiry_evidence (test_scoring.ExtraProspectiveGuards.test_unlaunched_requires_post_expiry_evidence) ... ok
+test_void_configuration_written_as_unscored_disposition (test_scoring.ExtraProspectiveGuards.test_void_configuration_written_as_unscored_disposition) ... ok
+test_late_coding_with_frozen_cutoff (test_scoring.ScoringTests.test_late_coding_with_frozen_cutoff) ... ok
+test_mnar_count_mass (test_scoring.ScoringTests.test_mnar_count_mass) ... ok
+test_no_early_scoring_or_changed_configuration (test_scoring.ScoringTests.test_no_early_scoring_or_changed_configuration) ... ok
+test_no_hindsight_in_evidence (test_scoring.ScoringTests.test_no_hindsight_in_evidence) ... ok
+test_no_registration_after_flight (test_scoring.ScoringTests.test_no_registration_after_flight) ... ok
+test_reject_hash_mismatch (test_scoring.ScoringTests.test_reject_hash_mismatch) ... ok
+test_unlaunched_only_after_expiry (test_scoring.ScoringTests.test_unlaunched_only_after_expiry) ... ok
+
+----------------------------------------------------------------------
+Ran 42 tests in 1.853s
+
+OK

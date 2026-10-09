@@ -1,0 +1,8 @@
+{
+  "max_abs_joint_error": 4.163336342344337e-17,
+  "independent_evsi": 3.98985117488024,
+  "independent_wait_cost": 44.470999157804336,
+  "independent_net_wait_gain": -8.720999157804336,
+  "project_evsi": 3.9898511748802363,
+  "project_wait_cost": 44.470999157804336
+}
