@@ -7,7 +7,21 @@
 - Citation: B. Saha and K. Goebel (2007), *Battery Data Set*, NASA Ames Prognostics Data Repository.
 - This first executable benchmark uses [a **third-party extracted** CSV](https://github.com/amirhossein-sadeghi2003/battery-health-forecasting-baselines/blob/e414d2e00ecc369d042637df6a6147a948718649/data/processed/discharge_capacity.csv), not the raw NASA .mat bytes.
 - Data commit `e414d2e00ecc369d042637df6a6147a948718649`; Git blob SHA-1 `adc395fdf25c6fa1b911535dc0ffc1c2a10e589e`. The script **refuses** data with a different Git blob hash.
-- Four cells B0005, B0006, B0007 (168 discharge observations each) and B0018 (132), 636 cycles in total. Independent raw-NASA-versus-third-party data comparisons are **pending**. Do not use this derived table to assert raw-data provenance has been proven.
+- Four cells B0005, B0006, B0007 (168 discharge observations each) and B0018 (132), 636 cycles in total. The discharge-capacity fields were subsequently verified against original NASA MAT archives by an independent audit; see the successful run and checksums below.
+
+
+## Independent original-NASA origin audit (completed 2026-10-09)
+
+After the initial research CI run, a **separate** GitHub Actions workflow downloaded the [NASA official 209,708,670-byte ZIP](https://phm-datasets.s3.amazonaws.com/NASA/5.+Battery+Data+Set.zip), extracted the FY08Q4 cohort, and compared **every one of the 636 discharge-capacity values** against the pinned third-party CSV. **All 636 matched exactly (maximum absolute difference 0 Ah)**. This proves the *capacity values used in this benchmark* are faithfully extracted from the downloaded NASA archive, not that all other extracted fields or physical-world labels were validated.
+
+- Original NASA archive SHA-256: `82302a7db4fc1b34e0b6676326610438d43b816bdf11a69d1d012a464ef2f92e`.
+- Original `B0005.mat` SHA-256: `0eae4585baf3f200c09fe24c5ab884f1889679fc75206ca1aa19da704104f0b0`.
+- Original `B0006.mat` SHA-256: `fa818ab4db5db8ab21e910b6dd6c3e20d3761bb9672089e1a4de8f96074616c5`.
+- Original `B0007.mat` SHA-256: `d022afa086efaf54ab5b63f05220f5be178c8027e2fa8d68589db0e85a441a3b`.
+- Original `B0018.mat` SHA-256: `d1e6c923a43ea1c9666b3a90bbb521757a067fd60b4d17dbfaa49c50b179da69`.
+- [Public raw-data audit run 37994245909 — success](https://github.com/MedeiroszJoao/Project-Vulcan/actions/runs/37994245909).
+
+The audited original raw data are downloaded only into the ephemeral CI environment; the third-party raw `.mat` files are not committed or redistributed in this repository.
 
 ## Frozen, adversarial evaluation protocol
 For **each cell separately**, fit on its first `floor(0.60 * n)` discharge observations. Forecast the entire remaining period **once**, without using any subsequent measurement, rolling updates or test data for model tuning.
