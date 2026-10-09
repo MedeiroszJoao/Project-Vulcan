@@ -1,0 +1,30 @@
+name: NASA experimental Monte Carlo out-of-cohort validation
+on:
+  push:
+    branches: [research/nasa-out-of-cohort-monte-carlo-2026-10-09]
+  workflow_dispatch:
+jobs:
+  raw-nasa-out-of-cohort:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install pinned environment
+        run: python -m pip install -r requirements.txt
+      - name: Seven adversarial synthetic tests before real NASA access
+        run: python research_nasa_monte_carlo.py --self-test
+      - name: Execute raw NASA Monte Carlo forecast and score uninspected cohorts
+        run: python research_nasa_monte_carlo.py
+      - name: Confirm main LV01 forecast SHA-256 unchanged
+        run: echo 'fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f  forecast/reference.json' | sha256sum -c -
+      - name: Upload all measured vs simulated outcomes and plots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nasa-unseen-cohort-monte-carlo
+          path: results/nasa_monte_carlo
+          if-no-files-found: warn
