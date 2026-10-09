@@ -74,3 +74,9 @@ Do **not** merely relax file-integrity checks or rewrite the published JSON. Kee
 7. Physical validity, independent safety review, calibrated booster reliability and any operational flight recommendation remain **NOT ACHIEVED**.
 
 **Audit scope:** independent source and mathematical consistency check with GitHub server data and Wolfram; not peer review or assurance certification. No third-party publication credentials implied.
+
+## G. Correction to the external audit's dependency claim
+
+The external audit says that **`requirements.txt` pins 100+ packages including CadQuery and VTK**. Direct GitHub inspection **refutes this statement**. Current `main` [`requirements.txt`](https://github.com/MedeiroszJoao/Project-Vulcan/blob/main/requirements.txt) contains exactly **four** direct pins: `numpy==2.3.5`, `scipy==1.17.0`, `matplotlib==3.10.8`, and `pgmpy==1.1.2`. The longer [`environment.txt`](https://github.com/MedeiroszJoao/Project-Vulcan/blob/main/environment.txt) is a snapshot of the broader original preinstalled runtime, including CadQuery, CasADi, VTK and unrelated packages; it is **not** the declared application installation requirements. Note that four direct pins still do not fully lock the transitive dependency graph; discuss reproducibility of transitives separately rather than inventing direct dependencies.
+
+This correction is independent of whether the program actually uses some installed package; deployment requirements must be inferred from imports and declared dependencies, not from every item in a `pip freeze` snapshot.
