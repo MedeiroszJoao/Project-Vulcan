@@ -69,3 +69,20 @@ Original primary source: [NASA PCoE Battery Dataset](https://www.nasa.gov/intell
 
 ## Explicit interpretational boundaries
 NASA battery data assess transferable *uncertainty forecasting and validation methodology*, not the actual GEM 63XL nozzle behavior, a launch vehicle's safety, or ULA decisions. The event threshold below 1.4Ah is illustrative and cannot be ported to rockets. These methods are standard predictive-model tools and are **not claimed as novel theory**. A real engineering-risk product would require mechanism-specific data, credible safety constraints, and external domain review.
+
+
+## Independent raw MAT diagnostic resolves the misleading endpoint trend (2026-10-09)
+
+**Important correction of the earlier post-hoc narrative:** the *first-to-last increase* for B0033/B0034/B0036 is driven by **unusually low initial-cycle readings**, not proof that these battery records lack aging trajectories. A separate read-only NASA original MAT inspection (no model refit, no rewritten forecasts) passed on [GitHub Actions run 38001072638](https://github.com/MedeiroszJoao/Project-Vulcan/actions/runs/38001072638). It produced [artifact `nasa-raw-trajectory-posthoc-diagnostic`](https://github.com/MedeiroszJoao/Project-Vulcan/actions/runs/38001072638) with `report.json`, archived NASA dataset SHA-256 and individual raw cell file SHA-256. Original study outputs are unchanged.
+
+| Cell | First capacity (Ah) | First 20 median (Ah) | Middle 20 median (Ah) | Last 20 median (Ah) | First-cycle initial voltage vs second cycle |
+|---|---:|---:|---:|---:|---|
+| B0033 | 0.06843 | 1.58837 | 1.43407 | 1.32946 | 3.677V vs 4.191V |
+| B0034 | 0.74593 | 1.45970 | 1.34416 | 1.28546 | 3.854V vs 4.185V |
+| B0036 | 1.00198 | 1.78485 | 1.69399 | 1.59532 | 3.848V vs 4.177V |
+
+Across these three cells, the **first recorded discharge** lasted ~1,819 s, compared to ~3,261 s for the second. B0033 and B0034 show early partial/atypical measured current profiles and transient values, while B0036's integrated-current-magnitude is nearly identical to the initial ~1.002Ah capacity over the shorter initial discharge. Initial voltage, duration and median changes are **compatible with an atypical first discharge / incomplete charge**, but identifying the underlying acquisition or battery-condition mechanism requires experiment metadata review. Do not assert this mechanism as established.
+
+Crucially, the *median* measured capacity **declines from the first 20 cycles to the last 20** for all three. There is therefore evidence of degradation in the measurement trajectories even though first-to-last endpoints rise. **Retain B0033/34/36 as an explicitly distinct protocol cohort**, and flag first-cycle comparability and device-level longitudinal nonstationarity as limitations. Do not retroactively trim the initial cycles or rerun the original benchmark with changed rules and call it an untouched holdout; any cleansing/sensitivity reanalysis is EX-POST and must be labeled accordingly.
+
+This audit changes the **interpretation** of the earlier scores, not the archived numeric results or the original 11-cell experiment.
