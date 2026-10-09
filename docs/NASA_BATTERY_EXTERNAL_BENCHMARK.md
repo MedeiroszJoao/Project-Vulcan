@@ -60,6 +60,24 @@ The data download is explicit; there is **no synthetic fallback** if the real do
 
 GitHub Actions uploads `results/battery_external/report.json` and per-cell plots. All `forecast/*.json` files and the original launch scoring protocol are preserved, and CI separately verifies the primary forecast byte SHA-256. Independent technical validation, raw-NASA data validation, and external review remain open.
 
+## Post-hoc scientific audit addendum (2026-10-09; not part of the original protocol)
+
+These observed values come from the actual successful GitHub Actions [PR #3 benchmark run](https://github.com/MedeiroszJoao/Project-Vulcan/actions/runs/37994363590) on GitHub's synthetic pull-request **merge checkout `62f51ec34c03636a8399e62405fb34d689613e7a`** (`5baa0edd043603d5c9ba5fa83cd87dfe5daaea72` merged into `main` at `5b676fb8bf5e880f8d80f05ff6324753a507cf2b`), not a direct checkout of the PR head alone. The archived benchmark code and output were generated with the merge checkout. Thus the PR-head SHA describes the proposed source change but is not the exact executed Git checkout SHA.
+
+**Scores are not interchangeable.** The continuous predictive **mean negative log density** (lower is better) reverses the pooled MAE ordering; negative numerical values are valid because probability *densities* can exceed one, unlike discrete probability masses. The reported log score has units relative to Ah and assumes each predictive density as implemented.
+
+| Cell | Last/random-walk MAE (Ah) | Linear MAE (Ah) | Last/random-walk mean negative log density | Linear mean negative log density | Linear 90% interval coverage |
+|---|---:|---:|---:|---:|---:|
+| B0005 | 0.11191 | **0.02271** | −0.82215 | **−2.16826** | 98.53% |
+| B0006 | **0.12504** | 0.13513 | **−0.72537** | 2.85008 | 16.18% |
+| B0007 | 0.08896 | **0.02763** | −1.12820 | **−1.88950** | 73.53% |
+| B0018 | 0.05661 | **0.05115** | **−1.22323** | −0.59343 | 50.94% |
+| **Cycle-weighted across all four** | 0.09791 | **0.05962** | **−0.96023** | −0.44192 | 60.31% |
+
+**Interpretation:** linear wins pooled MAE, last/random-walk wins pooled mean negative log density; outcomes split by cell. This is a descriptive result from **four physically distinct battery devices**, not reliable cross-system calibration. The scores were computed before this addendum; it does not change training, split, model fits, predictions, the raw source, or NASA source-verification hashes. Nominal 90% linear coverage of 60.31% is insufficient calibration for engineering use. The last/random-walk's broad predictive densities improve log score in this sample but may be poorly decision-informative.
+
+**Terminology:** the NASA-derived `capacity_ah` series are repeated measured discharge capacities. Different cutoff voltages, temperatures and rates complicate comparison. The cutoff defined as 1.4Ah on a different experiment is not a universal physically equivalent threshold.
+
 ## Interpretation gate
 
 This is a study of how forecast algorithms transfer to a real measurement process. It is **not** evidence that booster anomaly probabilities are calibrated, that the sample addresses the identifiability of physical failures versus public detection on rockets, or that a launch option is safe. A robust future extension should audit the third-party extraction against the original NASA .mat data, account for correlated measurements/heterogeneity, use multiple independent pieces of equipment and test calibrated predictive uncertainty against transparent decision costs.
