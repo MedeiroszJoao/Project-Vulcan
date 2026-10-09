@@ -23,8 +23,7 @@ jobs:
           python run_audit_response.py
           python independent_numeric_check.py
           python make_decision_brief.py
-          python inspect_forecast_repro.py
-          python build_forecast.py --check
+          python verify_frozen_forecasts.py
           python build_scores.py
           python check_candidate.py
           python run_identifiability.py
