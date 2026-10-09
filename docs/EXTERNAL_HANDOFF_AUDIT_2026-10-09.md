@@ -91,3 +91,12 @@ A subsequent independent review obtained actual CI artifacts and identified thre
 4. **AR(1) implementation is not posterior predictive:** plug-in Gaussian AR(1) paths fix estimated trend coefficients, `phi` and `sigma`; omit parameter uncertainty and model discrepancy. Random-walk bootstrap increments can produce wide uncertainty. Neither observation supports a universal ranking; 1.4Ah threshold Brier on 11 heterogeneous devices is weak evidence.
 
 **Actions taken without changing main:** edited post-hoc research documents in PR #3 and PR #4, retained all original `report.json` outputs and CI run artifacts, added a separately scheduled raw NASA measurement diagnostic in PR #4. No original prospective `forecast/*.json` was edited. Formal release/DOI, author, and license require the owner's decision.
+
+
+## I. Original NASA MAT raw-waveform audit corrects the apparent absence of degradation
+
+A successful [raw measurement diagnostic run 38001072638](https://github.com/MedeiroszJoao/Project-Vulcan/actions/runs/38001072638), on the original NASA battery MAT archive, **falsifies the overbroad inference** `B0033/B0034/B0036 are not degradation data`. Their *first* discharge measurement is unusually low (0.0684/0.7459/1.0020Ah), and it has an initial measured voltage of ~3.68/3.85/3.85V versus ~4.18–4.19V on the **second** cycle. The first recorded discharge lasts ~1,819 seconds, versus ~3,261 seconds for the second. This suggests, but does **not establish**, atypical initial conditions, possible initial partial charge, or truncated first discharge.
+
+The diagnostic compared capacity distributions in the first, middle and last twenty discharge observations. Medians **decline**, respectively B0033 `1.58837→1.43407→1.32946Ah`, B0034 `1.45970→1.34416→1.28546Ah` and B0036 `1.78485→1.69399→1.59532Ah`. Therefore the trajectories contain evidence of *battery capacity fade despite misleading low first-cycle endpoints*. This does not fix the cohort-weighted comparison, heterogeneous cutoff/current conditions, AR1 parameter uncertainty or weak event scoring.
+
+**Adjudication of Claude's note:** `three dominant cells are not degradation data` is **not supported**; `some initial measurement conditions or labeling may be atypical and distort an unnormalized benchmark` is **supported**. Do not delete the three from the originally scored 11-cell experiment. The original numerical predictions and scores remain unmodified. A future, explicitly post-hoc sensitivity analysis can compare alternate initial-condition filters, with all deviations labeled.
