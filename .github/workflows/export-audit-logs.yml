@@ -19,11 +19,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p logs
-          gh api repos/$GH_REPO/actions/jobs/114016466703/logs > logs/PR2_identifiability_51_tests_full.log
-          gh api repos/$GH_REPO/actions/jobs/114036469716/logs > logs/PR3_battery_7_tests_full.log
-          gh api repos/$GH_REPO/actions/jobs/114036068036/logs > logs/PR3_NASA_raw_636_matches_full.log
-          gh api repos/$GH_REPO/actions/jobs/114038986773/logs > logs/PR4_monte_carlo_7_tests_full.log
-          gh api repos/$GH_REPO/actions/jobs/114038987574/logs > logs/PR4_original_suite_42_tests_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114016466703/logs > logs/PR2_identifiability_51_tests_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114036469716/logs > logs/PR3_battery_7_tests_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114036068036/logs > logs/PR3_NASA_raw_636_matches_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114038986773/logs > logs/PR4_monte_carlo_7_tests_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114038987574/logs > logs/PR4_original_suite_42_tests_full.log
           sha256sum logs/*.log > logs/LOGS_SHA256SUMS.txt
           for f in logs/*.log; do test -s "$f" || exit 1; done
           cat > logs/MANIFEST.md <<'EOT'
