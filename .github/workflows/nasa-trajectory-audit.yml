@@ -1,0 +1,26 @@
+name: Post-hoc original NASA trajectory diagnostic
+on:
+  push:
+    branches: [research/nasa-out-of-cohort-monte-carlo-2026-10-09]
+    paths: [audit_nasa_raw_trajectories.py, .github/workflows/nasa-trajectory-audit.yml]
+  workflow_dispatch:
+jobs:
+  inspect-experimental-cycles:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - name: Inspect original discharge capacities and sensor traces (never refit models)
+        run: python audit_nasa_raw_trajectories.py
+      - name: Preserve original LV-01 forecast bytes
+        run: echo 'fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f  forecast/reference.json' | sha256sum -c -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nasa-raw-trajectory-posthoc-diagnostic
+          path: results/nasa_trajectory_audit
+          if-no-files-found: error
