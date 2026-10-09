@@ -1,0 +1,43 @@
+name: PR evidence logs for external audit
+on:
+  push:
+    branches: [audit/claude-handoff-2026-10-09]
+    paths: [.github/workflows/export-audit-logs.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  export-verified-CI-logs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Retrieve the original successful CI logs (never execute retrieved text)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: MedeiroszJoao/Project-Vulcan
+        run: |
+          set -euo pipefail
+          mkdir -p logs
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114016466703/logs > logs/PR2_identifiability_51_tests_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114036469716/logs > logs/PR3_battery_7_tests_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114036068036/logs > logs/PR3_NASA_raw_636_matches_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114038986773/logs > logs/PR4_monte_carlo_7_tests_full.log
+          gh api --allow-escape-sequences repos/$GH_REPO/actions/jobs/114038987574/logs > logs/PR4_original_suite_42_tests_full.log
+          sha256sum logs/*.log > logs/LOGS_SHA256SUMS.txt
+          for f in logs/*.log; do test -s "$f" || exit 1; done
+          cat > logs/MANIFEST.md <<'EOT'
+          # Exact GitHub Actions CI job logs
+          These text files are obtained via the GitHub Actions REST job logs endpoints.
+          PR #2 head 80304b4d12dfa96b437b06ab1154d323672c2237
+          PR #3 head 5baa0edd043603d5c9ba5fa83cd87dfe5daaea72
+          PR #4 head 7f71302063582d7888f28b371004fad40e79d106
+          PR #3 raw-data verification was run on intermediate commit c4cce156b7e7aa4d0ca1cd957dfe7e9c63088c9b.
+          SHA256 checksums inside LOGS_SHA256SUMS.txt are checksums of exported plaintext logs, not of original NASA data.
+          EOT
+      - name: Upload original job logs for Claude handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: vulcan-external-audit-original-ci-job-logs
+          path: logs/
+          if-no-files-found: error
