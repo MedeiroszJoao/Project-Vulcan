@@ -35,6 +35,10 @@ def descend_zip(blob,results,depth=0):
             basename=posixpath.basename(entry.filename.replace("\\","/"))
             name=basename.rsplit(".",1)[0].upper()
             # Only read nested ZIPs or desired MATLAB sources.
+            if depth==0 and entry.filename.lower().endswith(".zip") and "fy08q4" not in entry.filename.lower():
+                # NASA collection contains large unrelated battery cohorts.
+                # Inspect ONLY the original archive containing B0005/06/07/18.
+                continue
             relevant=entry.filename.lower().endswith(".zip") or (
                   entry.filename.lower().endswith(".mat") and name in TARGETS)
             if not relevant:continue
