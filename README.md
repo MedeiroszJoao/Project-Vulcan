@@ -1,7 +1,7 @@
 # Project Vulcan
 **Probabilistic decision analysis under uncertainty in aerospace operations**
 
-[Academic overview](docs/APPLICATION_BRIEF.md) · [Technical portfolio](docs/RECRUITER_BRIEF.md) · [Research methods](docs/RESEARCH_OVERVIEW.md) · [English protocol](docs/en/FORECAST_PROTOCOL.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [3D explorer](visualization/README.md)
+[Figures & provenance](docs/FIGURE_INVENTORY.md) · [Academic overview](docs/APPLICATION_BRIEF.md) · [Technical portfolio](docs/RECRUITER_BRIEF.md) · [Research methods](docs/RESEARCH_OVERVIEW.md) · [English protocol](docs/en/FORECAST_PROTOCOL.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [3D explorer](visualization/README.md)
 
 Project Vulcan is an independent research-software study of a difficult decision: **when does observing an additional flight provide enough information to justify postponing a hypothetical launch procurement decision?**
 
@@ -65,7 +65,7 @@ visualization/       explanatory interactive model (not CAD)
 .github/workflows/   automated regression checks
 ```
 
-Start with [research overview](docs/RESEARCH_OVERVIEW.md), the [English model specification](docs/en/MODEL_SPECIFICATION.md), [prospective protocol](docs/en/FORECAST_PROTOCOL.md), [architecture](docs/SOFTWARE_ARCHITECTURE.md), and [reproducibility](docs/REPRODUCIBILITY.md). The original working papers (`SPEC.md` and `docs/TECHNICAL_NOTE.md`) remain unchanged as historical records; selected archived texts are in Portuguese, and the English reader guides do not retrospectively change their scientific content.
+Start with [research overview](docs/RESEARCH_OVERVIEW.md), the [English model specification](docs/en/MODEL_SPECIFICATION.md), [prospective protocol](docs/en/FORECAST_PROTOCOL.md), [architecture](docs/SOFTWARE_ARCHITECTURE.md), and [reproducibility](docs/REPRODUCIBILITY.md). The [historical research specification](SPEC.md), [technical note](docs/TECHNICAL_NOTE.md) and [prospective scoring protocol](docs/FORECAST_PROTOCOL.md) are now available in English. Their original Portuguese forms remain verifiable in prior Git commits; translation does not retrospectively change scientific claims, probabilities or forecast registration.
 
 ## Provenance and publication
 

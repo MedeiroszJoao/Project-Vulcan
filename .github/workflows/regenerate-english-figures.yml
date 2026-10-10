@@ -50,5 +50,7 @@ jobs:
             echo "The rendered figures already match this branch."
           else
             git commit -m "docs: refresh reproducible English figures [skip ci]"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi

@@ -37,4 +37,4 @@ New analyses prompted by the observed NASA outcomes are explicitly *post hoc* an
 - [Software architecture](SOFTWARE_ARCHITECTURE.md)
 - [Reproducibility and CI](REPRODUCIBILITY.md)
 - [Data provenance](DATA_PROVENANCE.md)
-- [Original specification](../SPEC.md) and [technical note](TECHNICAL_NOTE.md), retained unchanged as archival research history
+- [Full English specification](../SPEC.md) and [technical note](TECHNICAL_NOTE.md). Original Portuguese versions remain in dated Git history, with the English translation identified in [translation policy](TRANSLATION_POLICY.md).
