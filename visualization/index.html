@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0e13">
+<title>Project Vulcan | Interactive Vehicle Explorer</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0e13;--panel:#12161de8;--edge:#2b3340;--text:#f0f2f5;--muted:#a2abb9;--accent:#f35393;--accent-faint:#f3539325;font:13px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--text);margin:0;min-height:100vh}
+button,input,select{font:inherit}button{color:inherit;cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:#ef8fb7}header{min-height:66px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px clamp(16px,3vw,34px);border-bottom:1px solid var(--edge)}
+.brand{font-size:17px;letter-spacing:.22em;font-weight:800}.brand span{color:var(--accent)}.subtitle{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(235px,285px) minmax(360px,1fr) minmax(235px,285px);gap:13px;padding:14px;min-height:calc(100vh - 66px)}
+.panel{background:var(--panel);border:1px solid var(--edge);border-radius:17px;padding:18px;overflow:auto;min-height:0}
+.panel h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 15px}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0 20px}
+.controls label{display:grid;gap:5px;font-size:11px;color:var(--muted)}
+select,input[type=search]{width:100%;border:1px solid var(--edge);border-radius:9px;background:#0c1017;color:var(--text);padding:10px;min-width:0}
+input[type=search]{margin-bottom:12px}
+.list{display:grid;gap:6px}.part{display:flex;align-items:center;gap:4px;min-height:41px;border:1px solid var(--edge);border-radius:9px;background:#0b1018}
+.part.selected{border-color:var(--accent);background:var(--accent-faint)}.part.hidden{opacity:.44}
+.part .choose{flex:1;text-align:left;background:none;border:0;padding:9px 10px;min-width:0}
+.part .toggle{padding:9px;border:0;border-left:1px solid var(--edge);background:none;color:var(--muted);font-size:10px}
+.stage{border-radius:17px;border:1px solid var(--edge);position:relative;min-height:620px;overflow:hidden;background:radial-gradient(ellipse at 55% 40%,#241724,#0b0e13 63%),radial-gradient(#41475255 .8px,transparent 1px) 0 0 /24px 24px}
+.stage canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}.stage canvas:active{cursor:grabbing}
+.stage-head{position:absolute;top:21px;left:22px;pointer-events:none;text-shadow:0 2px 8px #050608}
+.stage-head strong{font-size:clamp(31px,4vw,56px);letter-spacing:-.055em;display:block;line-height:1.03}
+.stage-head small{display:block;font-size:11px;color:var(--muted)}
+.ribbon{position:absolute;left:14px;right:14px;bottom:14px;padding:13px 14px;background:#10151cdf;backdrop-filter:blur(12px);border:1px solid var(--edge);border-radius:12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.ribbon label{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:7px}
+.ribbon input[type=range]{accent-color:var(--accent);width:min(140px,18vw)}input[type=checkbox]{accent-color:var(--accent)}
+button.action{border:1px solid var(--edge);background:#151d27;border-radius:9px;padding:8px 11px;font-size:11px}
+button.action.primary{border-color:#c83c78;background:#92294f}
+.name{font-size:21px;font-weight:750;letter-spacing:-.02em;line-height:1.16;margin:9px 0 14px}
+.info{font-size:13px;color:#cad1da;line-height:1.7}.meta{border-top:1px solid var(--edge);padding-top:12px;margin-top:14px;display:grid;gap:9px}
+.meta div{display:flex;align-items:start;justify-content:space-between;gap:8px}.meta span:first-child{color:var(--muted);font-size:11px}.meta span:last-child{text-align:right;max-width:58%;font-size:11px}
+.tag{display:inline-block;border:1px solid #47576b;border-radius:7px;padding:4px 7px;color:#c0cad6;font-size:10px}
+.actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.note{margin-top:22px;padding-top:15px;border-top:1px solid var(--edge);color:var(--muted);font-size:11px;line-height:1.7}
+#fallback{position:absolute;inset:25% 12%;z-index:2;text-align:center;color:#fdadbf;background:#0b0e13ee;padding:30px;display:none}
+.footer{padding:0 20px 22px;color:#747f8e;font-size:10px;line-height:1.65}
+@media(max-width:1100px){.layout{grid-template-columns:1fr 1fr}.stage{grid-column:1 / -1;grid-row:1;min-height:70vh}.panel{max-height:520px}}
+@media(max-width:650px){header{align-items:start;flex-direction:column}.layout{grid-template-columns:1fr;padding:9px}.panel{max-height:none}.stage{min-height:66vh}.ribbon input[type=range]{width:88px}}
+</style>
+</head>
+<body>
+<header><div class="brand">VULCAN<span> / </span>ENGINEERING</div><div class="subtitle">Interactive vehicle explorer · Research visualization</div></header>
+<main class="layout">
+<aside class="panel" aria-label="Vehicle assembly">
+  <div class="eyebrow">Assembly control</div><h2>Vehicle configuration</h2>
+  <div class="controls">
+    <label>Solid rocket boosters<select id="srb-count"><option value="0">0 SRBs</option><option value="2" selected>2 SRBs</option><option value="4">4 SRBs</option><option value="6">6 SRBs</option></select></label>
+    <label>Payload fairing<select id="fairing-length"><option value="15.5" selected>Standard</option><option value="21.3">Long</option></select></label>
+  </div>
+  <div class="eyebrow">Explorable assemblies</div>
+  <input id="part-filter" type="search" placeholder="Find a component" aria-label="Filter components">
+  <div id="parts" class="list"></div>
+</aside>
+<section class="stage" id="stage" aria-label="Interactive 3D rocket view">
+  <div class="stage-head"><small>Vulcan Centaur · Schematic assembly</small><strong id="configuration">VC2S</strong><small id="height-label"></small></div>
+  <div id="fallback">WebGL could not be initialized. Enable GPU acceleration or open this file in a recent browser.</div>
+  <div class="ribbon">
+    <label>Exploded view <input id="explode" type="range" min="0" max="100" value="0" aria-label="Exploded view distance"></label>
+    <label><input type="checkbox" id="wire"> Wireframe</label>
+    <label><input type="checkbox" id="spin" checked> Rotate</label>
+    <button class="action" id="reset">Reset camera</button>
+  </div>
+</section>
+<aside class="panel" aria-label="Component information">
+  <div class="eyebrow">Selected assembly</div><div id="component-info">
+    <h2 class="name">Choose a component</h2>
+    <p class="info">Click the vehicle or select a component in the assembly list. You can isolate assemblies, hide parts, change configurations, and inspect the exposed geometry.</p>
+  </div>
+  <div class="actions"><button id="isolate" class="action primary" disabled>Isolate</button><button id="hide" class="action" disabled>Hide</button><button id="restore" class="action">Show all</button></div>
+  <div class="note"><strong>Geometry fidelity:</strong> External proportions use publicly described dimensions where available. Fasteners, tubing, plumbing, engine internals, aft structure, avionics and payload hardware are illustrative reconstructions. This is <strong>not</strong> manufacturing CAD, a stress model, a propulsion simulation or a safety assessment.<p>Reference: ULA Vulcan Launch Systems User's Guide and Northrop Grumman public GEM 63XL specifications. No affiliation or endorsement.</p></div>
+</aside>
+</main>
+<div class="footer">Project Vulcan · Experimental educational visualization · Coordinate and geometry approximations are not valid for analysis of load paths, thrust, clearance, mass properties or launch safety. Three.js is MIT licensed.</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+"use strict";
+var byId = function (x) { return document.getElementById(x); };
+if (!window.THREE) { byId("fallback").style.display = "block"; return; }
+var THREE = window.THREE;
+var stage = byId("stage"), renderer, scene, camera, vehicle, raycaster, pointer, parts, ids, selected, isolated, rotationEnabled = true, wireframe = false;
+var numberOfSRBs = 2, fairingLength = 15.5, explodeTarget = 0, exploded = 0, mouseDown = false, moved = false, lastX = 0, lastY = 0;
+var cameraSettings = {radius:142, theta:0.95, phi:1.31};
+var center = new THREE.Vector3(0,28.0,0);
+try {
+  renderer = new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:"high-performance"});
+} catch (err) { byId("fallback").style.display="block"; return; }
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,2));
+renderer.outputEncoding=THREE.sRGBEncoding;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.15;
+stage.insertBefore(renderer.domElement,stage.firstChild);
+scene = new THREE.Scene();
+camera = new THREE.PerspectiveCamera(28,1,0.2,650);
+scene.add(new THREE.AmbientLight(0xffffff,0.65),new THREE.HemisphereLight(0xc0ddff,0x1a2031,0.68));
+var key = new THREE.DirectionalLight(0xffffff,1.65);key.position.set(75,95,55);scene.add(key);
+var edge = new THREE.DirectionalLight(0xf35393,0.75);edge.position.set(-42,30,-90);scene.add(edge);
+var grid = new THREE.GridHelper(150,30,0x525a68,0x333b47);
+grid.position.y=-5.1;grid.material.transparent=true;grid.material.opacity=0.25;scene.add(grid);
+raycaster=new THREE.Raycaster();pointer=new THREE.Vector2();
+
+function part(id,name,details,dimensions,confidence,x,y,z,dx,dy,dz) {
+  var group = new THREE.Group();
+  group.position.set(x||0,y||0,z||0);
+  vehicle.add(group);
+  var record={id:id,name:name,details:details,dimensions:dimensions,confidence:confidence,group:group,
+    base:group.position.clone(),direction:new THREE.Vector3(dx||0,dy||0,dz||0),materials:[],visible:true};
+  parts[id]=record;ids.push(id);return record;
+}
+function material(p,color,metal,roughness,extras){
+  var settings={color:color,metalness:metal===undefined?0.45:metal,roughness:roughness===undefined?0.47:roughness};
+  if(extras)Object.assign(settings,extras);
+  var result=new THREE.MeshStandardMaterial(settings);p.materials.push(result);return result;
+}
+function mesh(p,geometry,mat,x,y,z){
+  var result=new THREE.Mesh(geometry,mat);
+  result.position.set(x||0,y||0,z||0);
+  result.userData.partId=p.id;p.group.add(result);return result;
+}
+function cylinder(p,rTop,rBottom,length,mat,x,y,z,open) {
+  return mesh(p,new THREE.CylinderGeometry(rTop,rBottom,length,64,1,!!open),mat,x,y,z);
+}
+function ring(p,r,t,mat,y,x,z){
+  var m=mesh(p,new THREE.TorusGeometry(r,t,8,70),mat,x||0,y,z||0);
+  m.rotation.x=Math.PI/2;return m;
+}
+function tube(p,points,r,mat){
+  var vec=points.map(function(a){return new THREE.Vector3(a[0],a[1],a[2]);});
+  var line=new THREE.CatmullRomCurve3(vec);
+  return mesh(p,new THREE.TubeGeometry(line,32,r,7,false),mat);
+}
+function bell(p,exitRadius,throatRadius,length,mat,x,y,z){
+  var curve=[];
+  for(var i=0;i<=24;i++){
+    var t=i/24, r=throatRadius+(exitRadius-throatRadius)*Math.pow(t,0.72);
+    curve.push(new THREE.Vector2(r,-t*length));
+  }
+  return mesh(p,new THREE.LatheGeometry(curve,64),mat,x,y,z);
+}
+function patches(p,r,y,mat,amount){
+  for(var k=0;k<amount;k++){
+    var a=k*Math.PI*2/amount;
+    var dot=mesh(p,new THREE.SphereGeometry(0.045,7,6),mat,r*Math.cos(a),y,r*Math.sin(a));
+    dot.scale.y=1.15;
+  }
+}
+function build(){
+  if(vehicle){vehicle.traverse(function(n){if(n.geometry)n.geometry.dispose();});
+    Object.keys(parts).forEach(function(id){parts[id].materials.forEach(function(m){m.dispose();});});scene.remove(vehicle);}
+  vehicle=new THREE.Group();scene.add(vehicle);parts={};ids=[];selected=null;isolated=null;
+  var p,steel,shadow,lines,trim,gold;
+  // Core shell; internal tank bulkheads are schematic and do not specify actual tank architecture.
+  p=part("core","Common booster / tank shell","First-stage exterior containing methane and liquid oxygen propellant tanks. Rivet lines, seams and exterior panelization are illustrative.","Approx. 5.4 m diameter · 33.3 m long","Public external envelope",0,0,0,0,0,0);
+  steel=material(p,0xc8cdd3,0.60,0.37);trim=material(p,0x697380,0.66,0.39);lines=material(p,0xe8eaf0,0.35,0.48);
+  cylinder(p,2.7,2.7,32.7,steel,0,16.35,0);
+  cylinder(p,2.73,2.73,.45,trim,0,32.9,0);
+  for(var i=1;i<26;i++) ring(p,2.704,.011,lines,i*1.19);
+  for(var j=0;j<40;j++){
+    var angle=j*2*Math.PI/40;
+    cylinder(p,.013,.013,30.6,lines,2.707*Math.cos(angle),16.3,2.707*Math.sin(angle));
+  }
+  // Non-structural detail panels for close-up inspection.
+  p=part("feed","External lines & access fittings","Representative feed lines, brackets, interfaces and access points. Routing and sizes are not taken from released engineering drawings.","Schematic geometry","Illustrative",0,0,0,4,0,0);
+  steel=material(p,0x7f929f,0.7,0.28);trim=material(p,0x343c48,0.4,0.55);
+  for(var r=0;r<4;r++){
+    var a=r*Math.PI/2+Math.PI/4, rr=2.86;
+    tube(p,[[rr*Math.cos(a),3,rr*Math.sin(a)],[rr*Math.cos(a),14,rr*Math.sin(a)],[rr*Math.cos(a),26,rr*Math.sin(a)],[2.7*Math.cos(a),30.5,2.7*Math.sin(a)]],.045,steel);
+  }
+  for(var f=0;f<8;f++){
+    var af=f*Math.PI/4;
+    mesh(p,new THREE.BoxGeometry(.26,.24,.12),trim,2.75*Math.cos(af),9+f*2.5,2.75*Math.sin(af)).rotation.y=af;
+  }
+  // Aft skirt with gimbal/attachment details.
+  p=part("aft","Aft skirt and thrust interfaces","Representative first-stage aft skirt, interface webs, mount ring and mechanical attachments. Internal geometry is not verified engineering CAD.","Lower booster assembly","Illustrative",0,0,0,0,-11,0);
+  steel=material(p,0x333c4b,0.55,0.55);trim=material(p,0x8d99a7,.65,.36);
+  cylinder(p,2.72,2.42,1.35,steel,0,-.46,0);
+  ring(p,2.44,.1,trim,-1.2);
+  for(var w=0;w<12;w++){
+    var wa=w*Math.PI/6;
+    mesh(p,new THREE.BoxGeometry(.10,.85,.12),trim,2.35*Math.cos(wa),-.65,2.35*Math.sin(wa)).rotation.y=wa;
+  }
+  p=part("be4","BE-4 engine pair","Two first-stage oxygen/methane rocket engines. Thrust chamber, turbomachinery blocks, plumbing and nozzle shape are visual approximations.","2 main engines · bell geometry approximate","Public engine count / schematic shape",0,0,0,0,-16,0);
+  steel=material(p,0x63717e,.80,.24,{side:THREE.DoubleSide});trim=material(p,0x293543,.68,.36);gold=material(p,0xb69a61,.72,.3);
+  [-1.2,1.2].forEach(function(x){
+    cylinder(p,.39,.46,1.1,trim,x,-.82,0);
+    bell(p,1.08,.30,2.85,steel,x,-1.2,0);
+    ring(p,.98,.032,gold,-3.7,x,0);
+    for(var a=0;a<8;a++){
+      var angle=a*Math.PI/4;
+      cylinder(p,.055,.055,.9,gold,x+.51*Math.cos(angle),-.66,.51*Math.sin(angle));
+    }
+    mesh(p,new THREE.BoxGeometry(.68,.56,.56),trim,x,-.1,.48);
+  });
+  // Individual motors. Body and nozzle are selectable independently.
+  var positions={0:[],2:[0,Math.PI],4:[Math.PI/4,3*Math.PI/4,5*Math.PI/4,7*Math.PI/4],
+    6:[0,Math.PI/3,2*Math.PI/3,Math.PI,4*Math.PI/3,5*Math.PI/3]}[numberOfSRBs];
+  positions.forEach(function(a,index){
+    var x=3.52*Math.cos(a),z=3.52*Math.sin(a),label="GEM 63XL "+(index+1);
+    p=part("srb"+index,label+" casing","Representative composite solid-motor exterior, forward dome, bands and attachment hardware. Propellant grain and manufacturing details are not modeled.","Approx. 1.6 m diameter · 21.9 m motor length","Public external envelope",x,1.1,z,11*Math.cos(a),-5,11*Math.sin(a));
+    var hull=material(p,0xe1e5e8,.15,.6);trim=material(p,0xa2acb6,.45,.4);
+    cylinder(p,.8,.8,17.9,hull,0,9.0,0);
+    var nose=mesh(p,new THREE.SphereGeometry(.8,40,20,0,Math.PI*2,0,Math.PI/2),hull,0,18.0,0);
+    nose.scale.y=3.8;
+    for(var b=0;b<8;b++) ring(p,.802,.018,trim,1.5+b*2.2);
+    patches(p,.8,5,trim,18); patches(p,.8,14,trim,18);
+    // Adapter struts: visual only
+    tube(p,[[-.15,5,0],[-.9*Math.cos(a),5.1,-.9*Math.sin(a)],[-1.4*Math.cos(a),5.4,-1.4*Math.sin(a)]],.09,trim);
+    tube(p,[[-.1,16,0],[-.9*Math.cos(a),16.1,-.9*Math.sin(a)],[-1.4*Math.cos(a),16.5,-1.4*Math.sin(a)]],.075,trim);
+    p=part("nozzle"+index,label+" nozzle","Nozzle exit and aft joint visualization. The internal contour and exit materials are indicative, not verified design dimensions.","Nozzle geometry schematic","Illustrative",x,1.1,z,11*Math.cos(a),-9,11*Math.sin(a));
+    steel=material(p,0x51565f,.69,.35,{side:THREE.DoubleSide});trim=material(p,0x292f3a,.4,.45);
+    bell(p,.57,.27,1.6,steel,0,0,0);
+    ring(p,.56,.043,trim,-1.55,0,0);
+  });
+  p=part("interstage","Interstage adapter","Representative structural adapter between common booster and Centaur V. Coupling elements are illustrative.","Approx. 1.9 m long","Approximate public envelope",0,33.3,0,0,7,0);
+  steel=material(p,0xa7b0ba,.56,.46);trim=material(p,0x586476,.55,.37);
+  cylinder(p,2.7,2.7,1.9,steel,0,.95,0,true);
+  ring(p,2.7,.08,trim,.1); ring(p,2.7,.08,trim,1.81);
+  for(var is=0;is<16;is++){
+    var aa=is*Math.PI/8;
+    cylinder(p,.028,.028,1.65,trim,2.7*Math.cos(aa),.94,2.7*Math.sin(aa));
+  }
+  p=part("rl10","RL10 engine pair","Cryogenic upper-stage engine pair; chamber, nozzle contour and plumbing are modeled illustratively.","2 hydrogen/oxygen engines · approximate geometry","Public engine count / schematic shape",0,35.2,0,0,12,0);
+  steel=material(p,0x737f88,.82,.3,{side:THREE.DoubleSide});trim=material(p,0x343c47,.52,.5);gold=material(p,0xba9764,.74,.32);
+  [-.92,.92].forEach(function(x){
+    cylinder(p,.28,.34,.8,trim,x,.2,0);
+    bell(p,.79,.17,1.75,steel,x,0,0);
+    ring(p,.73,.03,gold,-1.7,x,0);
+    tube(p,[[x,.36,.15],[x+.15,.9,.33],[x+.22,1.3,.24]],.045,gold);
+  });
+  p=part("centaur","Centaur V upper-stage tanks","Large cryogenic hydrogen/oxygen upper stage. External tank body and domes are approximate; internal insulation and bulkhead design is not represented.","Approx. 5.4 m diameter · 11.7 m stage length","Public external envelope",0,35.2,0,0,11,0);
+  steel=material(p,0xd2d7df,.54,.36);trim=material(p,0x99a4b2,.71,.33);lines=material(p,0x69727c,.56,.44);
+  cylinder(p,2.7,2.7,10.6,steel,0,5.4,0);
+  var top=mesh(p,new THREE.SphereGeometry(2.68,48,24,0,Math.PI*2,0,Math.PI/2),trim,0,10.7,0);
+  top.scale.y=.38;
+  for(var k=1;k<10;k++) ring(p,2.709,.025,lines,k*1.0);
+  for(var cx=0;cx<16;cx++){
+    var ang=cx*Math.PI/8;
+    cylinder(p,.019,.019,10.0,lines,2.7*Math.cos(ang),5.3,2.7*Math.sin(ang));
+  }
+  p=part("upper-detail","Centaur exterior detail","Representative conduits, cable trays and external fittings. They are illustrative and must not be used to infer hardware routing.","Schematic features","Illustrative",0,35.2,0,8,14,0);
+  steel=material(p,0x8294a7,.72,.29);trim=material(p,0x373f4c,.54,.52);
+  tube(p,[[2.82,.35,0],[2.84,4.0,0],[2.84,9.8,0]],.08,steel);
+  tube(p,[[-2.82,1.0,0],[-2.85,5,0],[-2.85,10.2,0]],.045,steel);
+  for(var ed=0;ed<5;ed++)mesh(p,new THREE.BoxGeometry(.12,.35,.35),trim,2.82,1.0+ed*1.95,0);
+  p=part("adapter","Payload attach fitting","A representative payload-to-upper-stage separation/attachment interface. Mission-specific fitting geometry is unknown.","Illustrative frustum and rings","Illustrative",0,46.1,0,0,21,0);
+  steel=material(p,0x6d7786,.67,.39,{side:THREE.DoubleSide});
+  cylinder(p,1.45,2.15,1.52,steel,0,.76,0,true);
+  ring(p,2.16,.06,steel,.05);
+  p=part("payload","Representative payload","Generic stowed satellite placeholder included to demonstrate fairing clearance and selectable interior; not Amazon Leo hardware.","Generic, non-flight payload","Placeholder",0,47.75,0,0,26,0);
+  gold=material(p,0xb4964f,.7,.4);steel=material(p,0x293c60,.45,.55);trim=material(p,0x99a4b5,.7,.3);
+  mesh(p,new THREE.BoxGeometry(2.4,2.75,2.1),gold,0,1.4,0);
+  [-1.65,1.65].forEach(function(x){
+    mesh(p,new THREE.BoxGeometry(.12,2.4,2.15),steel,x,1.55,0);
+  });
+  var dish=mesh(p,new THREE.SphereGeometry(.65,30,15,0,Math.PI*2,0,Math.PI/2),trim,1.2,1.65,0);dish.rotation.z=-Math.PI/2;
+  // Two removable fairing halves.
+  var cylindricalLength=fairingLength-7.0;
+  var profile=[new THREE.Vector2(2.70,0),new THREE.Vector2(2.70,cylindricalLength)];
+  for(var h=1;h<=28;h++){
+    var t=h/28;
+    profile.push(new THREE.Vector2(2.70*Math.pow(1-t,0.76),cylindricalLength+7*t));
+  }
+  [0,1].forEach(function(half){
+    p=part("fairing"+half,"Payload fairing / half "+(half+1),
+      "Removable composite fairing half. Surface and inner thermal/acoustic lining are illustrative; the seam follows a simplified axisymmetric envelope.",
+      "Approx. 5.4 m diameter · "+fairingLength.toFixed(1)+" m long","Public external envelope",0,46.1,0,half?-19:19,13,0);
+    steel=material(p,0xe6e9ee,.2,.40,{side:THREE.DoubleSide});
+    trim=material(p,0x25334e,.22,.69,{side:THREE.DoubleSide});
+    mesh(p,new THREE.LatheGeometry(profile,64,half*Math.PI,Math.PI),steel);
+    var inner=mesh(p,new THREE.LatheGeometry(profile,64,half*Math.PI,Math.PI),trim);
+    inner.scale.set(.987,1,.987);
+  });
+  apply();drawList();updateDetails();
+  byId("configuration").textContent="VC"+numberOfSRBs+(fairingLength>16?"L":"S");
+  byId("height-label").textContent="Illustrative overall height: ~"+(46.1+fairingLength).toFixed(1)+" m";
+}
+function apply(){
+  if(!parts)return;
+  ids.forEach(function(id){
+    var p=parts[id],other=isolated && isolated!==id;
+    p.group.visible=p.visible;
+    p.group.position.copy(p.base).addScaledVector(p.direction,exploded);
+    p.materials.forEach(function(m){
+      m.transparent=!!other;m.opacity=other?.085:1;m.depthWrite=!other;m.wireframe=wireframe;
+      m.emissive.setHex(selected===id?0x4f1535:0x000000);
+    });
+  });
+}
+function drawList(){
+  var q=byId("part-filter").value.toLowerCase();
+  var list=byId("parts");list.textContent="";
+  ids.forEach(function(id){
+    var p=parts[id];if(q && (p.name+" "+p.details).toLowerCase().indexOf(q)<0)return;
+    var item=document.createElement("div");item.className="part"+(selected===id?" selected":"")+(p.visible?"":" hidden");
+    var button=document.createElement("button");button.className="choose";button.textContent=p.name;
+    button.setAttribute("aria-label","Select "+p.name);
+    button.onclick=function(){selected=id;apply();drawList();updateDetails();};
+    var eye=document.createElement("button");eye.className="toggle";eye.textContent=p.visible?"HIDE":"SHOW";
+    eye.setAttribute("aria-label",(p.visible?"Hide ":"Show ")+p.name);
+    eye.onclick=function(){p.visible=!p.visible;apply();drawList();updateDetails();};
+    item.appendChild(button);item.appendChild(eye);list.appendChild(item);
+  });
+}
+function updateDetails(){
+  var target=byId("component-info");
+  target.textContent="";
+  var p=parts[selected];byId("hide").disabled=!p;byId("isolate").disabled=!p;
+  if(!p){var h=document.createElement("h2");h.className="name";h.textContent="Choose a component";target.appendChild(h);return;}
+  var eyebrow=document.createElement("div");eyebrow.className="eyebrow";eyebrow.textContent=p.id;
+  var name=document.createElement("h2");name.className="name";name.textContent=p.name;
+  var desc=document.createElement("p");desc.className="info";desc.textContent=p.details;
+  var meta=document.createElement("div");meta.className="meta";
+  [["Envelope",p.dimensions],["Geometry status",p.confidence]].forEach(function(d){
+    var row=document.createElement("div"),k=document.createElement("span"),v=document.createElement("span");
+    k.textContent=d[0];v.textContent=d[1];row.appendChild(k);row.appendChild(v);meta.appendChild(row);
+  });
+  target.appendChild(eyebrow);target.appendChild(name);target.appendChild(desc);target.appendChild(meta);
+  byId("isolate").textContent=isolated===selected?"End isolation":"Isolate";
+  byId("hide").textContent=p.visible?"Hide component":"Show component";
+}
+function screenResize(){
+  var w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
+}
+function placeCamera(){
+  var s=cameraSettings;
+  s.phi=Math.min(Math.PI-.09,Math.max(.09,s.phi));s.radius=Math.min(350,Math.max(30,s.radius));
+  camera.position.set(center.x+s.radius*Math.sin(s.phi)*Math.cos(s.theta),
+    center.y+s.radius*Math.cos(s.phi),
+    center.z+s.radius*Math.sin(s.phi)*Math.sin(s.theta));
+  camera.lookAt(center);
+}
+function onSelect(e){
+  if(moved)return;
+  var rect=renderer.domElement.getBoundingClientRect();
+  pointer.x=((e.clientX-rect.left)/rect.width)*2-1;
+  pointer.y=-((e.clientY-rect.top)/rect.height)*2+1;
+  raycaster.setFromCamera(pointer,camera);
+  var intersections=raycaster.intersectObjects(vehicle.children,true);
+  for(var i=0;i<intersections.length;i++){
+    var id=intersections[i].object.userData.partId;
+    if(id && parts[id]){selected=id;apply();drawList();updateDetails();return;}
+  }
+}
+renderer.domElement.addEventListener("pointerdown",function(e){
+  mouseDown=true;moved=false;lastX=e.clientX;lastY=e.clientY;renderer.domElement.setPointerCapture(e.pointerId);
+});
+renderer.domElement.addEventListener("pointermove",function(e){
+  if(!mouseDown)return;
+  var dx=e.clientX-lastX,dy=e.clientY-lastY;
+  if(Math.abs(dx)+Math.abs(dy)>2)moved=true;
+  cameraSettings.theta-=dx*.009;cameraSettings.phi+=dy*.008;
+  lastX=e.clientX;lastY=e.clientY;
+});
+renderer.domElement.addEventListener("pointerup",function(e){mouseDown=false;onSelect(e);});
+renderer.domElement.addEventListener("pointercancel",function(){mouseDown=false;});
+renderer.domElement.addEventListener("wheel",function(e){
+  e.preventDefault();cameraSettings.radius*=Math.exp(e.deltaY*.001);
+},{passive:false});
+byId("srb-count").onchange=function(e){numberOfSRBs=Number(e.target.value);build();};
+byId("fairing-length").onchange=function(e){fairingLength=Number(e.target.value);build();};
+byId("part-filter").oninput=drawList;
+byId("explode").oninput=function(e){explodeTarget=Number(e.target.value)/100;};
+byId("wire").onchange=function(e){wireframe=e.target.checked;apply();};
+byId("spin").onchange=function(e){rotationEnabled=e.target.checked;};
+byId("reset").onclick=function(){
+  cameraSettings={radius:142,theta:.95,phi:1.31};explodeTarget=0;byId("explode").value="0";
+};
+byId("isolate").onclick=function(){
+  if(!selected)return;isolated=isolated===selected?null:selected;apply();updateDetails();
+};
+byId("hide").onclick=function(){
+  if(!selected)return;parts[selected].visible=!parts[selected].visible;apply();drawList();updateDetails();
+};
+byId("restore").onclick=function(){
+  isolated=null;ids.forEach(function(id){parts[id].visible=true;});apply();drawList();updateDetails();
+};
+window.addEventListener("resize",screenResize);
+build();screenResize();
+function render(){
+  requestAnimationFrame(render);
+  var delta=explodeTarget-exploded;
+  if(Math.abs(delta)>1e-4){exploded+=delta*.12;apply();}
+  if(rotationEnabled && !mouseDown)cameraSettings.theta+=.0014;
+  placeCamera();renderer.render(scene,camera);
+}
+render();
+})();
+</script>
+</body>
+</html>
