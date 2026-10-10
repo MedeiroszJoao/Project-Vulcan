@@ -1,19 +1,68 @@
 {
-  "built_date_UTC": "2026-10-09",
-  "base_commit": "e6735ff5957d0f2fd0976390c3f4b9dd1ccb150e",
-  "public_registration": false,
-  "doi": null,
-  "delivery_commit": "Obtain from git rev-parse HEAD; not embedded to avoid self-reference",
-  "checksums_scope": "All regular project files excluding SHA256SUMS, .git, __pycache__, .venv; SHA256SUMS itself is tracked by Git",
-  "authorship": "Build automation metadata only; publication authors and license not yet supplied",
-  "integration": "Prospective candidate plus independent audit corrections",
-  "tests_passed": 42,
-  "current_audit_test_count": 42,
-  "current_audit_passed_without_pgmpy": 41,
-  "current_audit_blocked_by_missing_pgmpy": 1,
-  "current_revision_publicly_registered": false,
-  "revision_note": "Independently checked numeric PMFs; scoring chronology and VOID protocol fixed without changing reference forecasts.",
-  "current_local_tests_passed": 42,
+  "base_commit": "8f85b9a7573352e72b8f157786656d4f306d388c",
+  "verification_timestamp_utc": "2026-10-10T21:34:15.859773+00:00",
+  "timestamp_scope": "Local execution clock, not external proof of prospective registration",
+  "delivery_commit": "Read the containing Git commit; omitted here to avoid self-reference",
+  "python": "3.12.14",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "pgmpy": "1.1.2"
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "passed": 49,
+    "failed": 0,
+    "log": "evidence/package_corrections/unit_tests.log"
+  },
+  "reproduction": [
+    {
+      "script": "run_analysis.py",
+      "exit_code": 0
+    },
+    {
+      "script": "run_audit_response.py",
+      "exit_code": 0
+    },
+    {
+      "script": "independent_numeric_check.py",
+      "exit_code": 0
+    },
+    {
+      "script": "make_decision_brief.py",
+      "exit_code": 0
+    },
+    {
+      "script": "build_scores.py",
+      "exit_code": 0
+    },
+    {
+      "script": "build_baseline_scores.py",
+      "exit_code": 0
+    },
+    {
+      "script": "check_candidate.py",
+      "exit_code": 0
+    },
+    {
+      "script": "verify_frozen_forecasts.py",
+      "exit_code": 0
+    }
+  ],
+  "reproduction_environment": "Temporary copy of corrected source; generated outputs not substituted for archived outputs",
+  "forecast_bytes_preserved": true,
+  "forecast_sha256": {
+    "historical_all.json": "ab84b1e4f60657779413a315b2dca98cff4bfc20604daaa70001db5568fd7cd3",
+    "jeffreys_reference.json": "97cd41ab8efe77fa7b17b7b6b3f20ab353523a66a06533e0e215ffab2e43c19e",
+    "reference.json": "fc9d0e290adef51459b86c8ad4a1a6ddc03ea087163e48da6e59f6d106f82d1f",
+    "shared_shock.json": "1abb6b5d4eef66e1e03efe41b276222245571d4707527ed622979dc0051a029c",
+    "unknown_revisions.json": "11888bbdd0e2dc7e4d570f05bb60e8f31bdd8abc6126d35ac91c1c0b1e25ec74"
+  },
+  "checksums_scope": "Git-indexed files except SHA256SUMS itself; see docs/PACKAGE_INTEGRITY.md",
+  "authorship": "Verified maintainer handle MedeiroszJoao; personal publication name not confirmed",
   "public_ci_verified": false,
-  "forecast_bytes_preserved": true
+  "public_registration_verified": false,
+  "doi": null,
+  "review_scope": "AI-assisted implementation and computational verification; not human external peer review"
 }

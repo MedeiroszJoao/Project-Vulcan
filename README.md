@@ -3,7 +3,7 @@
 
 [Figures & provenance](docs/FIGURE_INVENTORY.md) · [Academic overview](docs/APPLICATION_BRIEF.md) · [Technical portfolio](docs/RECRUITER_BRIEF.md) · [Research methods](docs/RESEARCH_OVERVIEW.md) · [English protocol](docs/en/FORECAST_PROTOCOL.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [3D explorer](visualization/README.md)
 
-Project Vulcan is an independent research-software study of a difficult decision: **when does observing an additional flight provide enough information to justify postponing a hypothetical launch procurement decision?**
+Project Vulcan is a reproducible case study of decision-making under partial identification, applying established methods and investigating possible extensions. It studies a difficult decision: **when does observing an additional flight provide enough information to justify postponing a hypothetical launch procurement decision?**
 
 The project combines Bayesian inference, value-of-information calculations, exact numerical integration, scenario analysis, and a separately evaluated experimental forecasting benchmark. The launch-vehicle case is intentionally **illustrative**: public anomaly reports cannot calibrate the probability of a particular future mission's loss.
 
@@ -13,18 +13,24 @@ The project combines Bayesian inference, value-of-information calculations, exac
 
 The model compares procuring an alternative launch provider immediately with waiting for a public observation from a further Vulcan flight. Its decision tree distinguishes physical anomaly counts, public reporting, configuration/revision assumptions, mission consequences, authorization, and opportunity costs. The choice is evaluated *conditional on declared assumptions*, not presented as operational advice.
 
-The key methodological result is that **the same observed booster history and the same distribution of public flight reports can support opposite economic decisions** when the future mission's unobserved consequence model changes. The constructive counterexample and sharp conditional bounds are developed in [research PR #2](https://github.com/MedeiroszJoao/Project-Vulcan/pull/2).
+The case study demonstrates, within the specified model class, that **the same observed booster history and the same distribution of public flight reports can support opposite economic decisions** when the future mission's unobserved consequence model changes. The constructive counterexample and sharp conditional bounds are developed in [research PR #2](https://github.com/MedeiroszJoao/Project-Vulcan/pull/2).
 
 ## Evidence at a glance
 
 | Analysis | Observation | What it supports |
 | --- | --- | --- |
 | Original reference model (`main`) | At a hypothetical $10 million waiting cost: $35.750 million to reallocate now versus $44.471 million to wait. | Conditional decision arithmetic; **not** an actual procurement recommendation. |
-| Non-identifiability ([PR #2](https://github.com/MedeiroszJoao/Project-Vulcan/pull/2)) | Under a specified consequence-CPT simplex, the net benefit of waiting spans **−$15.000 million to +$10.620 million**. | No robust decision under that uncertainty set with the other assumptions held fixed. |
+| Non-identifiability ([PR #2](https://github.com/MedeiroszJoao/Project-Vulcan/pull/2)) | Under a specified consequence-CPT simplex, the net benefit of waiting spans **−$15.000 million to +$10.620 million**. | No single action is optimal across all admissible consequence models; a minimax-regret choice remains possible. |
 | NASA battery benchmark ([PR #3](https://github.com/MedeiroszJoao/Project-Vulcan/pull/3)) | On four physical cells, the linear model's nominal 90% intervals covered **60.3%** of 257 serially correlated held-out observations. | Improved point error need not imply reliable predictive intervals. |
 | NASA out-of-cohort test ([PR #4](https://github.com/MedeiroszJoao/Project-Vulcan/pull/4)) | Eleven cells across heterogeneous experimental protocols; conclusions depend materially on aggregation and interval width. | Stress test of forecasting methods; **not** rocket propulsion validation. |
 
-**Status:** The original reference scripts and forecasts are on `main`. The research extensions above remain separate draft pull requests; they are *not* represented as merged features. This portfolio branch refines presentation and software verification independently of their scientific review. See [research status](docs/RESEARCH_OVERVIEW.md).
+**Status:** The original reference scripts and forecasts are on `main`. The research extensions above remain separate draft pull requests; they are *not* represented as merged features. Documentation and package-integrity updates are separate from scientific review of those extensions. See [research status](docs/RESEARCH_OVERVIEW.md).
+
+## Comparator forecasts and audit provenance
+
+Three separate comparator forecasts (uniform, raw historical frequencies, and explicitly add-one-smoothed frequencies) are defined in [baseline protocol](docs/BASELINES.md). Their addition does not change the primary forecast or establish external registration. Novel methodological contributions have not been established. Battery experiments are a separate forecasting study, not evidence for the aerospace identifiability argument.
+
+See [audit provenance and authorship](docs/AUDIT_PROVENANCE.md) for the distinction between AI-assisted computational checks and human external peer review.
 
 ## Figures
 
