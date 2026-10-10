@@ -3,11 +3,12 @@ message: "Please cite a specific commit or verified archived release of this sof
 title: "Project Vulcan: Probabilistic Decision Analysis under Aerospace Uncertainty"
 type: software
 authors:
-  - name: "Project Vulcan contributors"
+  - name: "MedeiroszJoao"
+    website: "https://github.com/MedeiroszJoao"
 repository-code: "https://github.com/MedeiroszJoao/Project-Vulcan"
 url: "https://github.com/MedeiroszJoao/Project-Vulcan"
 abstract: >-
-  Reproducible research software for scenario-conditional Bayesian decision
+  Reproducible case study applying established methods for Bayesian decision
   analysis, numerical verification, prospective public-signal scoring protocols
   and separated experimental forecast-method benchmarks. This project is not
   a calibrated aerospace safety or launch-reliability model.

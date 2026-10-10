@@ -6,13 +6,13 @@
 
 ## What was developed
 
-A Python-based probabilistic decision-analysis laboratory with explicit uncertainty over historical anomaly reporting, booster revision hypotheses, physical consequences, information transfer and economic decisions. The baseline uses a structured model, numerical integration, independently checked decision arithmetic, unit tests, and immutable candidate forecasts. Research extensions explore identifiability and compare forecast methods on public experimental data.
+A reproducible case study applying established decision-analysis methods; originality of possible extensions remains under investigation. The Python-based probabilistic decision-analysis laboratory represents explicit uncertainty over historical anomaly reporting, booster revision hypotheses, physical consequences, information transfer and economic decisions. The baseline uses a structured model, numerical integration, independently checked decision arithmetic, unit tests, and immutable candidate forecasts. Research extensions explore identifiability and compare forecast methods on public experimental data.
 
 ## Selected research findings
 
 The strongest result is not a claim of a particularly accurate rocket failure rate. The draft identifiability study constructs future-consequence models that agree on the available historical evidence and on the public flight-signal prediction yet lead to different preferred decisions. This locates an information gap rather than concealing it behind a precise-looking probability.
 
-A separate NASA battery-data study provides an external methodological stress test: on four cells, an aggregated linear point forecast improved mean absolute error, while its nominal 90% intervals captured only 60.3% of serially dependent hold-out measurements. A follow-up across 11 other cells shows that apparent model rankings depend on experimental protocols and averaging choices.
+A separate NASA battery-data study, outside the aerospace argument, provides a forecasting benchmark: on four cells, an aggregated linear point forecast improved mean absolute error, while its nominal 90% intervals captured only 60.3% of serially dependent hold-out measurements. A follow-up across 11 other cells shows that apparent model rankings depend on experimental protocols and averaging choices.
 
 These numerical benchmarks do not validate Vulcan propulsion or mission safety.
 

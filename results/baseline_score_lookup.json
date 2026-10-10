@@ -1,0 +1,83 @@
+{
+  "status": "HYPOTHETICAL_OUTCOMES_ONLY_NOT_OBSERVED",
+  "scores": {
+    "uniform": [
+      {
+        "outcome": "clean_report",
+        "brier_multiclass_sum": 0.75,
+        "negative_log_likelihood_nats": 1.3862943611198906,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "anomaly_report",
+        "brier_multiclass_sum": 0.75,
+        "negative_log_likelihood_nats": 1.3862943611198906,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "loss_or_degraded_report",
+        "brier_multiclass_sum": 0.75,
+        "negative_log_likelihood_nats": 1.3862943611198906,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "inconclusive",
+        "brier_multiclass_sum": 0.75,
+        "negative_log_likelihood_nats": 1.3862943611198906,
+        "zero_probability_observed": false
+      }
+    ],
+    "historical_raw": [
+      {
+        "outcome": "clean_report",
+        "brier_multiclass_sum": 0.5,
+        "negative_log_likelihood_nats": 0.6931471805599453,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "anomaly_report",
+        "brier_multiclass_sum": 0.5,
+        "negative_log_likelihood_nats": 0.6931471805599453,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "loss_or_degraded_report",
+        "brier_multiclass_sum": 1.5,
+        "negative_log_likelihood_nats": null,
+        "zero_probability_observed": true
+      },
+      {
+        "outcome": "inconclusive",
+        "brier_multiclass_sum": 1.5,
+        "negative_log_likelihood_nats": null,
+        "zero_probability_observed": true
+      }
+    ],
+    "historical_add_one": [
+      {
+        "outcome": "clean_report",
+        "brier_multiclass_sum": 0.5625,
+        "negative_log_likelihood_nats": 0.9808292530117262,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "anomaly_report",
+        "brier_multiclass_sum": 0.5625,
+        "negative_log_likelihood_nats": 0.9808292530117262,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "loss_or_degraded_report",
+        "brier_multiclass_sum": 1.0625,
+        "negative_log_likelihood_nats": 2.0794415416798357,
+        "zero_probability_observed": false
+      },
+      {
+        "outcome": "inconclusive",
+        "brier_multiclass_sum": 1.0625,
+        "negative_log_likelihood_nats": 2.0794415416798357,
+        "zero_probability_observed": false
+      }
+    ]
+  }
+}
