@@ -8,6 +8,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDE = {
+    "scripts/check_public_language.py",  # Contains the expected-language regex itself.
     "evidence/adversarial_received/changes.patch",
 }
 EXCLUDED_DIRS = {".git", ".venv", "__pycache__", "node_modules"}
