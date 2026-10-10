@@ -115,38 +115,47 @@ def main():
                              window_penalty_MUSD=penalty,delay_MUSD=cost,net_wait_gain_MUSD=rr['net_wait_gain']))
     csv_write(OUT/'calendar_sensitivity.csv',calendar)
     csv_write(OUT/'controls.csv',controls)
-    (OUT/'RUN_REPORT.md').write_text(f'''# Resultado executado — laboratório de decisão Vulcan
+    (OUT/'RUN_REPORT.md').write_text(f'''# Project Vulcan — Reproduced Decision Analysis
 
-Exercício independente com dados públicos. Nenhuma CPT de engenharia abaixo é uma estimativa validada do Vulcan.
-Estado: implementação executada; não é registro público congelado.
+Independent public-data decision-analysis exercise. The engineering consequence
+CPTs below are **illustrative assumptions**, not validated Vulcan reliability estimates.
+Status: reference model reproduced; public forecast registration and independent
+scientific review must be verified separately.
 
-## Cenário ilustrativo de referência
-M*: 3.000 kg, comunicações resilientes, GEO direto, janela 15/11–15/12/2026.
-Revisões MM são hipótese, não conhecimento do hardware instalado.
-Prior uniforme; sem Atlas; 6 boosters no LV e 4 no alvo; P(Θ)=(.2,.6,.2).
-Consequência de perda US$ 1.000 milhões; atraso incremental US$ 10 milhões.
+## Reference counterfactual
 
-| Métrica | US$ milhões |
-|---|---:|
-| EVSI puro, conjunto de ações fixo contrafactual | {r['evsi']:.6f} |
-| Custo esperado de realocar agora | {r['realocate_now_cost']:.6f} |
-| Custo esperado de aguardar e decidir com autorização | {r['wait_cost']:.6f} |
-| Ganho líquido de aguardar | {r['net_wait_gain']:.6f} |
+M*: hypothetical 3,000 kg communications payload, direct GEO delivery, original
+November 15–December 15, 2026 scenario window. This is the historical baseline,
+**not** the later January–March 2027 operational planning sensitivity.
+Assumed MM hardware revisions are not confirmed manufacturer configurations.
+Uniform prior; no quantitative Atlas heritage; six SRBs on the observed LV mission
+and four SRBs on target M*; regime weights P(Θ) = (0.2, 0.6, 0.2).
+Hypothetical mission loss: USD 1,000 million; waiting cost: USD 10 million.
 
-Ação preferida neste cenário: **{r['preferred']}**. Não extrapolar para recomendação operacional.
+| Metric | USD million |
+| --- | ---: |
+| Pure EVSI, fixed counterfactual action set | {r['evsi']:.6f} |
+| Expected cost, reallocate immediately | {r['realocate_now_cost']:.6f} |
+| Expected cost, wait for report and approval | {r['wait_cost']:.6f} |
+| Net gain from waiting | {r['net_wait_gain']:.6f} |
 
-## Arquivos
-- decision_map.png / decision_map.csv: benefício de esperar e discordância entre dois priors, demais premissas fixas.
-- evsi_surface.png / evsi_surface.csv: grade de pesos de regime e relevância; ação fixa para EVSI.
-- policy.csv: quatro observações, condicionadas a autorização concedida ou negada.
-- structural_sensitivity.csv: {len(sensitivity)} cenários estruturais, sem média entre cenários.
-- heritage_sensitivity.csv: análise secundária sob observabilidade perfeita da herança.
-- controls.csv: eficácias, severidade, observação e política de autorização.
+Conditional preferred action: **{r['preferred']}**.
+This is **not** an actual launch or procurement recommendation.
 
-Uma região estável entre dois priors não é robustez universal. Custos, CPTs, transferência e governança
-continuam hipóteses. O mesmo número de anomalias pode produzir consequências muito diferentes.
-O ensaio pgmpy valida a inferência a partir das CPTs emitidas, não valida a física dessas CPTs.
-''',encoding='utf-8')
+## Generated outputs
+
+- \`decision_map.png\` / \`decision_map.csv\`: net benefit and agreement under two priors, with other assumptions fixed.
+- \`evsi_surface.png\` / \`evsi_surface.csv\`: assumed correction-regime weight and relevance in a fixed action set.
+- \`policy.csv\`: public-signal categories and hypothetical approval-dependent actions.
+- \`structural_sensitivity.csv\`: {len(sensitivity)} scenarios; no probabilistic aggregation over the grid.
+- \`heritage_sensitivity.csv\`: separate, highly conditional heritage control.
+- \`controls.csv\`: technical severity, correction effectiveness, observability and approval controls.
+
+Agreement between two priors is not universal robustness. Loss CPTs, calendar
+constraints, model transfer and governance are hypothetical. The same reported
+anomaly count can imply different consequences. The pgmpy consistency test
+checks inference over the supplied CPTs, **not** the underlying aerospace physics.
+''' ,encoding='utf-8')
     print(json.dumps({'reference':r,'structural_scenarios':len(sensitivity)},indent=2))
 
 if __name__=='__main__': main()
