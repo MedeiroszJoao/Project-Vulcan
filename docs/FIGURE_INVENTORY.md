@@ -9,7 +9,7 @@ English-first public presentation, with source-preserving chart regeneration.
 | `results/structural_envelope.png` | `run_audit_response.py` | **Previously Portuguese**; translated to English | Regenerated on the localization branch |
 | `evidence/independent_audit/structural_envelope.png` | `evidence/independent_audit/structural_envelope.py` | Already English | Original audit artifact retained |
 
-Five tracked PNG files were inspected via the repository tree. The fifth item is the structural-envelope image in the audit directory above; these are **four unique plotting subjects, five tracked paths** if counting both envelope copies and the separate decision/EVSI plots.
+Four tracked PNG files were inspected via the full repository tree: three in `results/` and one independently produced image in `evidence/independent_audit/`. There are three figure subjects; the sensitivity-envelope chart has two original variants.
 
 Corrections were made to the figure-generation scripts rather than painting over embedded text. Existing numerics and model inputs are unchanged. The regenerated images are machine outputs; raster antialiasing and hashes may vary with platform and matplotlib version. The hash file `results/FIGURE_SHA256SUMS` records the newly committed English figure binaries.
 

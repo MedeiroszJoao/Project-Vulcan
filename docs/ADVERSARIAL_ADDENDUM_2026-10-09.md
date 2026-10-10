@@ -1,28 +1,30 @@
-# Aditivo de auditoria prospectiva independente — 2026-10-09
+# Independent Prospective Audit Addendum — October 9, 2026
 
-Status: **candidato revisado, NÃO PUBLICAMENTE REGISTRADO**. O conjunto de previsões e a metodologia original de Y **não foram modificados** nesta revisão. Nenhuma previsão deve ser ajustada com conhecimento posterior ao lançamento.
+*English translation of a dated review record. Publication, licensing, and test status below refer to the historical audit rather than present repository state.*
 
-## Verificações
+**Historical status: revised candidate, NOT YET PUBLICLY REGISTERED.** The five forecast files and the original Y observation methodology remained unchanged. No forecast should be retrospectively altered after observing the launch.
 
-- Reproduzida a distribuição física K=0..6 e o vetor Y de quatro resultados por integração simbólica independente no Wolfram.
-- A referência de credibilidade oficial é NASA-STD-7009B (05/03/2024), acompanhada de NASA-HDBK-7009B (03/02/2026). O projeto não é certificado.
-- O agendamento NET 29/10/2026 continua provisório segundo fontes não operadoras; freeze deve preceder o lançamento efetivo.
-- Modelo de referência: P(Y)=[0.5973632855,0.2072166864,0.0954200281,0.1]. Não é estimativa fisicamente calibrada.
+## Checks performed
 
-## Quatro vulnerabilidades fechadas nesta versão
+- Physical anomaly count K=0..6 and the four-state public Y forecast were reproduced using independent Wolfram calculations.
+- NASA-STD-7009B (March 5, 2024) and NASA-HDBK-7009B (February 3, 2026) were used as credibility references. No agency certification was claimed.
+- October 29, 2026 was only a tentative non-operator NET date; prospective registration must precede actual launch.
+- Reference model P(Y) = [0.5973632855, 0.2072166864, 0.0954200281, 0.1]. This is not a physically calibrated risk estimate.
 
-1. `VOID_CONFIGURATION` previsto em texto mas sem suporte no scorer: agora aceito explicitamente, sem score, com descrição da diferença física e evidência pós-liftoff.
-2. `NOT_LAUNCHED` não pode ser provado apenas por documento publicado semanas antes do fim de validade: exige checagem documental publicada após 2027-01-01 UTC.
-3. A evidência que sustenta um resultado de voo deve possuir ao menos uma publicação posterior ao lançamento, não somente uma agenda anterior.
-4. Referência ao arquivo Atlas corrigida de docs/ para data/.
+## Four defects addressed
 
-## Condicionantes ainda abertas
+1. The protocol described `VOID_CONFIGURATION` but the scorer had no such state. The revision permits this **unscored** disposition with concrete hardware-mismatch description and post-liftoff evidence.
+2. `NOT_LAUNCHED` cannot be verified solely through a schedule published before episode expiry. Require documentary evidence published after January 1, 2027 UTC.
+3. Scored flight outcomes require at least one qualifying source published after actual liftoff; an old schedule is insufficient.
+4. The Atlas table reference was corrected from `docs/` to `data/`.
 
-- `pgmpy` não estava disponível no ambiente da revisão independente; a alegação de sucesso em outro ambiente é registro do pacote, não reprodução nova. A suíte foi executada novamente; status separado no log.
-- A verificação temporal de URLs e snapshots exige validação pública independente; `score_episode.py` confere bytes locais, **não** prova que eram públicos no horário alegado.
-- Eventos VOID são particularmente vulneráveis a escolhas oportunistas; congelar a regra objetiva e auditar todos os VOID com terceiro independente.
-- Um registro condicional ao voo sem probabilidades de atraso não pode ser tratado como previsão sobre a data do lançamento, nem estimador de calibração por um único episódio. Registrar também todos os NOT_LAUNCHED, não apagá-los.
-- Contrato da alternativa, revisões reais de GEM63XL, fatos de certificação e CPTs físico-monetárias não estão calibrados por evidência interna.
-- Autoria, licença, DOI e release ainda pendentes.
+## Remaining limitations
 
-Fontes: https://standards.nasa.gov/standard/NASA/NASA-STD-7009 ; https://standards.nasa.gov/standard/NASA/NASA-HDBK-7009 ; https://help.zenodo.org/docs/github/archive-software/github-upload/ ; https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf .
+- pgmpy was not installed in the independent audit environment. Test success in a different environment was a package claim, not a new independent reproduction; later tests were separately logged.
+- Offline URL/snapshot timestamp checks cannot prove public publication at a claimed time; `score_episode.py` validates local bytes, not external history.
+- VOID status is vulnerable to outcome-driven selection. Freeze the objective criteria and independently audit each VOID case.
+- A flight-conditional forecast is not a launch-date prediction. One scored event does not establish probabilistic calibration. Document all NOT_LAUNCHED cases.
+- Hardware revision/lots, launch authorization, alternative-provider contracts, and mission-consequence CPTs were not physically calibrated.
+- Individual authorship, licensing, a public release, and DOI remained to be confirmed as of the audit cutoff.
+
+Sources: https://standards.nasa.gov/standard/NASA/NASA-STD-7009 ; https://standards.nasa.gov/standard/NASA/NASA-HDBK-7009 ; https://help.zenodo.org/docs/github/archive-software/github-upload/ ; https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf .

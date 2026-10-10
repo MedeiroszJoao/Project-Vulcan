@@ -144,12 +144,12 @@ This is **not** an actual launch or procurement recommendation.
 
 ## Generated outputs
 
-- \`decision_map.png\` / \`decision_map.csv\`: net benefit and agreement under two priors, with other assumptions fixed.
-- \`evsi_surface.png\` / \`evsi_surface.csv\`: assumed correction-regime weight and relevance in a fixed action set.
-- \`policy.csv\`: public-signal categories and hypothetical approval-dependent actions.
-- \`structural_sensitivity.csv\`: {len(sensitivity)} scenarios; no probabilistic aggregation over the grid.
-- \`heritage_sensitivity.csv\`: separate, highly conditional heritage control.
-- \`controls.csv\`: technical severity, correction effectiveness, observability and approval controls.
+- `decision_map.png` / `decision_map.csv`: net benefit and agreement under two priors, with other assumptions fixed.
+- `evsi_surface.png` / `evsi_surface.csv`: assumed correction-regime weight and relevance in a fixed action set.
+- `policy.csv`: public-signal categories and hypothetical approval-dependent actions.
+- `structural_sensitivity.csv`: {len(sensitivity)} scenarios; no probabilistic aggregation over the grid.
+- `heritage_sensitivity.csv`: separate, highly conditional heritage control.
+- `controls.csv`: technical severity, correction effectiveness, observability and approval controls.
 
 Agreement between two priors is not universal robustness. Loss CPTs, calendar
 constraints, model transfer and governance are hypothetical. The same reported
