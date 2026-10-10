@@ -1,7 +1,29 @@
-# Reproducible review and public red-team policy
+# Contributing
 
-Contributions should be precise, traceable and adversarial in the constructive sense. Open an issue that identifies one model assumption, code path or observed public source, its actual consequence for the decision or forecast, and a minimal counterexample or test. Please disclose conflicts of interest and avoid supplying export-controlled, proprietary or otherwise restricted engineering data.
+Project Vulcan is a research-software repository. Contributions are welcome when they make an assumption, experiment, numerical result, or limitation easier to inspect and reproduce.
 
-The author/maintainer must preserve every dated ex-ante forecast and every adverse outcome score. Publish corrections in a *new* release referencing old hashes; never silently rewrite a dated forecast. Separate computational bugs, empirical source disputes, physical modeling weaknesses and decision-framing disagreements. Any use of AI assistance should be disclosed truthfully with human responsibility and review; generated code or text is not independent scientific validation.
+## Development workflow
 
-Suggested first review points: common cause all-or-none mixture `rho`, nonlinear consequences for K≥2, data missingness versus public clean, possible time leakage of late authorization, and assumed fallback launch provider availability.
+1. Open an issue describing the question, expected effect and relevant data or code path.
+2. Work in a short-lived branch. Keep changes to the original forecast bytes separate from ordinary bug fixes; the historical forecast JSON files are immutable research artifacts.
+3. Run the baseline suite and numerical verification described in [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md).
+4. Submit a pull request with an explanation of the physical/statistical assumptions, before/after test evidence and reproducibility commands.
+5. Label post-hoc analyses as such. Never present a model selected after inspecting held-out data as prospectively registered.
+
+## Scientific standards
+
+- Distinguish an exact mathematical statement *within a specified model* from empirical validation, operational advice and publication status.
+- Report adverse results, uncertainty bounds, units, effective numbers of independent physical systems and sensitivity to assumptions.
+- Compare independent test sets at the physical-system level where applicable; prevent future-data leakage.
+- Document external sources and license restrictions. Do not include proprietary telemetry, export-controlled data or personal credentials.
+- Disclose material computational assistance accurately. Automated code or text generation is not an independent scientific reviewer; the submitting contributor is accountable for tests and claims.
+- Do not edit past commit history to obscure erroneous results, failed tests or external feedback.
+
+## Pull request checklist
+
+- [ ] Changes are scoped and technically justified.
+- [ ] `python -m unittest discover -s tests -v` passes.
+- [ ] `python verify_frozen_forecasts.py` passes.
+- [ ] No original `forecast/*.json` bytes or scoring definitions are silently altered.
+- [ ] Claims match the supplied evidence and are qualified where necessary.
+- [ ] Documentation and interface text are in English for new contributions.

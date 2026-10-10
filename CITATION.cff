@@ -1,14 +1,20 @@
 cff-version: 1.2.0
-message: "Please cite the frozen version DOI when one exists; this candidate has no DOI."
-title: "Vulcan: A Public-Data Probabilistic Aerospace Risk & Economic Decision Laboratory"
-authors:
-  - name: "AUTHOR IDENTITY PENDING PUBLIC CONFIRMATION"
-version: "0.1.0-rc1"
+message: "Please cite a specific commit or verified archived release of this software."
+title: "Project Vulcan: Probabilistic Decision Analysis under Aerospace Uncertainty"
 type: software
-abstract: "Illustrative public-data Bayesian risk-and-decision model with a prospective LV-01 forecast; NOT a validated safety estimate. Unpublished candidate, no independent timestamp."
+authors:
+  - name: "Project Vulcan contributors"
+repository-code: "https://github.com/MedeiroszJoao/Project-Vulcan"
+url: "https://github.com/MedeiroszJoao/Project-Vulcan"
+abstract: >-
+  Reproducible research software for scenario-conditional Bayesian decision
+  analysis, numerical verification, prospective public-signal scoring protocols
+  and separated experimental forecast-method benchmarks. This project is not
+  a calibrated aerospace safety or launch-reliability model.
 keywords:
   - Bayesian decision analysis
-  - expected value of information
-  - aerospace risk
-  - prospective forecast candidate
-  - reliability
+  - value of information
+  - uncertainty quantification
+  - scientific computing
+  - aerospace systems
+license: MIT

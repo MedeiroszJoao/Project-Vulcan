@@ -1,66 +1,80 @@
 # Project Vulcan
+**Probabilistic decision analysis under uncertainty in aerospace operations**
 
-Public-data Bayesian decision and prospective forecast laboratory.
-**Illustrative assumptions, not a validated launch safety estimate.**
+[Academic overview](docs/APPLICATION_BRIEF.md) · [Technical portfolio](docs/RECRUITER_BRIEF.md) · [Research methods](docs/RESEARCH_OVERVIEW.md) · [English protocol](docs/en/FORECAST_PROTOCOL.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [3D explorer](visualization/README.md)
 
-- [Executive brief](docs/EXECUTIVE_BRIEF.md)
-- [Forecast protocol](docs/FORECAST_PROTOCOL.md)
-- [Primary forecast](forecast/reference.json)
-- [Technical specification](SPEC.md)
-- [Public source scope](docs/PUBLIC_SOURCE_SCOPE.md)
+Project Vulcan is an independent research-software study of a difficult decision: **when does observing an additional flight provide enough information to justify postponing a hypothetical launch procurement decision?**
 
-Local verification: 42 tests passed. Public CI status appears in Actions;
-no successful remote run or DOI is assumed. Authorship and licensing pending.
+The project combines Bayesian inference, value-of-information calculations, exact numerical integration, scenario analysis, and a separately evaluated experimental forecasting benchmark. The launch-vehicle case is intentionally **illustrative**: public anomaly reports cannot calibrate the probability of a particular future mission's loss.
 
-# Vulcan public-data decision laboratory
+> **Scientific scope.** This repository is a reproducible decision-analysis laboratory, **not** a launch-readiness assessment, certified reliability model, flight-safety recommendation, or NASA/ULA/Northrop Grumman product. All unmeasured consequence probabilities and economic values are explicitly hypothetical.
 
-Exercício independente. Não é previsão validada, recomendação operacional ou certificação.
+## Research question
 
-Comece por `SPEC.md` e `results/RUN_REPORT.md`. O código produz quatro entregáveis:
-mapas de decisão, superfície EVSI, política por observação e sensibilidade/indeterminação.
-Todos os valores de engenharia sem medição pública são hipóteses declaradas.
+The model compares procuring an alternative launch provider immediately with waiting for a public observation from a further Vulcan flight. Its decision tree distinguishes physical anomaly counts, public reporting, configuration/revision assumptions, mission consequences, authorization, and opportunity costs. The choice is evaluated *conditional on declared assumptions*, not presented as operational advice.
 
-## Reproduzir
+The key methodological result is that **the same observed booster history and the same distribution of public flight reports can support opposite economic decisions** when the future mission's unobserved consequence model changes. The constructive counterexample and sharp conditional bounds are developed in [research PR #2](https://github.com/MedeiroszJoao/Project-Vulcan/pull/2).
 
-Python 3.12 foi usado nesta execução.
+## Evidence at a glance
+
+| Analysis | Observation | What it supports |
+| --- | --- | --- |
+| Original reference model (`main`) | At a hypothetical $10 million waiting cost: $35.750 million to reallocate now versus $44.471 million to wait. | Conditional decision arithmetic; **not** an actual procurement recommendation. |
+| Non-identifiability ([PR #2](https://github.com/MedeiroszJoao/Project-Vulcan/pull/2)) | Under a specified consequence-CPT simplex, the net benefit of waiting spans **−$15.000 million to +$10.620 million**. | No robust decision under that uncertainty set with the other assumptions held fixed. |
+| NASA battery benchmark ([PR #3](https://github.com/MedeiroszJoao/Project-Vulcan/pull/3)) | On four physical cells, the linear model's nominal 90% intervals covered **60.3%** of 257 serially correlated held-out observations. | Improved point error need not imply reliable predictive intervals. |
+| NASA out-of-cohort test ([PR #4](https://github.com/MedeiroszJoao/Project-Vulcan/pull/4)) | Eleven cells across heterogeneous experimental protocols; conclusions depend materially on aggregation and interval width. | Stress test of forecasting methods; **not** rocket propulsion validation. |
+
+**Status:** The original reference scripts and forecasts are on `main`. The research extensions above remain separate draft pull requests; they are *not* represented as merged features. This portfolio branch refines presentation and software verification independently of their scientific review. See [research status](docs/RESEARCH_OVERVIEW.md).
+
+## Figures
+
+| Decision sensitivity | Expected value of information |
+| --- | --- |
+| ![Structural sensitivity map](results/structural_envelope.png) | ![Expected value of sample information sensitivity](results/evsi_surface.png) |
+
+These figures describe specified hypothetical scenarios. Frequencies over the parameter grid are not posterior probabilities and have no direct rocket safety interpretation.
+
+## Reproduce the baseline
+
+Requires **Python 3.12**. Use an isolated environment and run from the repository root:
 
 ```bash
 python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v
+python verify_frozen_forecasts.py
 python run_analysis.py
-python run_audit_response.py
 python independent_numeric_check.py
 ```
 
-Sem números aleatórios ou Monte Carlo. Não requer chaves, serviços pagos ou acesso à internet após instalar dependências.
-O runtime completo desta execução está registrado em `environment.txt`.
+The baseline does not need proprietary telemetry. A full workflow and environment notes are in [reproducibility](docs/REPRODUCIBILITY.md). The NASA test data are **not** bundled with the core repository; experimental branches identify their external sources and pin input hashes.
 
-## Estado
+## Repository map
 
-- Especificação e execução disponíveis; nada publicado em GitHub/Zenodo.
-- Resultados ilustrativos; a região de robustez é relativa à grade explicitada.
-- Git local e checksums não provam anterioridade pública.
-- `docs/FREEZE_CHECKLIST.md` contém as verificações para publicação.
-- `data/` contém tabelas factuais e cenário. `evidence/` contém recibos da pesquisa e hashes.
-- Não misture os ajustes contábeis EAC com custo de perda ou atraso da missão.
+```text
+src/                 probabilistic model, operations, scoring
+tests/               model and prospective-protocol checks
+data/                public source tables and scenario inputs
+forecast/            five preserved candidate prediction objects
+results/             generated analyses, plots and reference output
+docs/                methodology, limitations and scientific records
+evidence/            source manifests and dated review artifacts
+visualization/       explanatory interactive model (not CAD)
+.github/workflows/   automated regression checks
+```
 
-Os arquivos não afirmam que o LV-01 está usando a revisão modificada. MM é uma hipótese na figura de referência;
-HH, HM, MH e revisão incerta estão na sensibilidade.
+Start with [research overview](docs/RESEARCH_OVERVIEW.md), the [English model specification](docs/en/MODEL_SPECIFICATION.md), [prospective protocol](docs/en/FORECAST_PROTOCOL.md), [architecture](docs/SOFTWARE_ARCHITECTURE.md), and [reproducibility](docs/REPRODUCIBILITY.md). The original working papers (`SPEC.md` and `docs/TECHNICAL_NOTE.md`) remain unchanged as historical records; selected archived texts are in Portuguese, and the English reader guides do not retrospectively change their scientific content.
 
-O mapa principal é `results/structural_envelope.png`. A resposta ponto a ponto está em `docs/AUDIT_RESPONSE.md`. A auditoria recebida foi preservada em `evidence/independent_audit/`; caminhos absolutos nos scripts recebidos não são portáveis. A cópia de execução na raiz altera apenas os caminhos.
+## Provenance and publication
 
-## Reprodução integrada e entrada de leitura
+The original five `forecast/*.json` files are preserved as bytes, with SHA-256 integrity verified independently of tolerant numerical re-derivation. A GitHub commit or successful CI run is not a DOI, independent peer review, or physical validation. A formally archived version should be announced **only after the repository release and any archival identifier are externally verified**.
 
-`bash reproduce.sh` executa testes, resultados originais, envelope estrutural,
-cenários operacionais, integração independente, previsões e scores hipotéticos.
-Comece por `docs/EXECUTIVE_BRIEF.md`, depois `docs/TECHNICAL_NOTE.md` e `SPEC.md`.
-`docs/FORECAST_PROTOCOL.md` fixa a validade e o corte do episódio ainda não publicado.
-O arquivo LICENSE é uma proposta pendente, não declaração de concessão confirmada.
-A CI está configurada; nenhum sucesso de CI remota é alegado sem execução observada.
+For source-level assumptions, see [data provenance](docs/DATA_PROVENANCE.md). For external experimental audits, follow the relevant pull-request commits and CI artifacts. See also [scientific limitations](docs/SCIENTIFIC_LIMITATIONS.md).
 
-## Adendo de integridade temporal da rodada atual
+## License and contributions
 
-Consulte `docs/ADVERSARIAL_ADDENDUM_2026-10-09.md`: correções em `VOID_CONFIGURATION`, `NOT_LAUNCHED` e evidência pós-liftoff. A previsão numérica primária não foi alterada. A CI pública, o DOI, a licença e a autoria ainda aguardam validação.
+Original project source code and documentation are made available under the [MIT license](LICENSE); separately sourced data, manufacturer documents, trademarks, and third-party assets retain their own terms. See [third-party notices](THIRD_PARTY_NOTICES.md) and [contributing](CONTRIBUTING.md). Citation metadata are in [CITATION.cff](CITATION.cff).
+
+**Independent student research software. No affiliation or endorsement by NASA, ULA, Blue Origin, Northrop Grumman, or other organizations mentioned.**
