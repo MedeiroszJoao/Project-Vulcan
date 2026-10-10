@@ -1,6 +1,6 @@
 # LV-01 prospective observation and scoring protocol — English reader version
 
-**Status:** English reference translation prepared after the original 9 October 2026 research draft. The controlling historical specification is [docs/FORECAST_PROTOCOL.md](../FORECAST_PROTOCOL.md); this guide does not alter the five original candidate forecast JSON files or retroactively establish publication or pre-registration.
+**Status:** English reference translation prepared after the original 9 October 2026 research draft. The [full English translation of the original dated protocol](../FORECAST_PROTOCOL.md) is authoritative for reproducing the historical coding rules. This shorter guide and the full translation do not alter any frozen candidate forecast JSON or retroactively establish a publication or pre-registration timestamp.
 
 ## Episode and validity
 

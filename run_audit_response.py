@@ -32,8 +32,8 @@ for a,b in zip(rows,received):
 summary={v:int((status==i).sum()) for i,v in enumerate(labels)}
 fig,ax=plt.subplots(figsize=(10,6),layout='constrained')
 im=ax.pcolormesh(losses,delays,status,cmap=ListedColormap(['#456388','#1e9c7a','#f1ab4d','#cccccc']),vmin=-.5,vmax=3.5)
-c=fig.colorbar(im,ax=ax,ticks=[0,1,2,3]);c.ax.set_yticklabels(['Realocar em todos','Aguardar em todos','Discordância','Limiar'])
-ax.set(xlabel='Consequência de perda (US$ milhões)',ylabel='Custo de aguardar (US$ milhões)',title='Envelope dos 360 cenários originais\nHipóteses ilustrativas; não estima segurança do Vulcan')
+c=fig.colorbar(im,ax=ax,ticks=[0,1,2,3]);c.ax.set_yticklabels(['Reallocate in all','Wait in all','Model disagreement','Near threshold'])
+ax.set(xlabel='Loss consequence (USD million)',ylabel='Incremental waiting cost (USD million)',title='Structural sensitivity across 360 scenarios\nIllustrative assumptions; not a rocket safety estimate')
 fig.savefig(OUT/'structural_envelope.png',dpi=160);plt.close(fig)
 # One-factor physics stress tests, separate from the original 360 envelope.
 controls=[]
@@ -65,7 +65,7 @@ print((OUT/'audit_summary.json').read_text())
 
 report=Path('results/RUN_REPORT.md')
 text=report.read_text()
-marker='\n## Resposta executada à auditoria independente'
+marker='\n## Original independent-audit response'
 text=text.split(marker)[0]
-text+=marker+'\n\nMapa principal: `structural_envelope.png`: 2.775 células realocar em todos, 336 discordância, zero aguardar em todos os 360 cenários. Envelope recebido reproduzido numericamente.\n\nExtensões: 432 cenários operacionais e 12 controles físicos/observacionais separados. A janela de planejamento de M* passa a 15/01–15/03/2027; a referência acima preserva as hipóteses antigas como teste de regressão. Não confundir os resultados.\n\n42 testes passaram, incluindo pgmpy. Integração adaptativa independente recebida executável em `independent_numeric_check.py`. Consulte `docs/AUDIT_RESPONSE.md` para limites e alterações. Não há release pública nem DOI.\n'
+text+=marker+'\n\nMain figure: `structural_envelope.png` records 2,775 reallocate-in-all cells, 336 model-disagreement cells, and no wait-in-all cells across the specified 360 scenarios. The previously submitted numerical envelope is reproduced.\n\nExtensions: 432 operational scenarios and 12 separately varied physics/observation controls. The newer M* planning window spans January 15–March 15, 2027; the fixed reference above retains its earlier assumptions for regression checks. These should not be conflated.\n\nThe original independent review logged 42 passing tests, including pgmpy. That is a historical claim, not a current CI test count. An independently submitted adaptive quadrature checker is available at `independent_numeric_check.py`. See `docs/AUDIT_RESPONSE.md` for limits and corrections. No archived DOI is claimed.\n'
 report.write_text(text)

@@ -1,48 +1,45 @@
-# Revisão adversarial do pacote
+# Adversarial Review of the Research Package
 
-Esta revisão foi feita no mesmo processo que implementou o modelo; não é revisão externa independente.
+*English translation of the original prepublication review, which was conducted within the same project process and **was not an independent external review**.*
 
-## O que foi corrigido antes da execução
+## Issues addressed before initial execution
 
-| Risco | Tratamento |
-|---|---|
-| Tratar Beta contínua como nó discreto exato | Integração polinomial Gauss–Jacobi, ordem e teste de convergência explícitos |
-| Usar média de p antes de prever seis motores | Integração preserva a incerteza de p compartilhada |
-| EVSI negativo por contar espera/autorização | EVSI puro e ganho líquido são métricas distintas |
-| Revisão desconhecida como hardware real | Mistura sobre HH/HM/MH/MM |
-| Sucesso orbital como prova de motor limpo | CPT de observação com falhas de detecção e divulgação |
-| Transferir compensação LEO para GEO | Tabelas distintas por missão; o resultado ainda pode informar p indiretamente |
-| Passar 32 sucessos Atlas por 32 boosters Vulcan | Herança separada e descontada, observabilidade assumida expressamente |
-| Inferir custo do atraso de um prazo Vega-C | Cenários de dias separados de custo diário e penalidade |
-| Sucesso de testes de software como validação física | Todas as CPTs de engenharia continuam hipóteses |
-| Média entre modelos não identificáveis | Cenários estruturais reportados separadamente |
+| Risk | Treatment |
+| --- | --- |
+| Representing continuous Beta uncertainty as an exact discrete node | Gauss–Jacobi integration with explicit quadrature order and convergence checks |
+| Replacing a shared uncertain anomaly rate by its mean before predicting six motors | Integration retains shared uncertainty |
+| Reporting a negative EVSI through mixing in waiting/approval costs | Pure EVSI and net waiting gain treated as distinct metrics |
+| Treating unknown revision as a physical type | Mixture over HH/HM/MH/MM |
+| Treating orbital success as proof of an anomaly-free motor | Observation CPT allows incomplete detection/disclosure |
+| Applying LEO compensation CPTs directly to GEO | Distinct mission consequence tables; public outcome may indirectly inform p |
+| Counting 32 Atlas successes as 32 direct Vulcan exposures | Discounted, separate heritage sensitivity with explicit observability assumptions |
+| Deriving waiting cost directly from a Vega-C historical delay | Delay-day, daily cost and window penalty assessed separately |
+| Treating passing software tests as physical validation | Engineering CPTs remain hypotheses |
+| Averaging unidentified models | Structural scenarios reported individually without arbitrary model weights |
 
-## Limitações que permanecem
+## Unresolved limitations
 
-- Somente quatro voos públicos; regime estacionário histórico é simplificação não verificável.
-- CPTs de severidade, consequência, observação e autorização não foram estimadas nem elicitadas de especialistas.
-- Não há identificação de lote ou revisão individual; HH/MM são cenários.
-- Os dois estados histórico/ineficaz são observacionalmente iguais quando incremento ineficaz=0.
-- Alternativa é abstrata; risco, disponibilidade e custo não representam um provedor real.
-- Transferência λ é cenário de dependência epistemológica, não coeficiente calibrado.
-- A falta de divulgação é independente na referência. Sinais públicos podem ser missing-not-at-random.
-- Oportunidade de slot alternativo não desaparece no modelo; somente custa mais depois.
-- Custos de atraso são agregados. A grade de dias não é uma distribuição probabilística do prazo real.
-- M* não tem estudo de desempenho ou integração; flag sem boosters permanece false.
-- A figura de indeterminação cobre dois priors com demais premissas fixas; não implica robustez universal.
-- pgmpy verifica a inferência sobre a mesma parametrização; não é um segundo modelo físico.
+- Only four publicly reported flights. A stationary historical rate is an unverified simplification.
+- Severity, consequence, observation and authorization CPTs were neither measured nor professionally elicited.
+- Individual motor lots/revisions cannot be identified; HH/MM remain cases.
+- Historic-equivalent and ineffective-correction regimes are observationally identical when the ineffective increment is zero.
+- The alternative provider is abstract; costs, reliability and launch access are not operator estimates.
+- Information-transfer relevance lambda is epistemic-dependence stress, not a calibrated physical parameter.
+- Reference disclosure missingness is independent; actual public reporting may be missing-not-at-random.
+- Alternative capacity does not disappear after a wait in the original model; it merely becomes more expensive.
+- Waiting costs are aggregated; the day grid is not a probability distribution over launch schedules.
+- No M* performance/integration feasibility analysis. Booster-free feasibility remains false.
+- The two-prior indeterminacy map does not establish universal robustness.
+- pgmpy checks inference under the *same assumptions*, not a physically independent model.
 
-## Fontes e anterioridade
+## Sources and chronology
 
-As páginas foram abertas/consultadas nesta sessão e capturas feitas pelo script. source_manifest.json
-registra horário real da coleta e hashes. O domínio SSC recusou captura HTML direta; há uma extração
-textual identificada separadamente, sem alegar equivalência a bytes originais.
-Capturas HTML preservam texto e marcação, mas não baixam automaticamente imagens/scripts externos.
-As páginas pertencem aos respectivos titulares; conferir direitos antes de republicar capturas integrais.
-Não existe release pública ou DOI neste pacote. Nenhum resultado futuro foi incorporado.
+Web pages were opened in the original session and captures were attempted by script. `evidence/source_manifest.json` records actual collection timestamps and hashes. The SSC domain rejected direct HTML capture; a separately identified textual extraction was used without pretending equivalence to original source bytes.
 
-## Gates antes de afirmar que o estudo está congelado
+Saved HTML contains page markup and text but may not include remotely linked images or scripts. Upstream copyright owners retain their rights; do not redistribute full captures without checking them.
 
-Revisão das premissas; confirmação de autoria/licença e destino; conferência final pré-voo;
-release pública com hash e data externa verificável. A especificação e o pacote técnico podem
-ser revisados agora, sem aguardar até 17/10.
+At the original cutoff the package had no published release or DOI, and no later flight outcomes had been incorporated.
+
+## Gates before claiming a prospective freeze
+
+Review CPT assumptions, confirm author/license/publication destination, recheck the real preflight situation, and issue an externally timestamped public release preserving the registered forecast bytes. Methodology and code review can proceed independently of the planned October 17 target.

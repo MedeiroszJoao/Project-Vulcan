@@ -1,21 +1,21 @@
 flowchart TD
-    H["Histórico público"] --> P["Taxa p e hipótese técnica"]
-    R["Revisões LV e M*"] --> X["Vínculo de transferência"]
+    H["Public launch reports"] --> P["Baseline anomaly risk p and technical assumptions"]
+    R["LV and M* hardware revisions"] --> X["Assumed information transfer"]
     P --> X
-    X --> AL["Anomalias LV"]
-    X --> AM["Anomalias M*"]
-    CL["Configuração LV"] --> ZL["Consequência LV"]
+    X --> AL["Observed-flight anomalies"]
+    X --> AM["Target-mission anomalies"]
+    CL["LV configuration"] --> ZL["LV mission consequences"]
     AL --> ZL
-    AL --> Y["Observação pública Y"]
+    AL --> Y["Public report Y"]
     ZL --> Y
-    O["Detecção e divulgação"] --> Y
-    Y --> G["Autorização G"]
-    Y --> D1{"Escolha após espera"}
+    O["Detection and disclosure"] --> Y
+    Y --> G["Approval G"]
+    Y --> D1{"Decision after waiting"}
     G --> D1
-    D0{"Aguardar ou realocar"} --> D1
-    AM --> ZM["Consequência M*"]
-    CM["Configuração M*"] --> ZM
-    D1 --> U["Custo esperado"]
+    D0{"Wait or reallocate now"} --> D1
+    AM --> ZM["Target-mission consequences"]
+    CM["M* configuration"] --> ZM
+    D1 --> U["Expected cost"]
     ZM --> U
     D0 --> U
-    C["Custos e atraso"] --> U
+    C["Costs and schedule impact"] --> U

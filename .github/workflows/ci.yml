@@ -29,6 +29,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Verify English-facing source documentation
+        run: python scripts/check_public_language.py
+
       - name: Unit and regression tests
         run: python -m unittest discover -s tests -v
 

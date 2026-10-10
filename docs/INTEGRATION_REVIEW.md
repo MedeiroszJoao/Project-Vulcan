@@ -1,57 +1,50 @@
-# Revisão integrada do candidato prospectivo — 09/10/2026
+# Integration Review of the Prospective Forecast Candidate — October 9, 2026
 
-**Resultado: candidato tecnicamente reproduzido; congelamento público pendente.**
+*Dated technical review, translated into English. Statements about unavailability of a GitHub repository refer to that particular earlier review session.*
 
-O pacote recebido acrescenta a previsão probabilística e os scores necessários à série prospectiva. Seu núcleo, porém, antecedia as correções operacionais da auditoria. A integração preserva ambas as contribuições e mantém os originais recebidos como evidência.
+**Historical result: candidate numerically reproduced; independent public forecast registration pending.**
 
-## O que foi conferido e corrigido
+The submitted package introduced the scoreable probabilistic prediction. Its decision core predated the operational audit corrections. The integration preserved both contributions and retained the submitted originals as evidence.
 
-| Ponto | Resultado |
-|---|---|
-| Limiar econômico | US$1,279001 milhão reproduzido somente na referência original |
-| Arrependimento máximo na grade original | Realocar: US$0,744 milhão; aguardar: US$15 milhões, sem generalização além da grade |
-| Previsão de Y | PMF principal reproduzida; modelo hipotético MM, sem alegação de calibração |
-| K físico | Publicado como latente, expressamente não pontuado neste episódio |
-| Scores | Brier soma [0,2], log loss em nats, evento de probabilidade zero sem clipping |
-| Validade | Primeiro LV-01 na configuração nominal depois do registro e antes de 01/01/2027 UTC |
-| Adiamentos | Preservam primária dentro da validade; não autorizam substituição seletiva |
-| Corte | Fim da 14ª data UTC após liftoff, codificação tardia permitida só com fontes anteriores |
-| Integridade | Hash da previsão registrada e dos snapshots checados; publicação externa não autenticada offline |
-| Testes | 37 passaram após instalar pgmpy; comando de reprodução completo executado |
-| Correções operacionais | Mantidas: informação em G, slot, reserva, prazo, fallback e janela de 2027 |
-| Documentação | Resumo, nota técnica, SPEC e protocolo harmonizados; licenciamento ainda proposto |
+## Findings and checks
 
-## Leitura correta da contribuição
+| Item | Review result |
+| --- | --- |
+| Economic break-even point | USD 1.279001 million, reproduced only for the old fixed-slot reference |
+| Maximum regret in original grid | Reallocate: USD 0.744 million; wait: USD 15 million; no claim outside the grid |
+| Y forecast | Four-state reference PMF reproduced; MM revision remains hypothetical |
+| Latent physical K | Published as unobserved, deliberately **unscored** |
+| Proper scoring | Multiclass Brier sum [0,2], log loss in nats, zero-probability outcomes without clipping |
+| Episode eligibility | First qualifying nominal LV-01 after independent publication, before 2027-01-01 UTC |
+| Delays | Keep original primary prediction within validity; never substitute retrospectively |
+| Evidence cutoff | End of the 14th subsequent UTC date; code later only against earlier evidence |
+| Integrity | Stored forecast and snapshot hashes checked locally; external publication not authenticated offline |
+| Historical tests | 37 passing after installing pgmpy; complete reproduction reported |
+| Operational extensions | Informative approval G, slot uncertainty, reservation, integration, fallback and 2027 planning window |
+| Documents | SPEC, summary, technical note and protocol harmonized; license remained a proposal |
 
-O estudo entrega uma previsão probabilística pontuável e uma decisão condicionada a hipóteses. Não entrega evidência de acurácia antes do voo. Mesmo depois dele, um único score não estabelece calibração, nem um evento improvável refuta sozinho uma distribuição de suporte positivo.
+## Correct interpretation
 
-A PMF primária permanece `[0.5973632855, 0.2072166864, 0.0954200281, 0.1]` para limpo, anomalia com sucesso, perda/degradação e inconclusivo. O limiar de espera usa o modelo original com alternativa garantida; não deve ser vendido como conclusão das extensões de calendário e slot.
+The reference is a conditional probabilistic candidate and a decision under assumed economic and physical CPTs, not empirical evidence of its accuracy. A single subsequent proper score cannot establish calibration, and a low-probability event with positive assigned probability does not logically invalidate the distribution.
 
-Os 360 cenários estruturais, os 432 operacionais e os 12 controles físicos são experimentos distintos. Nenhuma contagem sobre cenários é probabilidade posterior de uma ação estar correta. O programa de G informativo é reduzido e altera também frequência de aprovação; não identifica separadamente o valor da telemetria privada.
+Primary Y PMF: `[0.5973632855, 0.2072166864, 0.0954200281, 0.1]` for clean, delivered-with-reported-anomaly, loss/degraded, and inconclusive. The original economic threshold assumed guaranteed backup availability and must not be presented as a result of the later operational planning scenarios.
 
-## Fontes metodológicas abertas nesta revisão
+The 360 structural, 432 operational and 12 physical-control scenarios are **separate experiments**, not a probability distribution over all models. A reduced informative-approval model affects both what is learned and the approval rate; it does not identify the value of real private telemetry.
+
+## References consulted during the review
 
 - Gneiting & Raftery (2007): https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf
-- NASA-STD-7009B, documento de 05/03/2024, ativo: https://standards.nasa.gov/standard/NASA/NASA-STD-7009
-- NASA-HDBK-7009B, documento de 03/02/2026, ativo: https://standards.nasa.gov/standard/NASA/NASA-HDBK-7009
+- NASA-STD-7009B (2024-03-05): https://standards.nasa.gov/standard/NASA/NASA-STD-7009
+- NASA-HDBK-7009B (2026-02-03): https://standards.nasa.gov/standard/NASA/NASA-HDBK-7009
 
-Essas referências sustentam terminologia e práticas de verificação; não conferem certificação NASA ao projeto.
+They provide terminology and model-credibility practices, not NASA certification.
 
-## O que falta
+## Outstanding at that date
 
-Revisão humana do protocolo de codificação e das premissas; identidade de autoria e licença; repositório público, release e timestamp/DOI de versão verificados. O arquivo CITATION.cff permanece rascunho. Nenhuma mensagem foi enviada a revisores e nenhum resultado externo foi publicado. EVPPI, pooling hierárquico e retrodições permanecem no roteiro, não são entregas concluídas.
+Human coding/CPT review; verified author and license; publicly authenticated version/timestamp and any actual DOI. `CITATION.cff` was then a draft. No messages to reviewers were sent. EVPPI, hierarchical pooling and hindcasting remained proposals, not delivered work.
 
+## Adversarial patch closure — October 9, 2026
 
-## Fechamento do patch adversarial — 09/10/2026
+The submitted patch was applied to the original Git checkout and full reproduction passed 42/42 tests, including pgmpy. All five prediction files matched the earlier Git commit and submitted archive byte for byte. `VOID_CONFIGURATION` became an unscored disposition; `NOT_LAUNCHED` required post-expiry documentary checks, and scored results needed post-liftoff sources. The Atlas path was corrected.
 
-O patch recebido foi aplicado ao repositório Git original e a reprodução completa
-foi executada: 42/42 testes, inclusive pgmpy. As cinco previsões mantêm os mesmos
-bytes do commit anterior e do ZIP recebido. VOID_CONFIGURATION agora gera um
-registro sem score; NOT_LAUNCHED exige verificação documental posterior à expiração;
-resultados pontuados exigem evidência pós-liftoff. O caminho Atlas foi corrigido.
-
-Isso valida os controles de consistência, não a veracidade dos documentos ou
-objetividade de cada VOID. Essa avaliação documental permanece humana. A conexão
-GitHub identifica MedeiroszJoao, mas retornou zero repositórios acessíveis. Nenhuma
-CI pública ou publicação ocorreu. Próximos dados necessários: URL do repositório,
-nome de autoria e decisão de licença para o código original.
+This only validates consistency checks, not the reliability of external evidence or each VOID determination. The review session's GitHub connection identified the account but reported no accessible repositories; that is **historical context**, not an assertion about present GitHub or CI status.

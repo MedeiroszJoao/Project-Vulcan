@@ -1,34 +1,38 @@
-# Vulcan — conferência independente dos arquivos anexados (09/10/2026)
+# Vulcan — Independent Review of Submitted Files (October 9, 2026)
 
-## Parecer
+*Translated review originally received in Portuguese. It reports an environment-specific snapshot, not current release status.*
 
-**Candidato prospectivo tecnicamente sólido como exercício, mas NÃO congelado/publicado.** A previsão e os scores possuem implementação reprodutível e o Wolfram reproduziu a distribuição de sete K e quatro Y com integração Beta racional. A verificação externa de pgmpy **não** foi reproduzida neste ambiente: 41 de 42 testes passaram; um falhou por dependência ausente. O material recebido registra 37 testes aprovados em outro ambiente, mas isso não substitui CI pública.
+## Verdict
 
-## Resultado central e suas limitações
+**Technically credible as a hypothetical prospective exercise, but not yet formally frozen or published at review time.** Model probabilities and proper-score implementations were reproducible. Wolfram replicated all seven K-count and four Y-category probabilities using rational Beta integration. The external pgmpy run was **not** reproduced in that audit environment: 41 of 42 tests passed, and one failed for a missing dependency. A different environment reported 37 passing tests; that was not a substitute for public continuous integration.
 
-O modelo hipotético (MM, e=.1, P(Θ)=(.2,.6,.2), Beta(3,11), n=6) produz P(Y)=(.5973632855118782,.2072166863854239,.09542002810269795,.1). O limiar de espera US$ 1.279000842 mi vale apenas para a referência sem incerteza operacional. Os 360 cenários estruturais, 432 operacionais e 12 testes de física são conjuntos separados; suas contagens não têm interpretação probabilística, nem estabelecem segurança do lançador.
+## Numerical scope and limitations
 
-## Problemas corrigidos sem alterar a previsão
+With assumed MM hardware, effectiveness multiplier e=0.1, regime weights (0.2,0.6,0.2), Beta(3,11), and six boosters, the hypothetical model yields P(Y) = (0.5973632855118782, 0.2072166863854239, 0.09542002810269795, 0.1). A waiting-cost threshold of **USD 1.279000842 million** belongs to the fixed-slot reference alone.
 
-1. O protocolo dizia VOID_CONFIGURATION, mas o scorer não registrava o resultado; ele agora produz uma disposição sem score e exige divergência física documentada após o liftoff.
-2. NOT_LAUNCHED agora exige publicação verificável ao menos após a expiração; um agendamento antigo não comprova não lançamento até o fim do intervalo.
-3. Um resultado de voo pontuado requer ao menos uma evidência com publicação depois do liftoff e antes do corte, evitando que uma página pré-voo seja usada sozinha para qualificar o resultado.
-4. Fonte Atlas V 2025–26 apontava para diretório errado.
+The 360 structural scenarios, 432 operational scenarios and 12 physics controls are separate grids. Their frequencies are not model probabilities and do not demonstrate actual launch safety.
 
-## Pendências relevantes
+## Problems corrected without changing the forecast
 
-- Validação humana da objetividade da regra de VOID para evitar anulação oportunista após conhecer desempenho; um perito externo deve confirmar incompatibilidade real de VC6L/seis boosters.
-- Auditoria externa de fontes datadas, completa com evidência de rastreabilidade temporal independente (o scorer não certifica que bytes foram públicos).
-- Reproduzir 42/42 numa instalação com pgmpy 1.1.2 e CI externa, licença e identidade de autor.
-- Publicar tag/release antes do voo e verificar DOI de versão no Zenodo.
-- Revalidação física de CPTs, revisão/lotes, sinal regulatório e calendário; previsão não é taxa de falha certificada.
+1. The scorer now represents `VOID_CONFIGURATION` as an unscored outcome, requiring documented post-liftoff hardware mismatch.
+2. `NOT_LAUNCHED` requires verifiable publication after expiry; a preflight schedule does not establish nonlaunch through the entire period.
+3. Scored mission outcomes require at least one source dated after liftoff and before the fixed T+14 evidence cutoff.
+4. Corrected an Atlas V 2025–26 source path.
 
-## Fontes oficiais e científicas
+## Remaining issues
+
+- Human validation of objective VC6L/six-booster VOID rules, preventing opportunistic invalidation after seeing mission performance.
+- External, independent time-traceable publication/source authentication; the offline scorer does not certify when the stated bytes became public.
+- Complete pgmpy 1.1.2 test reproduction with external CI; verify license and author identity.
+- Publish a versioned tag/release prospectively and verify any actual Zenodo version DOI.
+- Physically assess assumed consequence CPTs, real hardware revisions/lots, approval mechanics, and launch schedule. The modeled output is not a certified rocket failure rate.
+
+## Primary standards and methodological references
 
 - NASA-STD-7009B: https://standards.nasa.gov/standard/NASA/NASA-STD-7009
-- Handbook 2026: https://standards.nasa.gov/standard/NASA/NASA-HDBK-7009
-- Zenodo integração: https://help.zenodo.org/docs/github/enable-repository/
-- Release/DOI: https://help.zenodo.org/docs/github/archive-software/github-upload/
-- Gneiting & Raftery 2007: https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf
+- 2026 handbook: https://standards.nasa.gov/standard/NASA/NASA-HDBK-7009
+- Zenodo repository integration: https://help.zenodo.org/docs/github/enable-repository/
+- Archived release/DOI: https://help.zenodo.org/docs/github/archive-software/github-upload/
+- Gneiting & Raftery (2007): https://sites.stat.washington.edu/people/raftery/Research/PDF/Gneiting2007jasa.pdf
 
-Esta revisão é uma contribuição à garantia metodológica; não é aprovação NASA, recomendação de lançamento ou afirmação de erro físico em hardware ULA.
+This is a contribution to methodological assurance, **not** NASA approval, an operational launch recommendation, or a diagnosis of an actual ULA hardware fault.
