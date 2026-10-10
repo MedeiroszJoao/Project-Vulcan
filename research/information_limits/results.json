@@ -1,0 +1,1209 @@
+{
+  "units": "USD million",
+  "scope": "Controlled contraction, not expected value of future data; no physical calibration",
+  "policy_order": [
+    null,
+    [
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1
+    ]
+  ],
+  "vertices": [
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.001,
+        0.001
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.0,
+        0.999,
+        0.001
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.0,
+        0.998,
+        0.002
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.0,
+        0.999,
+        0.001
+      ],
+      [
+        0.0,
+        0.999,
+        0.001
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.0,
+        0.999,
+        0.001
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.001,
+        0.001
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.0,
+        0.998,
+        0.002
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.0,
+        0.998,
+        0.002
+      ],
+      [
+        0.0,
+        0.998,
+        0.002
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.0,
+        0.998,
+        0.002
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.998,
+        0.0,
+        0.002
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.999,
+        0.001
+      ],
+      [
+        0.0,
+        0.999,
+        0.001
+      ],
+      [
+        0.0,
+        0.999,
+        0.001
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.999,
+        0.001
+      ],
+      [
+        0.0,
+        0.999,
+        0.001
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.999,
+        0.001
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  ],
+  "grid": [
+    {
+      "precision": 14,
+      "consequence_radius": 1,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": 10.460237089117378,
+      "deterministic_regret": 10.460237089117378,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 9.597221857146463,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9159819409000641
+        },
+        {
+          "policy": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "weight": 0.08401805909993548
+        }
+      ],
+      "dual_gap": 1.9539925233402755e-14,
+      "max_constraint_violation": -1.7763568394002505e-15
+    },
+    {
+      "precision": 14,
+      "consequence_radius": 0.75,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": 3.7888142668306237,
+      "deterministic_regret": 3.7888142668306237,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 3.6088076680148053,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9467114144392239
+        },
+        {
+          "policy": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "weight": 0.05328858556077609
+        }
+      ],
+      "dual_gap": 4.440892098500626e-16,
+      "max_constraint_violation": 5.773159728050814e-15
+    },
+    {
+      "precision": 14,
+      "consequence_radius": 0.5,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -1.0603489909033073,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 14,
+      "consequence_radius": 0.25,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -4.981683168366416,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 14,
+      "consequence_radius": 0.1,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -7.225272762029157,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 14,
+      "consequence_radius": 0,
+      "wait_gain_min": -8.720999157804322,
+      "wait_gain_max": -8.720999157804322,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 28,
+      "consequence_radius": 1,
+      "wait_gain_min": -14.999999999999972,
+      "wait_gain_max": 10.22395309692768,
+      "deterministic_regret": 10.22395309692768,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 9.432024197201965,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9210697106371865
+        },
+        {
+          "policy": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "weight": 0.07893028936281098
+        }
+      ],
+      "dual_gap": 1.1901590823981678e-13,
+      "max_constraint_violation": 1.2754242106893798e-12
+    },
+    {
+      "precision": 28,
+      "consequence_radius": 0.75,
+      "wait_gain_min": -15.000000000000007,
+      "wait_gain_max": 3.282956543576759,
+      "deterministic_regret": 3.282956543576759,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 3.1594250961258954,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9555053549094573
+        },
+        {
+          "policy": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "weight": 0.04449464509054225
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 28,
+      "consequence_radius": 0.5,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -1.9259099683360432,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 28,
+      "consequence_radius": 0.25,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -6.136985787477585,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 28,
+      "consequence_radius": 0.1,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -8.54409360742271,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 28,
+      "consequence_radius": 0,
+      "wait_gain_min": -10.14883215405279,
+      "wait_gain_max": -10.14883215405279,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 70,
+      "consequence_radius": 1,
+      "wait_gain_min": -14.999999999999986,
+      "wait_gain_max": 10.067274028256648,
+      "deterministic_regret": 10.067274028256648,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 9.318955484289202,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.924222677107697
+        },
+        {
+          "policy": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "weight": 0.07577732289230299
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 3.552713678800501e-15
+    },
+    {
+      "precision": 70,
+      "consequence_radius": 0.75,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": 2.929709648948247,
+      "deterministic_regret": 2.929709648948247,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 2.838158556800334,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9611729787587152
+        },
+        {
+          "policy": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "weight": 0.03882702124127389
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 70,
+      "consequence_radius": 0.5,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -2.53789190976282,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 70,
+      "consequence_radius": 0.25,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -6.962664798647907,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 70,
+      "consequence_radius": 0.1,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -9.489944987396392,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 70,
+      "consequence_radius": 0,
+      "wait_gain_min": -11.17479844656205,
+      "wait_gain_max": -11.17479844656205,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 140,
+      "consequence_radius": 1,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": 10.01220841102738,
+      "deterministic_regret": 10.01220841102738,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 9.278580469962828,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9252902597435413
+        },
+        {
+          "policy": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "weight": 0.07470974025642303
+        }
+      ],
+      "dual_gap": 2.5579538487363607e-13,
+      "max_constraint_violation": -1.0125233984581428e-13
+    },
+    {
+      "precision": 140,
+      "consequence_radius": 0.75,
+      "wait_gain_min": -14.999999999999993,
+      "wait_gain_max": 2.807405234807483,
+      "deterministic_regret": 2.807405234807483,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 2.725921206694958,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9630680107496992
+        },
+        {
+          "policy": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "weight": 0.03693198925030092
+        }
+      ],
+      "dual_gap": 4.440892098500626e-16,
+      "max_constraint_violation": 9.325873406851315e-15
+    },
+    {
+      "precision": 140,
+      "consequence_radius": 0.5,
+      "wait_gain_min": -14.999999999999993,
+      "wait_gain_max": -2.7619018756848277,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 140,
+      "consequence_radius": 0.25,
+      "wait_gain_min": -14.999999999999993,
+      "wait_gain_max": -7.266732204168449,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 140,
+      "consequence_radius": 0.1,
+      "wait_gain_min": -14.999999999999986,
+      "wait_gain_max": -9.838989636730368,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 140,
+      "consequence_radius": 0,
+      "wait_gain_min": -11.553827925104976,
+      "wait_gain_max": -11.553827925104976,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 700,
+      "consequence_radius": 1,
+      "wait_gain_min": -14.999999999999993,
+      "wait_gain_max": 9.967053391167,
+      "deterministic_regret": 9.967053391167,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 9.245231036925103,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9261501574712792
+        },
+        {
+          "policy": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "weight": 0.07384984252872365
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 2.7355895326763857e-13
+    },
+    {
+      "precision": 700,
+      "consequence_radius": 0.75,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": 2.7066034973566033,
+      "deterministic_regret": 2.7066034973566033,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 2.632975670172035,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.964601991539983
+        },
+        {
+          "policy": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "weight": 0.035398008460016346
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 700,
+      "consequence_radius": 0.5,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -2.9495611085419426,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 700,
+      "consequence_radius": 0.25,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -7.522214585626472,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 700,
+      "consequence_radius": 0.1,
+      "wait_gain_min": -15.0,
+      "wait_gain_max": -10.132569380799382,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": 700,
+      "consequence_radius": 0,
+      "wait_gain_min": -11.87280591091465,
+      "wait_gain_max": -11.87280591091465,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": null,
+      "consequence_radius": 1,
+      "wait_gain_min": -14.999999999999986,
+      "wait_gain_max": 9.95560641561785,
+      "deterministic_regret": 9.95560641561785,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 9.236742652262812,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9263659281140606
+        },
+        {
+          "policy": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "weight": 0.07363407188594505
+        }
+      ],
+      "dual_gap": 1.7763568394002505e-15,
+      "max_constraint_violation": 5.471179065352771e-13
+    },
+    {
+      "precision": null,
+      "consequence_radius": 0.75,
+      "wait_gain_min": -14.999999999999986,
+      "wait_gain_max": 2.6807872052154806,
+      "deterministic_regret": 2.6807872052154806,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 2.6090994640972243,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 0.9649905411413527
+        },
+        {
+          "policy": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "weight": 0.03500945885864671
+        }
+      ],
+      "dual_gap": 4.440892098500626e-16,
+      "max_constraint_violation": -4.440892098500626e-16
+    },
+    {
+      "precision": null,
+      "consequence_radius": 0.5,
+      "wait_gain_min": -14.999999999999986,
+      "wait_gain_max": -2.997737852665182,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": null,
+      "consequence_radius": 0.25,
+      "wait_gain_min": -14.999999999999993,
+      "wait_gain_max": -7.587914408855646,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": null,
+      "consequence_radius": 0.1,
+      "wait_gain_min": -14.999999999999993,
+      "wait_gain_max": -10.208111975652493,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    },
+    {
+      "precision": null,
+      "consequence_radius": 0,
+      "wait_gain_min": -11.954910353517057,
+      "wait_gain_max": -11.954910353517057,
+      "deterministic_regret": 0.0,
+      "deterministic_policy_index": 0,
+      "mixed_regret": 0.0,
+      "mixture": [
+        {
+          "policy": null,
+          "weight": 1.0
+        }
+      ],
+      "dual_gap": 0.0,
+      "max_constraint_violation": 0.0
+    }
+  ],
+  "uniform_now_radius_brackets": {
+    "14": [
+      0.5597271107835695,
+      0.5597271108417772
+    ],
+    "28": [
+      0.602393401437439,
+      0.6023934014956467
+    ],
+    "70": [
+      0.6295949915074743,
+      0.629594991565682
+    ],
+    "140": [
+      0.6389782052719966,
+      0.6389782053302042
+    ],
+    "700": [
+      0.6466112821944989,
+      0.6466112822527066
+    ],
+    "None": [
+      0.6485380000667647,
+      0.6485380001249723
+    ]
+  },
+  "analytic_uniform_now_radii": {
+    "14": 0.5597271108041361,
+    "28": 0.6023934014561029,
+    "70": 0.6295949915348272,
+    "140": 0.6389782052966656,
+    "700": 0.6466112822139699,
+    "None": 0.6485380000744895
+  },
+  "quadrature_max_abs_errors": {
+    "14": 4.85722573273506e-17,
+    "28": 1.1102230246251565e-16,
+    "70": 2.220446049250313e-16,
+    "140": 1.1102230246251565e-16,
+    "700": 5.551115123125783e-17,
+    "None": 0.0
+  }
+}
