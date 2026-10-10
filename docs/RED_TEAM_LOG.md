@@ -25,7 +25,7 @@ Keep failures visible. New factual findings after flight belong in new dated ent
 | RT-17 | Atlas extension had two local dates labeled UTC | Factual error | Corrected ViaSat-3 F2 and Leo 6; attachments preserved |
 | RT-18 | CFF asserted MIT although license was only proposed | Metadata | Removed license assertion pending author's choice |
 
-| RT-19 | VOID_CONFIGURATION previsto no protocolo, não implementado como disposição explícita no score | Protocolo/código | CORRIGIDO no candidato revisado; requisito de descrição e evidência pós-lançamento; revisão humana exigida |
-| RT-20 | NOT_LAUNCHED aceitava evidência publicada antes da expiração para provar ausência no futuro | Verificabilidade | CORRIGIDO; exige um registro de status pós-expiração, sem pontuação |
-| RT-21 | O scorer admitia um documento pré-voo como única evidência de resultado T+14 | Proveniência | CORRIGIDO; exige ao menos evidência publicada depois do liftoff e antes do corte |
-| RT-22 | Fonte Atlas V 2025/26 apontava pasta errada (`docs/`) | Documentação | CORRIGIDO para `data/` |
+| RT-19 | VOID_CONFIGURATION specified in the protocol but not explicitly implemented in scoring | Protocol/code | FIXED for the reviewed candidate; requires documented mismatch and post-liftoff evidence; human review still required |
+| RT-20 | NOT_LAUNCHED originally accepted pre-expiry evidence to establish future nonlaunch | Verifiability | FIXED: post-expiry status evidence required, no score |
+| RT-21 | Scorer allowed a preflight document to serve as sole T+14 outcome evidence | Provenance | FIXED: require at least one qualifying item published between liftoff and observation cutoff |
+| RT-22 | Atlas V 2025–26 source referenced wrong directory (`docs/`) | Documentation | FIXED to `data/` |
