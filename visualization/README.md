@@ -14,7 +14,7 @@ Open [index.html](index.html) in a recent desktop or mobile browser with WebGL e
 
 The viewer is a **procedural illustration, not dimensionally certified CAD**. Public envelope dimensions guide overall proportions, but detailed nozzle profiles, stringers, pipes, separation interfaces, avionics fittings and payload geometry are not based on manufacturing drawings or measured vehicle hardware. The shown generic payload is **not** the Amazon Leo spacecraft. No fluid, structural, thermal or reliability solver is connected to the 3D mesh.
 
-The original numerical decision analysis lives separately in \`src/\` and \`forecast/\`. Do not interpret model color or geometry as measured risk. In the prospective decision model, the LV-01 scenario assumes VC6L and six boosters; changing the viewer configuration does not rerun the statistical experiment.
+The original numerical decision analysis lives separately in `src/` and `forecast/`. Do not interpret model color or geometry as measured risk. In the prospective decision model, the LV-01 scenario assumes VC6L and six boosters; changing the viewer configuration does not rerun the statistical experiment.
 
 ## Source and licensing
 

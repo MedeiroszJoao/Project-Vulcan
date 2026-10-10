@@ -83,7 +83,66 @@ button.action.primary{border-color:#c83c78;background:#92294f}
 (function () {
 "use strict";
 var byId = function (x) { return document.getElementById(x); };
-if (!window.THREE) { byId("fallback").style.display = "block"; return; }
+function staticFallback(message) {
+  var shell=byId("fallback");
+  shell.style.display="flex";
+  shell.style.inset="12% 10% 22%";
+  shell.style.padding="10px";
+  shell.style.alignItems="center";
+  shell.style.justifyContent="center";
+  shell.style.flexDirection="column";
+  shell.style.gap="8px";
+  var components=[
+    ["core","First-stage booster body","Approximate exterior envelope and panel details"],
+    ["engines","BE-4 engine pair","Two main engines; non-CAD geometry"],
+    ["srbs","GEM 63XL solids","External motors, current count controlled by configuration"],
+    ["centaur","Centaur V upper stage","Upper-stage tank and engine assembly"],
+    ["fairing","Payload fairing","Standard or long fairing envelope"],
+    ["payload","Representative payload","Generic spacecraft shape, not mission-specific"]
+  ];
+  function select(index){
+    var data=components[index], box=byId("component-info");box.textContent="";
+    var title=document.createElement("h2");title.className="name";title.textContent=data[1];
+    var para=document.createElement("p");para.className="info";para.textContent=data[2]+". Static view: WebGL unavailable.";
+    box.appendChild(title);box.appendChild(para);
+    Array.from(byId("parts").children).forEach(function(n,i){
+      n.classList.toggle("selected",i===index);
+    });
+  }
+  components.forEach(function(c,index){
+    var item=document.createElement("div");item.className="part";
+    var btn=document.createElement("button");btn.className="choose";btn.textContent=c[1];
+    btn.onclick=function(){select(index);};
+    item.appendChild(btn);byId("parts").appendChild(item);
+  });
+  function draw(){
+    var n=Number(byId("srb-count").value),length=Number(byId("fairing-length").value);
+    var boosters=n?'<rect x="101" y="240" width="29" height="148" rx="11" fill="#bec8d2" stroke="#eef3f7"/><path d="M101 241 L115 214 L130 241" fill="#e1e6eb" stroke="#eef3f7"/><rect x="230" y="240" width="29" height="148" rx="11" fill="#bec8d2" stroke="#eef3f7"/><path d="M230 241 L245 214 L259 241" fill="#e1e6eb" stroke="#eef3f7"/>':'';
+    var upper=length>16?33:68;
+    shell.innerHTML='<div class="eyebrow">Two-dimensional reference view</div>'+
+      '<svg viewBox="0 0 360 440" width="100%" height="80%" role="img" aria-label="Simplified profile of Vulcan Centaur" xmlns="http://www.w3.org/2000/svg">'+
+      '<defs><linearGradient id="steel" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#748495"/><stop offset=".45" stop-color="#e2e6ea"/><stop offset="1" stop-color="#80909f"/></linearGradient></defs>'+
+      '<rect x="139" y="189" width="82" height="207" fill="url(#steel)" stroke="#c7cdd6"/>'+
+      '<rect x="139" y="120" width="82" height="70" fill="#ced5db" stroke="#fff"/>'+
+      '<rect x="139" y="'+upper+'" width="82" height="'+(123-upper)+'" fill="#e5eaf0" stroke="#fff"/>'+
+      '<path d="M139 '+upper+' L180 4 L221 '+upper+' Z" fill="#eef0f4" stroke="#fff"/>'+
+      '<rect x="148" y="392" width="27" height="18" fill="#707f8d"/><rect x="185" y="392" width="27" height="18" fill="#707f8d"/>'+
+      '<path d="M151 411 L166 439 L177 411 M184 411 L194 439 L209 411" stroke="#b1bbc5" fill="none" stroke-width="4"/>'+
+      boosters+
+      '<g fill="none" stroke="#6c7685" stroke-width="1.2" opacity=".8"><path d="M139 231H221 M139 276H221 M139 319H221 M139 364H221"/></g>'+
+      '<g font-family="system-ui" font-size="13" fill="#f4a2c1"><text x="9" y="24">'+n+' GEM 63XL</text><text x="222" y="105">Fairing</text><text x="224" y="194">Centaur V</text><text x="224" y="341">Booster</text></g></svg>'+
+      '<div style="font-size:11px;color:#b2becd;text-align:center;max-width:380px">'+message+
+      '. Simplified vector profile; use a WebGL-capable browser for 3D.</div>';
+    byId("configuration").textContent="VC"+n+(length>16?"L":"S");
+    byId("height-label").textContent="Illustrative overall height: ~"+(46.1+length).toFixed(1)+" m";
+  }
+  byId("srb-count").onchange=draw;
+  byId("fairing-length").onchange=draw;
+  ["explode","wire","spin","reset","isolate","hide","restore"].forEach(function(id){byId(id).disabled=true;});
+  draw();select(0);
+}
+
+if (!window.THREE) { staticFallback("Three.js did not load"); return; }
 var THREE = window.THREE;
 var stage = byId("stage"), renderer, scene, camera, vehicle, raycaster, pointer, parts, ids, selected, isolated, rotationEnabled = true, wireframe = false;
 var numberOfSRBs = 2, fairingLength = 15.5, explodeTarget = 0, exploded = 0, mouseDown = false, moved = false, lastX = 0, lastY = 0;
@@ -91,7 +150,7 @@ var cameraSettings = {radius:142, theta:0.95, phi:1.31};
 var center = new THREE.Vector3(0,28.0,0);
 try {
   renderer = new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:"high-performance"});
-} catch (err) { byId("fallback").style.display="block"; return; }
+} catch (err) { staticFallback("WebGL could not be initialized"); return; }
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,2));
 renderer.outputEncoding=THREE.sRGBEncoding;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;
