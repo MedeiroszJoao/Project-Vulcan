@@ -1,6 +1,6 @@
 {
-  "base_commit": "8f85b9a7573352e72b8f157786656d4f306d388c",
-  "verification_timestamp_utc": "2026-10-10T21:34:15.859773+00:00",
+  "base_commit": "9d1c7d8299ec1793c4aff29729e5100d8ac87d3b",
+  "verification_timestamp_utc": "2026-10-10T21:50:44.885646+00:00",
   "timestamp_scope": "Local execution clock, not external proof of prospective registration",
   "delivery_commit": "Read the containing Git commit; omitted here to avoid self-reference",
   "python": "3.12.14",
@@ -12,9 +12,9 @@
   },
   "tests": {
     "command": "python -m unittest discover -s tests -v",
-    "passed": 49,
+    "passed": 50,
     "failed": 0,
-    "log": "evidence/package_corrections/unit_tests.log"
+    "log": "research/information_limits/tests.log"
   },
   "reproduction": [
     {
@@ -50,7 +50,7 @@
       "exit_code": 0
     }
   ],
-  "reproduction_environment": "Temporary copy of corrected source; generated outputs not substituted for archived outputs",
+  "reproduction_environment": "Eight-script reproduction entries below are inherited evidence from PR #8, not rerun for this extension. The extension grid and full 50-test suite were freshly executed.",
   "forecast_bytes_preserved": true,
   "forecast_sha256": {
     "historical_all.json": "ab84b1e4f60657779413a315b2dca98cff4bfc20604daaa70001db5568fd7cd3",
@@ -64,5 +64,12 @@
   "public_ci_verified": false,
   "public_registration_verified": false,
   "doi": null,
-  "review_scope": "AI-assisted implementation and computational verification; not human external peer review"
+  "review_scope": "AI-assisted implementation and computational verification; not human external peer review",
+  "research_extension": {
+    "protocol_commit": "fdcfa78dec39bcec99582ec065f11154c91746cc",
+    "grid_cells": 36,
+    "command": "python -m research.information_limits.experiment",
+    "result_sha256": "4263f40840e9b93f235ab1c3be42f617ff479225e98e92f5066f6b228c863524",
+    "status": "exploratory; no novelty established"
+  }
 }
