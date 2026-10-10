@@ -10,9 +10,9 @@ Code: Python 3.12, NumPy, SciPy, pgmpy, Matplotlib, unit tests and GitHub Action
 
 ## What an interviewer can inspect
 
-1. \`src/model.py\` and \`src/prospective.py\`: probabilistic inference, scenario conditioning and separation of latent events from public reporting.
-2. \`src/operations.py\`: explicit feasibility and decision costs.
-3. \`tests/\`, \`verify_frozen_forecasts.py\` and the Actions workflow: regression checks, exact SHA-256 artifact integrity and numerical tolerance.
+1. `src/model.py` and `src/prospective.py`: probabilistic inference, scenario conditioning and separation of latent events from public reporting.
+2. `src/operations.py`: explicit feasibility and decision costs.
+3. `tests/`, `verify_frozen_forecasts.py` and the Actions workflow: regression checks, exact SHA-256 artifact integrity and numerical tolerance.
 4. [Draft PR #2](https://github.com/MedeiroszJoao/Project-Vulcan/pull/2): structural non-identifiability witnesses and conditional decision bounds.
 5. [Draft PRs #3–4](https://github.com/MedeiroszJoao/Project-Vulcan/pulls): held-out laboratory prediction benchmarks, calibration failures and critical examination of aggregation.
 

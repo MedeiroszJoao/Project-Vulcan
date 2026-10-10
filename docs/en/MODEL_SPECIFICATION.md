@@ -14,11 +14,11 @@ The original fixed-slot reference is separate from later calendar/availability e
 
 The input history uses four reported Vulcan booster exposure/count pairs:
 
-\`\`\`text
+```text
 (n,k) = (2,0), (2,1), (4,0), (4,1)
-\`\`\`
+```
 
-Here \`n\` denotes boosters flown and \`k\` publicly reported relevant booster anomalies; it does **not** imply that unreported problems were physically absent. With conditionally independent exposures, perfect reporting, exchangeability and a uniform prior:
+Here `n` denotes boosters flown and `k` publicly reported relevant booster anomalies; it does **not** imply that unreported problems were physically absent. With conditionally independent exposures, perfect reporting, exchangeability and a uniform prior:
 
 \[
 p\mid D \sim \operatorname{Beta}(3,11).
@@ -32,7 +32,7 @@ Historic detection scenarios allow detection sensitivity below one; external Atl
 
 The latent functional regimes are *historical-equivalent*, *effective correction*, and *ineffective correction*. These are mathematical hypotheses, not verified manufacturer revision classes.
 
-For historical revision, the probability is \`p\`. For modified revision, the illustrative per-booster probability \`q\` is
+For historical revision, the probability is `p`. For modified revision, the illustrative per-booster probability `q` is
 
 \[
 q_\mathrm{equivalent}=p,\qquad
@@ -40,13 +40,13 @@ q_\mathrm{effective}=e p,\qquad
 q_\mathrm{ineffective}=p+(1-p)u.
 \]
 
-The reference uses \`e=0.10\` and \`u=0\`, with sensitivity variations. The probabilities assigned to these regimes are scenario weights, not frequencies learned from the four historic flights.
+The reference uses `e=0.10` and `u=0`, with sensitivity variations. The probabilities assigned to these regimes are scenario weights, not frequencies learned from the four historic flights.
 
 The model distinguishes HH, HM, MH and MM revision pairs, corresponding to original/modified status across observed LV-01 and target M*. A shared-parameter relevance setting \(\lambda\) varies whether their uncertain risks are coupled under a same-revision assumption. Unknown revisions represent uncertainty about true states, not a third physical revision.
 
 ## 4. Shared anomalies and consequences
 
-With \`n\` boosters, underlying per-booster probability \`q\` and stress-dependence parameter \(\rho\), the counted anomalies follow the reference mixture
+With `n` boosters, underlying per-booster probability `q` and stress-dependence parameter \(\rho\), the counted anomalies follow the reference mixture
 
 \[
 P(K=k\mid q,\rho)=(1-\rho)\,\mathrm{Binomial}(k;n,q)
@@ -55,17 +55,17 @@ P(K=k\mid q,\rho)=(1-\rho)\,\mathrm{Binomial}(k;n,q)
 
 The correlated term is a deliberately extreme shared-shock stress test. It is **not** a quantified nozzle fault tree or estimated common-cause physics.
 
-Each flight has illustrative conditional-probability tables mapping \`K\` and severity hypotheses to successful, degraded or lost delivery. The observed next flight (LV-01) and later target (M*) use distinct consequence tables. **Every unmeasured consequence probability is an analyst scenario assumption**. Reported mission survival despite an SRB anomaly cannot identify the exact loss probability for a different payload or mission profile.
+Each flight has illustrative conditional-probability tables mapping `K` and severity hypotheses to successful, degraded or lost delivery. The observed next flight (LV-01) and later target (M*) use distinct consequence tables. **Every unmeasured consequence probability is an analyst scenario assumption**. Reported mission survival despite an SRB anomaly cannot identify the exact loss probability for a different payload or mission profile.
 
 ## 5. Public observation model
 
-Physical events \`K\` are not publicly known with certainty. An observation mechanism generates one of four exclusive reports: \`clean_report\`, \`anomaly_report\`, \`loss_or_degraded_report\`, or \`inconclusive\`. The reference disclosure and detection assumptions are both 0.90, with sensitivity scenarios. An apparently clean public report **does not** establish \`K=0\`.
+Physical events `K` are not publicly known with certainty. An observation mechanism generates one of four exclusive reports: `clean_report`, `anomaly_report`, `loss_or_degraded_report`, or `inconclusive`. The reference disclosure and detection assumptions are both 0.90, with sensitivity scenarios. An apparently clean public report **does not** establish `K=0`.
 
 The forecast to be scored refers to this public reporting process at a defined T+14-day cutoff, conditional on the eligible launch taking place. The physical anomaly-count distribution is a separate latent quantity and is not assigned a primary score without a defensible physical counting protocol.
 
 ## 6. Decision mathematics
 
-Let \`L\` be a hypothetical total loss consequence (including the modeled payload value), \`d\` the fraction applied to degradation and \`C_D\` the incremental waiting cost. Let \`C_alt\` be the hypothetical alternative-provider expected incremental cost, and \`g_y\` the chance the Vulcan path is admissible after observing public signal \`y\`.
+Let `L` be a hypothetical total loss consequence (including the modeled payload value), `d` the fraction applied to degradation and `C_D` the incremental waiting cost. Let `C_alt` be the hypothetical alternative-provider expected incremental cost, and `g_y` the chance the Vulcan path is admissible after observing public signal `y`.
 
 The reduced fixed-slot reference calculates
 
@@ -81,9 +81,9 @@ g_y\min(C_\mathrm{Vulcan}(y),C_\mathrm{alt}+\mathrm{late\ switch\ cost})
 +(1-g_y)(C_\mathrm{alt}+\mathrm{late\ switch\ cost})\right].
 \]
 
-The **net gain to waiting** is \`C_alt - C_wait\`, which may be negative. It is **not** the same as pure expected value of sample information (EVSI), where information is free and available actions remain fixed. Positive EVSI does not imply waiting is economically optimal.
+The **net gain to waiting** is `C_alt - C_wait`, which may be negative. It is **not** the same as pure expected value of sample information (EVSI), where information is free and available actions remain fixed. Positive EVSI does not imply waiting is economically optimal.
 
-The fixed-slot reference gives \`C_alt=35.750\` and \`C_wait=44.471\` ($million), hence net waiting gain \`−8.721\` at \`C_D=10\`. This is conditional arithmetic, not an actual procurement recommendation. The cross-parameter 360-grid counts are **scenario counts with no probability weights**.
+The fixed-slot reference gives `C_alt=35.750` and `C_wait=44.471` ($million), hence net waiting gain `−8.721` at `C_D=10`. This is conditional arithmetic, not an actual procurement recommendation. The cross-parameter 360-grid counts are **scenario counts with no probability weights**.
 
 ## 7. Numerical verification and unresolved identification
 
