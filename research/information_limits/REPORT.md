@@ -45,7 +45,7 @@ Equivalently, a has zero maximum regret. Thus nonidentification of a single unif
 
 For a fixed mixture w, regret is L_w(c)-min_b L_b(c)=max_b[L_w(c)-L_b(c)], a convex piecewise-affine function. For any convex combination of vertices its value is bounded above by the maximum vertex value. Hence the worst case is attained at a vertex, and mixed minimax regret is a finite linear program.
 
-Optimized waiting cost min_b L_b(c), over the waiting policies, is concave. Its maximum may occur in the interior. We therefore use an epigraph-style LP (maximize a common lower bound on all waiting-policy costs) over convex combinations of vertices for the lower endpoint of wait gain; we do not blindly enumerate vertices for both endpoints.
+Optimized waiting cost min_b L_b(c), over the waiting policies, is concave. Its maximum may occur in the interior. We therefore use an hypograph LP (maximize a common lower bound on all waiting-policy costs) over convex combinations of vertices for the lower endpoint of wait gain; we do not blindly enumerate vertices for both endpoints.
 
 ### Exact radius certificate
 
