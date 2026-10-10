@@ -1,7 +1,7 @@
 # Project Vulcan
 **Probabilistic decision analysis under uncertainty in aerospace operations**
 
-[Methodology](docs/RESEARCH_OVERVIEW.md) · [Reproduce](docs/REPRODUCIBILITY.md) · [Results and limitations](docs/SCIENTIFIC_LIMITATIONS.md) · [Architecture](docs/SOFTWARE_ARCHITECTURE.md) · [Data provenance](docs/DATA_PROVENANCE.md) · [3D visualization](visualization/README.md)
+[Academic overview](docs/APPLICATION_BRIEF.md) · [Technical portfolio](docs/RECRUITER_BRIEF.md) · [Research methods](docs/RESEARCH_OVERVIEW.md) · [English protocol](docs/en/FORECAST_PROTOCOL.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [3D explorer](visualization/README.md)
 
 Project Vulcan is an independent research-software study of a difficult decision: **when does observing an additional flight provide enough information to justify postponing a hypothetical launch procurement decision?**
 
@@ -65,7 +65,7 @@ visualization/       explanatory interactive model (not CAD)
 .github/workflows/   automated regression checks
 ```
 
-Start with [research overview](docs/RESEARCH_OVERVIEW.md), then [architecture](docs/SOFTWARE_ARCHITECTURE.md) and [reproducibility](docs/REPRODUCIBILITY.md). The detailed original working papers (`SPEC.md` and `docs/TECHNICAL_NOTE.md`) are preserved as historical research records; they may contain Portuguese and must not be silently edited into claims of pre-registration.
+Start with [research overview](docs/RESEARCH_OVERVIEW.md), the [English model specification](docs/en/MODEL_SPECIFICATION.md), [prospective protocol](docs/en/FORECAST_PROTOCOL.md), [architecture](docs/SOFTWARE_ARCHITECTURE.md), and [reproducibility](docs/REPRODUCIBILITY.md). The original working papers (`SPEC.md` and `docs/TECHNICAL_NOTE.md`) remain unchanged as historical records; selected archived texts are in Portuguese, and the English reader guides do not retrospectively change their scientific content.
 
 ## Provenance and publication
 
