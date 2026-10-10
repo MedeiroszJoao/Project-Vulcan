@@ -1,39 +1,48 @@
-# Resultado executado — laboratório de decisão Vulcan
+# Project Vulcan — Reproduced Decision Analysis
 
-Exercício independente com dados públicos. Nenhuma CPT de engenharia abaixo é uma estimativa validada do Vulcan.
-Estado: implementação executada; não é registro público congelado.
+Independent public-data decision-analysis exercise. The engineering consequence
+CPTs below are **illustrative assumptions**, not validated Vulcan reliability estimates.
+Status: reference model reproduced; public forecast registration and independent
+scientific review must be verified separately.
 
-## Cenário ilustrativo de referência
-M*: 3.000 kg, comunicações resilientes, GEO direto, janela 15/11–15/12/2026.
-Revisões MM são hipótese, não conhecimento do hardware instalado.
-Prior uniforme; sem Atlas; 6 boosters no LV e 4 no alvo; P(Θ)=(.2,.6,.2).
-Consequência de perda US$ 1.000 milhões; atraso incremental US$ 10 milhões.
+## Reference counterfactual
 
-| Métrica | US$ milhões |
-|---|---:|
-| EVSI puro, conjunto de ações fixo contrafactual | 3.989851 |
-| Custo esperado de realocar agora | 35.750000 |
-| Custo esperado de aguardar e decidir com autorização | 44.470999 |
-| Ganho líquido de aguardar | -8.720999 |
+M*: hypothetical 3,000 kg communications payload, direct GEO delivery, original
+November 15–December 15, 2026 scenario window. This is the historical baseline,
+**not** the later January–March 2027 operational planning sensitivity.
+Assumed MM hardware revisions are not confirmed manufacturer configurations.
+Uniform prior; no quantitative Atlas heritage; six SRBs on the observed LV mission
+and four SRBs on target M*; regime weights P(Θ) = (0.2, 0.6, 0.2).
+Hypothetical mission loss: USD 1,000 million; waiting cost: USD 10 million.
 
-Ação preferida neste cenário: **realocate_now**. Não extrapolar para recomendação operacional.
+| Metric | USD million |
+| --- | ---: |
+| Pure EVSI, fixed counterfactual action set | 3.989851 |
+| Expected cost, reallocate immediately | 35.750000 |
+| Expected cost, wait for report and approval | 44.470999 |
+| Net gain from waiting | -8.720999 |
 
-## Arquivos
-- decision_map.png / decision_map.csv: benefício de esperar e discordância entre dois priors, demais premissas fixas.
-- evsi_surface.png / evsi_surface.csv: grade de pesos de regime e relevância; ação fixa para EVSI.
-- policy.csv: quatro observações, condicionadas a autorização concedida ou negada.
-- structural_sensitivity.csv: 360 cenários estruturais, sem média entre cenários.
-- heritage_sensitivity.csv: análise secundária sob observabilidade perfeita da herança.
-- controls.csv: eficácias, severidade, observação e política de autorização.
+Conditional preferred action: **realocate_now**.
+This is **not** an actual launch or procurement recommendation.
 
-Uma região estável entre dois priors não é robustez universal. Custos, CPTs, transferência e governança
-continuam hipóteses. O mesmo número de anomalias pode produzir consequências muito diferentes.
-O ensaio pgmpy valida a inferência a partir das CPTs emitidas, não valida a física dessas CPTs.
+## Generated outputs
 
-## Resposta executada à auditoria independente
+- \`decision_map.png\` / \`decision_map.csv\`: net benefit and agreement under two priors, with other assumptions fixed.
+- \`evsi_surface.png\` / \`evsi_surface.csv\`: assumed correction-regime weight and relevance in a fixed action set.
+- \`policy.csv\`: public-signal categories and hypothetical approval-dependent actions.
+- \`structural_sensitivity.csv\`: 360 scenarios; no probabilistic aggregation over the grid.
+- \`heritage_sensitivity.csv\`: separate, highly conditional heritage control.
+- \`controls.csv\`: technical severity, correction effectiveness, observability and approval controls.
 
-Mapa principal: `structural_envelope.png`: 2.775 células realocar em todos, 336 discordância, zero aguardar em todos os 360 cenários. Envelope recebido reproduzido numericamente.
+Agreement between two priors is not universal robustness. Loss CPTs, calendar
+constraints, model transfer and governance are hypothetical. The same reported
+anomaly count can imply different consequences. The pgmpy consistency test
+checks inference over the supplied CPTs, **not** the underlying aerospace physics.
 
-Extensões: 432 cenários operacionais e 12 controles físicos/observacionais separados. A janela de planejamento de M* passa a 15/01–15/03/2027; a referência acima preserva as hipóteses antigas como teste de regressão. Não confundir os resultados.
+## Original independent-audit response
 
-42 testes passaram, incluindo pgmpy. Integração adaptativa independente recebida executável em `independent_numeric_check.py`. Consulte `docs/AUDIT_RESPONSE.md` para limites e alterações. Não há release pública nem DOI.
+Main figure: `structural_envelope.png` records 2,775 reallocate-in-all cells, 336 model-disagreement cells, and no wait-in-all cells across the specified 360 scenarios. The previously submitted numerical envelope is reproduced.
+
+Extensions: 432 operational scenarios and 12 separately varied physics/observation controls. The newer M* planning window spans January 15–March 15, 2027; the fixed reference above retains its earlier assumptions for regression checks. These should not be conflated.
+
+The original independent review logged 42 passing tests, including pgmpy. That is a historical claim, not a current CI test count. An independently submitted adaptive quadrature checker is available at `independent_numeric_check.py`. See `docs/AUDIT_RESPONSE.md` for limits and corrections. No archived DOI is claimed.
